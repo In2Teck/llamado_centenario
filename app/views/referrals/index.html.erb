@@ -1,0 +1,27 @@
+<h1>Listing referrals</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Referred uid</th>
+    <th>Accepted</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @referrals.each do |referral| %>
+  <tr>
+    <td><%= referral.user_id %></td>
+    <td><%= referral.referred_uid %></td>
+    <td><%= referral.accepted %></td>
+    <td><%= link_to 'Show', referral %></td>
+    <td><%= link_to 'Edit', edit_referral_path(referral) %></td>
+    <td><%= link_to 'Destroy', referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New referral', new_referral_path %>

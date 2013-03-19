@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Image url:</b>
+  <%= @clue.image_url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @clue.description %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @clue.longitude %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @clue.latitude %>
+</p>
+
+<p>
+  <b>Radius:</b>
+  <%= @clue.radius %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @clue.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_clue_path(@clue) %> |
+<%= link_to 'Back', clues_path %>

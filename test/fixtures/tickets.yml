@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  clue_id: 1
+  folio: MyString
+  source_type: MyString
+
+two:
+  clue_id: 1
+  folio: MyString
+  source_type: MyString

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clue:</b>
+  <%= @ticket.clue_id %>
+</p>
+
+<p>
+  <b>Folio:</b>
+  <%= @ticket.folio %>
+</p>
+
+<p>
+  <b>Source type:</b>
+  <%= @ticket.source_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
