@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20130319175512) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "ticket_id"
-    t.string   "referred_user_id"
+    t.integer  "referred_user_id"
     t.integer  "friend_count"
   end
 
