@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319175512) do
+ActiveRecord::Schema.define(:version => 20130321065210) do
 
   create_table "activities", :force => true do |t|
     t.string   "description"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130319175512) do
     t.boolean  "active"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "source_type"
   end
 
   create_table "referrals", :force => true do |t|
@@ -42,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20130319175512) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "referrals", ["user_id", "referred_uid"], :name => "index_referrals_on_user_id_and_referred_uid", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -58,8 +61,9 @@ ActiveRecord::Schema.define(:version => 20130319175512) do
     t.integer  "clue_id"
     t.string   "folio"
     t.string   "source_type"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "assigned",    :default => false
   end
 
   create_table "users", :force => true do |t|

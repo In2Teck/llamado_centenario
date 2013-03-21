@@ -29,4 +29,27 @@ class User < ActiveRecord::Base
 	def role?(role)
 		return !!self.roles.find_by_name(role)
 	end
+
+	def add_activity activity_id
+		self.activities << Activity.find(activity_id)
+	end
+
+	def add_referrals uid_list
+		uid_list.each do |uid|
+			begin
+				self.referrals << Referral.create(:user_id => self.id, :referred_uid => uid, :accepted => false)
+			rescue ActiveRecord::RecordNotUnique
+				logger.info("UID #{uid} already existed in user's referrals.")
+			end
+		end
+	end
+
+	def accepted_referrals
+		self.referrals.where("accepted = ?", true)	
+	end
+
+	def referrals_metric
+		#TODO: review formula
+		self.accepted_referrals.count/self.friend_count 
+	end
 end
