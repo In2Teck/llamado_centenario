@@ -1,0 +1,23 @@
+
+<% content_for :head_script do %>
+<%= javascript_include_tag "map"%>
+<% end %>
+<header>
+	<hgroup>
+
+	</hgroup>
+</header>	
+<section>
+	<figure id="clue-locator">
+		<figcaption> Boletos encontrados </figcaption>
+		<div id="map-canvas"></div>	
+	</figure>
+	<article id="players">
+
+	</article>
+	<figure id="clue-info">
+		<figcaption> Ubica esta pista </figcaption>
+	</figure>
+</section>
+
+<input type="hidden" id="rubyValues" data-clue="<%= @is_clue_active%>"/>
