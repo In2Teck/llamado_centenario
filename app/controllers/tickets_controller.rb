@@ -80,4 +80,14 @@ class TicketsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def assign_ticket
+		@user = User.find(params[:id])
+	  Ticket.create_and_assign_to_user @user if @user
+		
+		respond_to do |format|
+			format.json { render json: @user}
+		end	
+	end	
+
 end

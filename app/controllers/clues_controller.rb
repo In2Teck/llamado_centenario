@@ -80,4 +80,14 @@ class CluesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def assign_tickets
+		@clue = Clue.find(params[:id])
+    @clue.assign_tickets(params[:ticket_number])
+
+		respond_to do |format|
+			format.json { render json: @clue}
+		end
+	end
+
 end

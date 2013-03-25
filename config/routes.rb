@@ -1,15 +1,11 @@
 TorreCentenario::Application.routes.draw do
   resources :activities
 
-
   resources :referrals
-
 
   resources :clues
 
-
   resources :tickets
-
 
   resources :roles
 
@@ -23,6 +19,13 @@ TorreCentenario::Application.routes.draw do
 
   resources :users
 
+	get 'admin/create_clue', :to => "admin#create_clue", :as => :admin_create_clue
+
+	get 'admin/users_referrals', :to => "admin#users_referrals", :as => :admin_users_referrals
+
+	match 'users/:id/assign_ticket' => 'users#assign_ticket', :as => :users_assign_ticket
+
+	match 'clues/:id/assign_tickets' => 'clues#assign_tickets', :as => :clues_assign_tickets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
