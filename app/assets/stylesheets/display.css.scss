@@ -1,7 +1,6 @@
-// Place all the styles related to the display controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-html { 
+html {
+  background: black;
+  color: white;
  	height: 100%;
   width: 100%;
 }
@@ -10,6 +9,7 @@ body {
 	height: 100%; 
 	margin: 0; 
 	padding: 0;
+  text-align: center;
   width: 100%;
 }
     
@@ -18,12 +18,50 @@ section {
   width: 100%;
 }
 
-#clue-locator {
-  height: 100%;
-  width:  70%;
+#clue-info {
+  background: gray;
+  border: 3px solid navy;
+  color: black;
+  height: 75%;
+  margin-top: 4.5em;
+  opacity: 0.6;
+  width: 30%;  
 }
 
-#map-canvas { 
-  height: 70%;
-  width: 50%;
+#clue-locator {
+  height: 100%;
+  width: 40%;
+}
+
+#map-canvas {
+  border: 3px solid gray;
+  height: 75%;
+}
+
+#num-tickets {
+  color: red;
+}
+
+#players {
+  height: 100%;
+  width: 10%;
+  margin: 1em 0 0 -2em;
+}
+
+#clue-locator, #players, #clue-info
+{
+  display: inline-block;
+  vertical-align: top;
+  /*border-style: solid;*/
+}
+
+.player {
+  border: 3px solid white;
+  height: 80px;
+  margin: 0 15% 5% 15%;
+  width: 80px;
+}
+
+.top-div {
+  height: 3.5em;
 }

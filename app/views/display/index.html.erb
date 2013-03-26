@@ -4,20 +4,36 @@
 <% end %>
 <header>
 	<hgroup>
-
+		<h1>EL CONCIERTO MÁS CERCA DEL CIELO</h1>
+		<h2>Encuentra tu pase al concierto más cerca del cielo, localiza el punto donde crees que estamos ubicados y gana.</h2>
 	</hgroup>
 </header>	
+
 <section>
+
 	<figure id="clue-locator">
-		<figcaption> Boletos encontrados </figcaption>
+		<figcaption class="top-div">
+			<div> Boletos encontrados </div>
+			<div id="num-tickets"> 0 de 6 </div>
+		</figcaption>
 		<div id="map-canvas"></div>	
 	</figure>
-	<article id="players">
 
+	<article id="players">
+		<div class="top-div"> Personas participando en este momento </div>
+		<div class="player"></div>
+		<div class="player"></div>
+		<div class="player"></div>
+		<div class="player"></div>
+		<div class="player"></div>
 	</article>
+
 	<figure id="clue-info">
-		<figcaption> Ubica esta pista </figcaption>
+		<figcaption > 
+			<h2> Ubica esta pista </h2>
+		</figcaption>
 	</figure>
+
 </section>
 
 <input type="hidden" id="rubyValues" data-clue="<%= @is_clue_active%>"/>
