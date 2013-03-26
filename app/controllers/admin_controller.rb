@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 	def create_clue
-		@clue = Clue.new		
+		@clue = Clue.new
 	end
 
 	def users_referrals

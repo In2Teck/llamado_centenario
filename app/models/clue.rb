@@ -1,5 +1,5 @@
 class Clue < ActiveRecord::Base
-  attr_accessible :active, :description, :image_url, :latitude, :longitude, :radius
+  attr_accessible :active, :description, :image_url, :latitude, :longitude, :radius, :source_type
 	has_many :tickets
 	geocoded_by :description
 
@@ -13,7 +13,7 @@ class Clue < ActiveRecord::Base
 	end
 
 	def assign_tickets number
-		number.times do
+		number.to_i.times do
 			folio = SecureRandom.uuid.slice(0,7)
 			self.tickets << Ticket.create(:clue_id => self.id, :source_type => self.source_type, :folio => folio)
 		end

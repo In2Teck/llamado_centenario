@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20130325204302) do
     t.integer  "ticket_id"
     t.integer  "referred_user_id"
     t.integer  "friend_count"
-    t.float    "referral_metric"
+    t.string   "thumbnail_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

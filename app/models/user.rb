@@ -48,13 +48,13 @@ class User < ActiveRecord::Base
 		self.referrals.where("accepted = ?", true)	
 	end
 
-	def update_friend_count_and_referral_metric friend_count
-		#TODO: Review formula for referral_metric
-		self.update_attributes(:friend_count => friend_count, :referral_metric => self.accepted_referrals.count / friend_count)
+	def update_friend_count friend_count
+		self.update_attribute(:friend_count, friend_count)
 	end
 
 	def self.find_top_referrers result_size
-		User.order("referral_metric desc").limit(result_size)
+    #TODO: Insert custom query that gets the number of accepted referrals on the fly
+		User.where("ticket_id is null").order("friend_count desc").limit(result_size)
 	end
 
 end

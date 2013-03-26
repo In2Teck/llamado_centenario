@@ -3,7 +3,9 @@ TorreCentenario::Application.routes.draw do
 
   resources :referrals
 
-  resources :clues
+  resources :clues do
+		match 'assign_tickets', :on => :collection
+	end
 
   resources :tickets
 
@@ -25,7 +27,6 @@ TorreCentenario::Application.routes.draw do
 
 	match 'users/:id/assign_ticket' => 'users#assign_ticket', :as => :users_assign_ticket
 
-	match 'clues/:id/assign_tickets' => 'clues#assign_tickets', :as => :clues_assign_tickets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

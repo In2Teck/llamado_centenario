@@ -1,0 +1,10 @@
+%header
+  %h1 Asigna ganador
+%section
+  %ul
+  - @users.each do |user|
+    %li
+      = image_tag user.thumbnail_url
+      = user.first_name
+      = user.last_name
+      = user.friend_count

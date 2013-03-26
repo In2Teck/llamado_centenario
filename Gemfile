@@ -9,6 +9,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'cancan'
 gem 'geocoder'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,6 +41,8 @@ gem 'jquery-rails'
 # gem 'debugger'
 group :development do
 	gem 'pg'
+	gem 'hpricot'
+	gem 'ruby_parser'
 end
 
 group :production do
