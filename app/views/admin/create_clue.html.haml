@@ -1,7 +1,7 @@
 - content_for :head_script do
   = javascript_include_tag "admin_map"
 %header
-  %h1 Crea la pista
+  %h1 Información de la pista
 %section
   %figure#clue-creator
     %figcaption Selecciona la ubicación
@@ -15,13 +15,18 @@
         = f.label :image_url
         = f.text_field :image_url
       .field
+        = f.hidden_field :id, :value => @clue.id
         = f.hidden_field :longitude, :value => @clue.longitude
         = f.hidden_field :latitude, :value => @clue.latitude
         = f.hidden_field :radius, :value => @clue.radius
-        = f.hidden_field :active, :value => true
+        - if @disable_option
+          = f.label :active
+          = f.check_box :active
+        - else
+          = f.hidden_field :active, :value => true
         = f.hidden_field :source_type, :value => "web"
       .field
-        %label{"for" => "ticket_number"} Ticket number
-        %input#ticket_number{"name" => "ticket_number"}
+        %label{"for" => "ticket_number"} Tickets para repartir
+        %input#ticket_number{"name" => "ticket_number", "value" => @tickets}
       .actions
         = f.submit

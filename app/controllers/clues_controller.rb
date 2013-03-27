@@ -82,7 +82,12 @@ class CluesController < ApplicationController
   end
 
 	def assign_tickets
-    @clue = Clue.create(params[:clue])
+    if params[:clue][:id].blank?
+      @clue = Clue.create(params[:clue])
+    else
+      @clue = Clue.find(params[:clue][:id])
+      @clue.update_attributes(params[:clue])
+    end
     @clue.assign_tickets(params[:ticket_number])
 
 		respond_to do |format|

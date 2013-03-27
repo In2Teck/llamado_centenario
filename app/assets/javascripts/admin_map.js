@@ -9,8 +9,8 @@ function onReady() {
 }
 
 function initMap() {
-  var dLongitude = $("#clue_longitude")[0];
-  var dLatitude = $("#clue_latitude")[0];
+  var dLongitude = $("#clue_longitude")[0].value;
+  var dLatitude = $("#clue_latitude")[0].value;
   var mapDiv = $("#map-canvas")[0];
   var map = new google.maps.Map(mapDiv, {
               center: new google.maps.LatLng(dLatitude, dLongitude),
@@ -153,7 +153,7 @@ function RadiusWidget() {
     strokeWeight: 2
   });
   
-  var dRadius = $("#clue_radius")[0];
+  var dRadius = $("#clue_radius")[0].value;
 
   this.set('distance', dRadius);
 

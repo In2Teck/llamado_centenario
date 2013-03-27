@@ -13,9 +13,39 @@ class Clue < ActiveRecord::Base
 	end
 
 	def assign_tickets number
+    number = number.to_i
+    if self.tickets_not_assigned.count == number
+      return
+    elsif self.tickets_not_assigned.count > number # delete tickets
+      number_to_delete = self.tickets_not_assigned.count - number
+
+      count = 0
+      self.tickets_not_assigned.each do |ticket|
+        ticket.destroy
+        count += 1
+        if count == number_to_delete
+          break
+        end
+      end
+    else # add tickets
+      number_to_add = number - self.tickets_not_assigned.count  
+      self.create_tickets number_to_add
+    end
+	end
+  
+  def create_tickets number
 		number.to_i.times do
 			folio = SecureRandom.uuid.slice(0,7)
 			self.tickets << Ticket.create(:clue_id => self.id, :source_type => self.source_type, :folio => folio)
 		end
-	end
+  end
+
+  def tickets_not_assigned
+    tickets = []
+    self.tickets.each do |ticket|
+      tickets << ticket unless ticket.user
+    end
+    return tickets
+  end
+
 end
