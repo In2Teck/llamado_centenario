@@ -15,9 +15,9 @@
         = f.label :image_url
         = f.text_field :image_url
       .field
-        = f.hidden_field :longitude
-        = f.hidden_field :latitude
-        = f.hidden_field :radius
+        = f.hidden_field :longitude, :value => @clue.longitude
+        = f.hidden_field :latitude, :value => @clue.latitude
+        = f.hidden_field :radius, :value => @clue.radius
         = f.hidden_field :active, :value => true
         = f.hidden_field :source_type, :value => "web"
       .field

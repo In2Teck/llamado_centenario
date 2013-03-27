@@ -9,9 +9,11 @@ function onReady() {
 }
 
 function initMap() {
+  var dLongitude = $("#clue_longitude")[0];
+  var dLatitude = $("#clue_latitude")[0];
   var mapDiv = $("#map-canvas")[0];
   var map = new google.maps.Map(mapDiv, {
-              center: new google.maps.LatLng(19.433333, -99.133333),
+              center: new google.maps.LatLng(dLatitude, dLongitude),
               minZoom: 11,
               zoom: 13,
               maxZoom: 17,
@@ -41,11 +43,9 @@ function initMap() {
   RadiusWidget.prototype.center_changed = function() {
     var bounds = this.get('bounds');
 
-    // Bounds might not always be set so check that it exists first.
     if (bounds) {
       var lng = bounds.getNorthEast().lng();
 
-      // Put the sizer at center, right on the circle.
       var position = new google.maps.LatLng(this.get('center').lat(), lng);
       this.set('sizer_position', position);
     }
@@ -102,13 +102,22 @@ function initMap() {
   };
 
   var distanceWidget = new DistanceWidget(map);
+
+  google.maps.event.addListener(distanceWidget, 'distance_changed', function() {
+    displayInfo(distanceWidget);
+  });
+
+  google.maps.event.addListener(distanceWidget, 'position_changed', function() {
+    displayInfo(distanceWidget);
+  });
 }
 
-/**
- * A distance widget that will display a circle that can be resized and will
- * provide the radius in km.
- * @param {google.maps.Map} map The map on which to attach the distance widget.
- */
+function displayInfo(widget) {
+  $("#clue_radius")[0].value = widget.get('distance');
+  $("#clue_latitude")[0].value = widget.get('position').lat();
+  $("#clue_longitude")[0].value = widget.get('position').lng();
+}
+
 function DistanceWidget(map) {
   this.set('map', map);
   this.set('position', map.getCenter());
@@ -121,52 +130,39 @@ function DistanceWidget(map) {
   this.set('minDistance', 1);
   this.set('maxDistance', 15);
 
-  // Bind the marker map property to the DistanceWidget map property
   marker.bindTo('map', this);
 
-  // Bind the marker position property to the DistanceWidget position property
   marker.bindTo('position', this);
 
-  // Create a new radius widget
   var radiusWidget = new RadiusWidget();
 
-  // Bind the radiusWidget map to the DistanceWidget map
   radiusWidget.bindTo('map', this);
 
-  // Bind the radiusWidget center to the DistanceWidget position
   radiusWidget.bindTo('center', this, 'position'); 
 
   radiusWidget.bindTo('maxDistance', this);
   radiusWidget.bindTo('minDistance', this);
 
-  // Bind to the radiusWidgets' distance property
   this.bindTo('distance', radiusWidget);
 
-  // Bind to the radiusWidgets' bounds property
   this.bindTo('bounds', radiusWidget);
 }
 
-/**
- * A radius widget that adds a circle to a map and centers on a marker.
- */
 function RadiusWidget() {
   var circle = new google.maps.Circle({
     strokeWeight: 2
   });
+  
+  var dRadius = $("#clue_radius")[0];
 
-  // Set the distance property value, default to 3km.
-  this.set('distance', 3);
+  this.set('distance', dRadius);
 
-  // Bind the RadiusWidget bounds property to the circle bounds property.
   this.bindTo('bounds', circle);
 
-  // Bind the circle center to the RadiusWidget center property
   circle.bindTo('center', this);
 
-  // Bind the circle map to the RadiusWidget map
   circle.bindTo('map', this);
 
-  // Bind the circle radius property to the RadiusWidget radius property
   circle.bindTo('radius', this);
 
   this.addSizer_(); 
