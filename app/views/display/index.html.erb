@@ -1,3 +1,4 @@
+<div id="ruby-values" data-session="<%= @is_signed %>"></div>
 <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
@@ -12,12 +13,16 @@
 
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        //window.location.href = '/users/auth/facebook/callback';
-        alert("ya se conecto, ahora que?");
+        if ($('#ruby-values').data("session")) {
+          alert("listo");
+        }
+        else {
+          window.location.href = '/users/auth/facebook/callback';
+        }
       } else if (response.status === 'not_authorized') {
-        alert("no esta autorizado.");
+        login();
       } else {
-        login()
+        login();
       }
      });
     };
@@ -44,4 +49,3 @@
      ref.parentNode.insertBefore(js, ref);
    }(document, /*debug*/ false));
 </script>
-<%= @is_signed %>
