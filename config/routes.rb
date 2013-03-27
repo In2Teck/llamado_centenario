@@ -27,6 +27,7 @@ TorreCentenario::Application.routes.draw do
 
 	match 'users/:id/assign_ticket' => 'users#assign_ticket', :as => :users_assign_ticket
 
+  match 'search_clue' => 'display#search_clue', :as => :search_clue
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
