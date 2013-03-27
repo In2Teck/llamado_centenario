@@ -12,9 +12,10 @@
 
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        window.location.href = '/users/auth/facebook/callback';
+        //window.location.href = '/users/auth/facebook/callback';
+        alert("ya se conecto, ahora que?");
       } else if (response.status === 'not_authorized') {
-        login()
+        alert("no esta autorizado.");
       } else {
         login()
       }
@@ -43,3 +44,4 @@
      ref.parentNode.insertBefore(js, ref);
    }(document, /*debug*/ false));
 </script>
+<%= @is_signed %>

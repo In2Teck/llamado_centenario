@@ -6,7 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'cancan'
 gem 'geocoder'
 gem 'haml-rails'
