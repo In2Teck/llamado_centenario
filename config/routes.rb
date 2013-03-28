@@ -22,6 +22,8 @@ TorreCentenario::Application.routes.draw do
   resources :users
 
 	get 'admin/create_clue', :to => "admin#create_clue", :as => :admin_create_clue
+	
+  get 'admin/edit_clue/:id', :to => "admin#edit_clue", :as => :admin_edit_clue
 
 	get 'admin/users_referrals', :to => "admin#users_referrals", :as => :admin_users_referrals
 
