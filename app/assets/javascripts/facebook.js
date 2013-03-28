@@ -16,7 +16,6 @@ function loadFB() {
     });
 
     alert("cargar");
-    $(document).trigger('fbLoaded');
 
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
