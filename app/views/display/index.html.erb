@@ -1,51 +1,14 @@
-<div id="ruby-values" data-session="<%= @is_signed %>"></div>
+<% content_for :head_script do %>
+  <%= javascript_include_tag "index"%>
+<% end %>
 <div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-    // init the FB JS SDK
-    FB.init({
-      appId      : '132164533632870', // App ID from the App Dashboard
-      channelUrl : 'http://localhost:3000/channel.html', // Channel File for x-domain communication
-      status     : true, // check the login status upon init?
-      cookie     : true, // set sessions cookies to allow your server to access the session?
-      xfbml      : true  // parse XFBML tags on this page?
-    });
+<div id="ruby-values" data-session="<%= @is_signed %>"></div>
+<section>
+  <article id="menu">
+    <h2>Descubre que te espera más cerca del cielo</h2>
+    <div data-path="search_clue">GANA TU PASE</div>
+    <div data-path="invite_friends">INVITA A TUS AMIGOS Y GANA TU PASE</div>
+    <div data-path="show_fun">FUN</div>
+  </article>
+</section>
 
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        if ($('#ruby-values').data("session")) {
-          alert("listo");
-        }
-        else {
-          window.location.href = '/users/auth/facebook/callback';
-        }
-      } else if (response.status === 'not_authorized') {
-        login();
-      } else {
-        login();
-      }
-     });
-    };
-
-  function login() {
-    FB.login(function(response) {
-      if (response.authResponse) {
-        window.location.href = '/users/auth/facebook/callback';
-      } else {
-        // cancelled
-      }
-    }, {scope: 'email'});
-  }
-
-  // Load the SDK's source Asynchronously
-  // Note that the debug version is being actively developed and might 
-  // contain some type checks that are overly strict. 
-  // Please report such bugs using the bugs tool.
-  (function(d, debug){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document, /*debug*/ false));
-</script>

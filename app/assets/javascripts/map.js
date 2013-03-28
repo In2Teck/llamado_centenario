@@ -2,6 +2,11 @@ var map;
 $(document).on("ready", onReady);
 
 function onReady() {
+  $(document).on("fbLoaded", onFBLoaded);
+}
+
+function onFBLoaded() {
+  alert("fb cargado2");
   var s = document.createElement("script");
   s.type = "text/javascript";
   s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
