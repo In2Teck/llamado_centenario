@@ -19,7 +19,7 @@ function loadFB() {
 
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        if ($('#ruby-values').data("session")) {
+        if ($('#ruby-session').data("session")) {
           $(document).trigger('fbLoaded');
         }
         else {

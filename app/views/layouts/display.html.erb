@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="ruby-session" data-session="<%= current_user ? true : false %>"></div>
 <%= yield %>
 
 </body>

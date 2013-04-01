@@ -18,7 +18,8 @@ class AdminController < ApplicationController
   end
 
   def active_clues
-		@clues = Clue.find_all_by_active(true)
+		@active_clues = Clue.find_all_by_active(true)
+    @inactive_clues = Clue.find_all_by_active(false)
   end
 
 	def users_referrals
