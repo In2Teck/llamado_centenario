@@ -31,6 +31,8 @@ TorreCentenario::Application.routes.draw do
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 
+  match 'make_guess' => 'display#make_guess', :as => :make_guess
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

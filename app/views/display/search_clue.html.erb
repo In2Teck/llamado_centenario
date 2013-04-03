@@ -1,5 +1,5 @@
 <% content_for :head_script do %>
-  <%= javascript_include_tag "map"%>
+  <%= javascript_include_tag "search_clue"%>
 <% end %>
 <header>
   <hgroup>
@@ -13,7 +13,7 @@
   <figure id="clue-locator">
     <figcaption class="top-div">
       <div> Boletos encontrados </div>
-      <div id="num-tickets"> 0 de 6 </div>
+      <div id="num-tickets">  </div>
     </figcaption>
     <div id="map-canvas"></div> 
   </figure>
@@ -31,8 +31,10 @@
     <figcaption > 
       <h2> Ubica esta pista </h2>
     </figcaption>
+    <img id="clue-image"/>
   </figure>
 
 </section>
 
-<div id="ruby-values" data-clue="<%= @is_clue_active%>" ></div>
+<%= content_tag "div", id: "ruby-values", data: {clue: @active_clue ? true : false, clue_image: @active_clue[:image_url], total_tickets: @active_clue[:total_tickets], remain_tickets: @active_clue[:remain_tickets] } do %><% end %>
+<!--<div id="ruby-values" data-clue="<%= @active_clue ? true : false %>" data-clue-image="<%= @active_clue[:image_url] %>"></div>-->

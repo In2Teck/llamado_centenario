@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   DF_COORDS = [19.433333, -99.133333]
-  DEFAULT_RADIUS = 3
+  DEFAULT_RADIUS = 0.2
 
 	def create_clue
 		@clue = Clue.new

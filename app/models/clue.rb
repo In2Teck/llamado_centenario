@@ -3,11 +3,17 @@ class Clue < ActiveRecord::Base
 	has_many :tickets
 	geocoded_by :description
 
-	def self.active_to_user
-		clues = Clue.find_all_by_active(true)
+	def self.active_to_user type
+		clues = Clue.find_all_by_active_and_source_type(true, type)
 		hidden_clues = []
 		clues.each do |clue|
-			hidden_clues << {:description => clue.description, :image_url => clue.image_url}
+      total_tickets = Ticket.where("clue_id = ?", clue.id)
+      remain_tickets = total_tickets.length
+      total_tickets.each do |ticket|
+        remain_tickets -= 1 if ticket.assigned == true
+      end
+			hidden_clues << {:description => clue.description, :image_url => clue.image_url, :source_type => clue.source_type, 
+        :total_tickets => total_tickets.length, :remain_tickets => remain_tickets}
 		end
 		return hidden_clues
 	end

@@ -1,4 +1,7 @@
 var map;
+var guess;
+var mapZoom;
+
 $(document).on("ready", onReady);
 
 function onReady() {
@@ -6,7 +9,8 @@ function onReady() {
 }
 
 function onFBLoaded() {
-  alert("fb cargado2");
+  $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
+  $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " de " + $("#ruby-values").data("total-tickets"))
   var s = document.createElement("script");
   s.type = "text/javascript";
   s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
@@ -26,12 +30,22 @@ function initMap()
   google.maps.event.addListener(map, 'click', onClick);
 }
 
-var diego;
 function onClick(event) {
-  diego = event.latLng;
-  /*var marker = new google.maps.Marker({
-      position: diego,
-      map: map
-    });*/
+  guess = event.latLng;
+  mapZoom = map.getZoom();
+  setTimeout("placeMarker()", 600);
+}
 
-} 
+function placeMarker() {
+  if (mapZoom == map.getZoom()) {
+    var marker = new google.maps.Marker({
+      position: guess,
+      map: map
+    });
+    $.ajax({url:"http://localhost:3000/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
+  }
+}
+
+function onPlaceMarker(data, textStatus, jqXHR) {
+  alert(data)
+}

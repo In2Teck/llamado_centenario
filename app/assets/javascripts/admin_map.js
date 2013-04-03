@@ -15,7 +15,7 @@ function initMap() {
   var map = new google.maps.Map(mapDiv, {
               center: new google.maps.LatLng(dLatitude, dLongitude),
               minZoom: 11,
-              zoom: 13,
+              zoom: 15,
               maxZoom: 17,
               mapTypeId: google.maps.MapTypeId.ROADMAP              
   });
@@ -127,8 +127,8 @@ function DistanceWidget(map) {
     title: 'Mueve el centro'
   });
 
-  this.set('minDistance', 1);
-  this.set('maxDistance', 15);
+  this.set('minDistance', 0.05);
+  this.set('maxDistance', 0.2);
 
   marker.bindTo('map', this);
 
