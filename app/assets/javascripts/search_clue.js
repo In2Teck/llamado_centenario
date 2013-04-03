@@ -42,7 +42,7 @@ function placeMarker() {
       position: guess,
       map: map
     });
-    $.ajax({url:"http://localhost:3000/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
+    $.ajax({url:"/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
   }
 }
 
