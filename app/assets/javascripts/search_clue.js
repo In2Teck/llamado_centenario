@@ -45,7 +45,8 @@ function placeMarker() {
     $.ajax({url:"/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
   }
 }
-
+var result;
 function onPlaceMarker(data, textStatus, jqXHR) {
-  alert(data)
+  result = data;
+  alert(data);
 }

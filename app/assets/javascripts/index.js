@@ -5,7 +5,6 @@ function onReady() {
 }
 
 function onFBLoaded() {
-  alert("fb cargado");
   $("#menu div").on("click", onMenuClick);
 }
 
