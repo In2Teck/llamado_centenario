@@ -15,11 +15,12 @@ function loadFB() {
       xfbml      : true  // parse XFBML tags on this page?
     });
 
-    alert("cargar");
-
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
+        //alert("cargar")
+        //$(document).trigger('fbLoaded');
         if ($('#ruby-session').data("session")) {
+          alert("cargar")
           $(document).trigger('fbLoaded');
         }
         else {
