@@ -1,0 +1,25 @@
+- content_for :head_script do
+  = javascript_include_tag "invite_friends"
+#fb-root
+%section
+  %article#torre
+    #nivel-3
+      %figure
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+    #nivel-2
+      %figure
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+    #nivel-1
+      %figure
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
+  %article#invitar
+    %hgroup
+      %h2 Dile a tus amigos que te lleven 
+      %h2 Más cerca del cielo
+    = link_to "Invitar a mis amigos", "#", :id => "invite_friends"

@@ -15,15 +15,13 @@ function loadFB() {
       xfbml      : true  // parse XFBML tags on this page?
     });
 
-    alert("cargar");
-
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         if ($('#ruby-session').data("session")) {
           $(document).trigger('fbLoaded');
         }
         else {
-          window.location.href = '/users/auth/facebook/callback';
+          window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
         }
       } else if (response.status === 'not_authorized') {
         login();
