@@ -1,6 +1,7 @@
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
+#ruby-values{"data-user-id" => current_user.id}
 %section
   %article#torre
     #nivel-3

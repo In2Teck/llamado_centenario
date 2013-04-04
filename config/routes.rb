@@ -1,7 +1,10 @@
 TorreCentenario::Application.routes.draw do
   resources :activities
 
-  resources :referrals
+  resources :referrals do
+    match 'create_batch', :on => :collection
+    match 'accept', :on => :collection
+  end
 
   resources :clues do
 		match 'assign_tickets', :on => :collection

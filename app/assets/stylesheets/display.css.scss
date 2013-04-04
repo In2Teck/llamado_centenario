@@ -38,6 +38,10 @@ section {
   height: 75%;
 }
 
+#userTower {
+  display: none;
+}
+
 #menu {
   height: 100%;
   width: 100%;
@@ -83,4 +87,7 @@ section {
 
 .top-div {
   height: 3.5em;
+}
+
+.acceptRequestButton {
 }
