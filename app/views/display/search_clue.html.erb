@@ -36,4 +36,10 @@
 
 </section>
 
-<%= content_tag "div", id: "ruby-values", data: {clue: @active_clue ? true : false, clue_image: @active_clue[:image_url], total_tickets: @active_clue[:total_tickets], remain_tickets: @active_clue[:remain_tickets] } do %><% end %>
+<%= content_tag "div", id: "ruby-values", data: {
+  clue: @active_clue ? true : false, 
+  clue_image: (@active_clue[:image_url] if @active_clue), 
+  total_tickets: (@active_clue[:total_tickets] if @active_clue), 
+  remain_tickets: (@active_clue[:remain_tickets] if @active_clue), 
+  can_guess: @can_guess 
+} do %><% end %>

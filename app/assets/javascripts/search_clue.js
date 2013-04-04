@@ -9,12 +9,23 @@ function onReady() {
 }
 
 function onFBLoaded() {
- // $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
-  $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " de " + $("#ruby-values").data("total-tickets"))
-  var s = document.createElement("script");
-  s.type = "text/javascript";
-  s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
-  $("head").append(s); 
+  if ($("#ruby-values").data("clue")) {
+    if ($("#ruby-values").data("can-guess")) {
+      // $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
+      $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " de " + $("#ruby-values").data("total-tickets"))
+
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
+      $("head").append(s); 
+    }
+    else {
+      alert("Solamente puedes participar 1 vez por pista. Espera la siguiente");
+    }
+  }
+  else {
+    alert("Por el momento no hay ninguna pista. Espera la siguiente");
+  }
 }
 
 function initMap()
@@ -38,19 +49,25 @@ function onClick(event) {
 
 function placeMarker() {
   if (mapZoom == map.getZoom()) {
-    var marker = new google.maps.Marker({
-      position: guess,
-      animation: google.maps.Animation.DROP,
-      map: map
-    });
+    google.maps.event.clearListeners(map, 'click');
 
     $.ajax({url:"/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
   }
 }
 var result;
 function onPlaceMarker(data, textStatus, jqXHR) {
-  result = data.result;
-  alert(result);
+  result = data;
+  if (data.result != null) {
+     var marker = new google.maps.Marker({
+      position: guess,
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+    alert(data.result);
+  }
+  else if (data.error) {
+    alert("Solamente puedes participar 1 vez por pista. Espera la siguiente");
+  }
 }
 
 function testMarker() { alert("added");}

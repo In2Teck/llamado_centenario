@@ -9,6 +9,8 @@ class Ticket < ActiveRecord::Base
 	def self.locate_and_assign latitude, longitude, source_type, current_user
 		clues = Clue.find_all_by_active_and_source_type(true, source_type)
 		clues.each do |clue|
+			current_user.clues << clue
+			current_user.save
 			distance = clue.distance_from([latitude, longitude])
 			if (not current_user.ticket) and (distance <= clue.radius * KILOMETER_TO_MILE)
 				tickets_to_assign = clue.tickets.where("assigned = ?", false)

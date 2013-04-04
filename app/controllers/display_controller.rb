@@ -11,13 +11,20 @@ class DisplayController < ApplicationController
     @active_clue
     clues = Clue.active_to_user(:web)
     @active_clue = clues[0]
+    @can_guess = current_user.clues.length == 0 ? true : false
   end
 
   def make_guess
     lat = params[:lat]
     lng = params[:lng]
-    guess = Ticket.locate_and_assign(lat, lng, :web, current_user)
-    render :json => {:result => guess}
+    result = {}
+    if (current_user.clues.length == 0)
+      guess = Ticket.locate_and_assign(lat, lng, :web, current_user)
+      result = {:result => guess}
+    else
+      result = {:error => true}
+    end
+    render :json => result
   end
 
   def invite_friends
