@@ -80,4 +80,21 @@ class ReferralsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def create_batch
+    @referrals = Referral.create_batch params[:referrals]
+    
+    respond_to do |format|
+      format.json { render json: @referrals}
+    end
+  end
+
+  def accept
+    @referral = Referral.accept params[:origin_user_uid], params[:referred_user_id]
+  
+    respond_to do |format|
+      format.json { render json: @referrals}
+    end
+  end
+
 end

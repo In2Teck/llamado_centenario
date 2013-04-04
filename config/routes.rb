@@ -1,7 +1,10 @@
 TorreCentenario::Application.routes.draw do
   resources :activities
 
-  resources :referrals
+  resources :referrals do
+    match 'create_batch', :on => :collection
+    match 'accept', :on => :collection
+  end
 
   resources :clues do
 		match 'assign_tickets', :on => :collection
@@ -32,6 +35,8 @@ TorreCentenario::Application.routes.draw do
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 
   match 'make_guess' => 'display#make_guess', :as => :make_guess
+
+  match 'invite_friends' => 'display#invite_friends', :as => :invite_friends
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

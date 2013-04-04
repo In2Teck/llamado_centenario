@@ -1,6 +1,7 @@
 class Clue < ActiveRecord::Base
   attr_accessible :active, :description, :image_url, :latitude, :longitude, :radius, :source_type
 	has_many :tickets
+  has_and_belongs_to_many :users
 	geocoded_by :description
 
 	def self.active_to_user type

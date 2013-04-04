@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :activities
+  has_and_belongs_to_many :clues
   belongs_to :ticket
   belongs_to :referred_user, :class_name => "User", :foreign_key => :referred_user_id
   has_many :referrals

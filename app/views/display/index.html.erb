@@ -3,11 +3,16 @@
 <% end %>
 <div id="fb-root"></div>
 <section>
+  <article id="userTower">
+    <h2>Selecciona a cuál torre pertenecer</h2>
+    <p>(sólo puedes pertenecer a la primera que elijas)<p>
+  </article>
   <article id="menu">
     <h2>Descubre que te espera más cerca del cielo</h2>
     <div data-path="search_clue">GANA TU PASE</div>
     <div data-path="invite_friends">INVITA A TUS AMIGOS Y GANA TU PASE</div>
     <div data-path="show_fun">FUN</div>
   </article>
+  <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.id if current_user %>"></div>
 </section>
 

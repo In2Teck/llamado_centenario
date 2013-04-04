@@ -2,7 +2,7 @@ html {
   background: black;
   color: white;
  	height: 100%;
-  width: 100%;
+  width: 804px;
 }
       
 body {
@@ -36,6 +36,10 @@ section {
 #map-canvas {
   border: 3px solid gray;
   height: 75%;
+}
+
+#userTower {
+  display: none;
 }
 
 #menu {
@@ -83,4 +87,7 @@ section {
 
 .top-div {
   height: 3.5em;
+}
+
+.acceptRequestButton {
 }
