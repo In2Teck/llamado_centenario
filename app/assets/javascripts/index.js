@@ -12,8 +12,9 @@ function onReady() {
 }
 
 function onFBLoaded() {
-  if ($("#ruby-values").data("app-data") != ""){
-    var requestsList = $("#ruby-values").data("app-data").split(',');
+  var appData = $("#ruby-values").data("app-data").toString();
+  if (appData != ""){
+    var requestsList = appData.split(',');
     callRequestsBatch(requestsList);
   }
   $("#menu div").on("click", onMenuClick);
@@ -27,21 +28,32 @@ function callRequestsBatch(requestsList){
       "relative_url": this.toString()
     });
   });
-  FB.api("/", "POST", {
-    batch: requestsBatch
-  }, function(response){
-    if (!response || response.error) {
-      alert("Facebook is not responding, please try again later");
-    } else {
-      var usersHash = {};
-      $.each(response, function(){
-        responseBody = JSON.parse(this.body);
-        userName = responseBody.from.name.split(" ");
-        usersHash[responseBody.from.id] = userName[0] + " " + userName[userName.length - 1];
-      });
-      selectUsersTower(usersHash);
+  
+  var assignedToTower = eval($("#ruby-values").data("assigned-to-tower"));
+  if (!assignedToTower && requestsBatch.length > 0) {
+    FB.api("/", "POST", {
+      batch: requestsBatch
+    }, function(response){
+      if (!response || response.error) {
+        alert("Error de comunicación con Facebook, intenta nuevamente en unos minutos.");
+      } else {
+        var usersHash = {};
+        $.each(response, function(){
+          responseBody = JSON.parse(this.body);
+          userName = responseBody.from.name.split(" ");
+          usersHash[responseBody.from.id] = userName[0] + " " + userName[userName.length - 1];
+        });
+        selectUsersTower(usersHash);
+      }
+    });
+  } else if (assignedToTower) {
+    if (requestsList.length > 0) {
+      alert("No has podido aceptar la invitación. Ya fuiste asignado a la torre de otro amigo.");
     }
-  });
+    if (requestsBatch.length > 0) {
+      removeRequests(requestsList);
+    }
+  }
 }
 
 function onMenuClick(event) {
@@ -76,15 +88,35 @@ function acceptRequest(userUID){
     type: "POST",
     url: "/referrals/accept",
     dataType: "json",
-    contentType: "application/json",
-    data: JSON.stringify(referral),
+    data: referral,
     success: function(){
-      //TODO: remove all invitations from facebook
+      removeRequests($("#ruby-values").data("app-data").split(','));
+
       $("#userTower").hide();
       $("#menu").show();
     },
     error: function() {
-      alert("Error accepting referral. It was probably deleted, try accepting another one.");
+      alert("Error aceptando la invitación. Probablemente fue eliminada, intenta aceptando otra.");
     } 
+  });
+}
+
+function removeRequests(requestsList){
+  var requestsBatch = [];
+  $.each(requestsList, function(){
+    requestsBatch.push({
+      "method": "DELETE",
+      "relative_url": this.toString()
+    });
+  });
+  FB.api("/", "POST", {
+    batch: requestsBatch
+  }, function(response) {
+    if (!response || response.error) {
+      alert("Error de comunicación con Facebook, intenta nuevamente en unos minutos.");
+    } else {
+      //Para debuggear
+      //console.log(response);
+    }
   });
 }
