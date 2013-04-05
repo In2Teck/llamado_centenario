@@ -6,7 +6,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		if @user.persisted?
 			#flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
 			sign_in @user
-      redirect_to "/?signed_request=" + signed_request
+			if signed_request
+      	redirect_to "/?signed_request=" + signed_request
+      else
+      	redirect_to "/mobile"
+      end
 		else
 			session["devise.facebook_data"] = auth_hash.except("extra")
 			redirect_to signup_url(@user)

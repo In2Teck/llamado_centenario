@@ -38,6 +38,10 @@ TorreCentenario::Application.routes.draw do
 
   match 'invite_friends' => 'display#invite_friends', :as => :invite_friends
 
+  match 'mobile/' => 'mobile#index', :as => :mobile
+
+  match 'mobile/search_clue' => 'mobile#search_clue', :as => :mobile_search_clue
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
