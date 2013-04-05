@@ -31,7 +31,9 @@ class DisplayController < ApplicationController
     
   end
 
-  
+  def terms_and_conditions
+    @authorized = params[:authorized]
+  end  
 
   def parse_signed_request
     @signed_request = decode_data(params[:signed_request])

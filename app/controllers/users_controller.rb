@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   # GET /users
   # GET /users.json
@@ -81,6 +81,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  def synch
+    @user = User.synch params[:user_id], params[:friend_count]
+    
+    respond_to do |format|
+      format.json { render json: @user }
     end
   end
 end
