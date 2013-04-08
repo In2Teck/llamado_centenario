@@ -26,7 +26,6 @@ function loadFB() {
         else {
           alert("falta devise");
           window.location.href = '/users/auth/facebook';
-          //window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
         }
       } else if (response.status === 'not_authorized') {
         //login();
@@ -56,7 +55,7 @@ function login() {
   FB.login(function(response) {
     if (response.authResponse) {
       alert('login result');
-      //window.location.href = '/users/auth/facebook/callback';
+      window.location.href = '/users/auth/facebook/';
     } else {
       // cancelled
     }
