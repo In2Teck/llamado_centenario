@@ -1,9 +1,12 @@
+<% content_for :head_script do %>
+  <%= javascript_include_tag "index_mobile"%>
+<% end %>
 <div id="fb-root"></div>
 <section>
-  <div id="login">
-   <p><button onClick="login();">Login</button></p>
+  <article id="login">
+    <button onClick="login();">Login</button>
   </div>
-  <div id="logout">
+  <!--div id="logout">
    <p><button  onClick="FB.logout();">Logout</button></p>
-  </div>
+  </div-->
 </section>

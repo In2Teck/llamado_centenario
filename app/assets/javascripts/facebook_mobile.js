@@ -21,18 +21,19 @@ function loadFB() {
       if (response.status === 'connected') {
         if ($('#ruby-session').data("session")) {
           $(document).trigger('fbLoaded');
-          alert("todo bien");
+          //alert("todo bien");
         }
         else {
-          alert("falta devise");
+          //alert("falta devise");
+          $(document).trigger('fbLogin');  
           window.location.href = '/users/auth/facebook';
         }
       } else if (response.status === 'not_authorized') {
-        //login();
-        alert("not_authorized");
+        //alert("not_authorized");
+        $(document).trigger('fbLogin');
       } else {
-        //login();
-        alert("else");
+        //alert("else");
+        $(document).trigger('fbLogin');
       }
      });
     };
@@ -54,7 +55,7 @@ function login() {
 
   FB.login(function(response) {
     if (response.authResponse) {
-      alert('login result');
+      //alert('login result');
       window.location.href = '/users/auth/facebook/';
     } else {
       // cancelled
