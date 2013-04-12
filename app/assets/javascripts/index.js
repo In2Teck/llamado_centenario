@@ -1,4 +1,5 @@
 var TAB_PAGE = 'http://www.facebook.com/In2Teck?v=app_132164533632870';
+var TERMS_PATH;
 
 // EVEN BEFORE the document is ready, so it doesn't load the page.
 if (getURLParameter('request_ids') != "null" ){
@@ -9,15 +10,54 @@ $(document).on("ready", onReady);
 
 function onReady() {
   $(document).on("fbLoaded", onFBLoaded);
+  TERMS_PATH = $("#ruby-values").data("terms-path").replace("/","");
 }
 
 function onFBLoaded() {
+
+  verifyAccount();
+
   var appData = $("#ruby-values").data("app-data").toString();
   if (appData != ""){
     var requestsList = appData.split(',');
     callRequestsBatch(requestsList);
   }
+  
   $("#menu div").on("click", onMenuClick);
+}
+
+function verifyAccount(){
+  FB.api({
+    method: 'fql.query',
+    query: 'SELECT friend_count FROM user WHERE uid = ' + $("#ruby-values").data("user-uid")
+  }, function(response) {
+    if (parseInt(response[0].friend_count) > 30) {
+      synchUser(parseInt(response[0].friend_count), $("#ruby-values").data("user-id"));
+    } else {
+      window.location.href = TERMS_PATH + "/?authorized=false";
+    }
+  });
+}
+
+function synchUser(friend_count, user_id){
+  
+  update_data = {
+    friend_count: friend_count
+  }
+
+  $.ajax({
+    type: "POST",
+    url: "/users/" + user_id + "/synch",
+    dataType: "json",
+    data: update_data,
+    success: function(){
+      //alert("synch succesful");
+    },
+    error: function() {
+      alert("Error sincronizando la información del usuario. Intenta entrar nuevamente a la aplicación.");
+    } 
+  });
+  
 }
 
 function callRequestsBatch(requestsList){

@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :uid, :first_name, :last_name, :roles
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :uid, :first_name, :last_name, :roles, :thumbnail_url, :friend_count
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :activities
@@ -22,7 +21,7 @@ class User < ActiveRecord::Base
 		user = User.where(:email => auth.info.email).first
 		unless user
 			# CHECK FOR NEW/CREATE
-			user = User.create(first_name:auth.info.first_name, last_name:auth.info.last_name, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
+			user = User.create(first_name:auth.info.first_name, last_name:auth.info.last_name, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20], thumbnail_url:"https://graph.facebook.com/#{auth.uid}/picture?type=normal")
 		end
 		user
 	end
@@ -57,5 +56,13 @@ class User < ActiveRecord::Base
     #TODO: Insert custom query that gets the number of accepted referrals on the fly
 		User.where("ticket_id is null").order("friend_count desc").limit(result_size)
 	end
+
+  def self.synch user_id, friend_count
+    user = User.find(user_id)
+    #TODO: fix a un solo update
+    user.update_attribute(:friend_count, friend_count.to_i)
+    user.update_attribute(:thumbnail_url, "https://graph.facebook.com/#{user.uid}/picture?type=normal")
+    user
+  end
 
 end

@@ -22,7 +22,9 @@ TorreCentenario::Application.routes.draw do
 	  get 'signup', :to => "devise/registrations#new"
   end
 
-  resources :users
+  resources :users do
+    match 'synch'
+  end
 
 	get 'admin/create_clue', :to => "admin#create_clue", :as => :admin_create_clue
 	
@@ -41,6 +43,8 @@ TorreCentenario::Application.routes.draw do
   match 'mobile/' => 'mobile#index', :as => :mobile
 
   match 'mobile/search_clue' => 'mobile#search_clue', :as => :mobile_search_clue
+
+  match 'terms_and_conditions' => 'display#terms_and_conditions', :as => :terms_and_conditions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
