@@ -3,13 +3,14 @@ $(document).on("ready", onReady);
 function onReady() {
   $(document).on("fbLoaded", onFBLoaded);
   $(document).on("fbLogin", onFBLogin);
+  $("#btn-facebook").on("click", login);
 }
 
 function onFBLoaded() {
-  $("#login").css({visibility: "hidden"});
-  alert("chido");
+  
+  //$.mobile.changePage($("#search"));
 }
 
 function onFBLogin() {
-  $("#login").css({visibility: "visible"});
+  $.mobile.changePage($("#login"));
 }
