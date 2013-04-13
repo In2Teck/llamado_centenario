@@ -1,9 +1,34 @@
+<% content_for :head_script do %>
+  <%= javascript_include_tag "index_mobile"%>
+<% end %>
 <div id="fb-root"></div>
-<section>
-  <div id="login">
-   <p><button onClick="login();">Login</button></p>
+
+<div data-role="page" id="login">
+  <div class="header-logo"></div>
+  <div data-role="content">
+    <div> DESCUBRE QUE HAY <br/> MÁS ALLÁ DEL CIELO </div><br/>
+    <div class="separator"></div>
+    <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
+    <div class="separator"></div> <br/><br/>
+    <div><%= image_tag "mobile/conectar_facebook.png", :id => "btn-facebook" %></div>
+    <div class="concert-logo">
+      <div class="social">
+        <div> CONOCE MÁS <br/>
+        <div><%= image_tag "mobile/facebook.png" %></div>
+        <div> /CentenarioT <br/> #mascercadelcielo </div>
+      </div>
+    </div>
+    <!--button onClick="login();">Login</button-->
   </div>
-  <div id="logout">
+</div>
+
+<div data-role="page" id="search">
+  <div class="header-logo"></div>
+  <div data-role="content">
+    Da click en el botón para buscar boletos
+    <button onClick="searchTicket();">Buscar</button>
+  </div>
+</div>
+  <!--div id="logout">
    <p><button  onClick="FB.logout();">Logout</button></p>
-  </div>
-</section>
+  </div-->

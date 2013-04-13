@@ -1,0 +1,75 @@
+
+@font-face {
+  font-family: centenario;
+  src: url('Champagne & Limousines.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-weight: bold;
+  src: url('Champagne & Limousines Bold.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-style: italic;
+  font-weight: bold;
+  src: url('Champagne & Limousines Bold Italic.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-style: italic;
+  src: url('Champagne & Limousines Italic.ttf');
+}
+
+.concert-logo {
+  background-image: url('mobile/fun.png');
+  bottom: 10px;
+  height: 427px;
+  position: absolute;
+  width: 556px;
+}
+
+.header-logo {
+  background-image: url('mobile/patrocinado.png');
+  height: 101px;
+  margin-left: -30px;
+  width: 640px;
+  /*border-color: red;
+  border-style: solid;*/
+}
+
+.separator {
+  background-image: url('mobile/linea_amarilla_concierto.png');
+  height: 15px; 
+  width: 400px;
+}
+
+.social {
+  font-size: 21px;
+  position: absolute;
+  bottom: 5px;
+}
+
+.social div {
+  display: inline-block;
+  margin: 10px 5px;
+  vertical-align: top;
+}
+
+.ui-page {
+  background-image: url('mobile/fondo.png');
+  background-size: 100%;
+  color: white;
+  font-family: centenario;
+  font-size: 3em;
+  height: 1136px;
+  max-width: 640px;
+  padding-left: 30px;
+  width: 640px;
+}
+
+#btn-facebook {
+  padding-left: 110px;
+}
