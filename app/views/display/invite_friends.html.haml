@@ -1,26 +1,40 @@
+- content_for :head_style do
+  = stylesheet_link_tag "invite_friends"
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
-#ruby-values{"data-user-id" => current_user.id}
+#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s}
+%header
+  %hgroup
+    = image_tag "web/linea_amarilla_botones.png"
+    %h2#header-top INVITA A TUS AMIGOS
+    %h2#header-bottom GANA TU PASE
+    = image_tag "web/linea_amarilla_botones.png"
 %section
-  %article#torre
-    #nivel-3
-      %figure
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-    #nivel-2
-      %figure
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-    #nivel-1
-      %figure
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-        = image_tag "http://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/273713_573896314_787017317_q.jpg"
-  %article#invitar
-    %hgroup
-      %h2 Dile a tus amigos que te lleven 
-      %h2 Más cerca del cielo
-    = link_to "Invitar a mis amigos", "#", :id => "invite_friends"
+  %nav
+    = link_to "", :root, :id => "home_button"
+  - if @no_referrals
+    %article#invita
+      %p#message-top TUS AMIGOS TE LLEVAN
+      %p#message-top MÁS CERCA DEL CIELO
+      %br
+      %br
+      %br
+      %br
+      #invitar
+        = link_to "", "#", :id => "invite-friends"
+  - else
+    %article#torre
+      = image_tag "web/linea_amarilla_botones.png"
+      %p#referral-count
+        = current_user.referrals.count
+      = image_tag "web/linea_amarilla_botones.png"
+      %p#message-top AMIGOS TE PUEDEN LLEVAR MÁS CERCA DEL CIELO
+      %p#message-bottom TUS AMIGOS QUE TE ESTÁN AYUDANDO A LLEGAR CADA VEZ MÁS CERCA.
+      #amigos
+        - @referrals.each do |referral|
+          %figure.thumbnail
+            = image_tag referral.referred.thumbnail_url
+      #invitar
+        = link_to "", "#", :id => "invite-friends"
+  %p#footer Invita a tus amigos a que te lleven "MÁS CERCA DEL CIELO" los 50 que al final tengan la mayor cantidad de amigos se llevan su pase. Los seguidores solo pueden participar una sola vez.

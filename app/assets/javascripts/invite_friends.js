@@ -6,7 +6,7 @@ function onReady() {
 
 function onFBLoaded() {
   // READY AFTER INTEGRATING THE FB INITS
-  $("#invite_friends").on("click", sendRequestViaMultiFriendSelector);
+  $("#invite-friends").on("click", sendRequestViaMultiFriendSelector);
 }
 
 function sendRequestViaMultiFriendSelector() {

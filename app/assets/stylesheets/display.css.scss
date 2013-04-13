@@ -1,8 +1,33 @@
+@font-face {
+  font-family: centenario;
+  src: url('Champagne & Limousines.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-weight: bold;
+  src: url('Champagne & Limousines Bold.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-style: italic;
+  font-weight: bold;
+  src: url('Champagne & Limousines Bold Italic.ttf');
+}
+
+@font-face {
+  font-family: centenario;
+  font-style: italic;
+  src: url('Champagne & Limousines Italic.ttf');
+}
+
 html {
-  background: black;
+  background: url("web/background.jpg");
   color: white;
  	height: 100%;
   width: 804px;
+  font-family: centenario;
 }
       
 body {
@@ -11,6 +36,33 @@ body {
 	padding: 0;
   text-align: center;
   width: 100%;
+}
+
+h2 {
+  margin: 0;
+}
+
+nav {
+  text-align: right;
+  height: 30%;
+}
+
+nav a {
+  background: url("web/boton_esquina.png");
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+header {
+  margin: 1em 1em;
 }
     
 section {
@@ -76,6 +128,10 @@ section {
   display: inline-block;
   vertical-align: top;
   /*border-style: solid;*/
+}
+
+#header-top {
+  font-weight: normal;
 }
 
 .player {

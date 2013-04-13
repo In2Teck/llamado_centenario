@@ -28,7 +28,10 @@ class DisplayController < ApplicationController
   end
 
   def invite_friends
-    
+    @no_referrals = current_user.referrals.blank?
+    if not @no_referrals
+      @referrals = current_user.referrals.includes(:user)
+    end
   end
 
   def terms_and_conditions

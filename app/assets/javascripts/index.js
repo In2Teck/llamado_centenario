@@ -130,7 +130,7 @@ function acceptRequest(userUID){
     dataType: "json",
     data: referral,
     success: function(){
-      removeRequests($("#ruby-values").data("app-data").split(','));
+      removeRequests($("#ruby-values").data("app-data").toString().split(','));
 
       $("#userTower").hide();
       $("#menu").show();

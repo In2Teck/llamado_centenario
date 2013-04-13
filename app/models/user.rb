@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 		user = User.where(:email => auth.info.email).first
 		unless user
 			# CHECK FOR NEW/CREATE
-			user = User.create(first_name:auth.info.first_name, last_name:auth.info.last_name, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20], thumbnail_url:"https://graph.facebook.com/#{auth.uid}/picture?type=normal")
+			user = User.create(first_name:auth.info.first_name, last_name:auth.info.last_name, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20], thumbnail_url:"https://graph.facebook.com/#{auth.uid}/picture?type=square")
 		end
 		user
 	end
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
     user = User.find(user_id)
     #TODO: fix a un solo update
     user.update_attribute(:friend_count, friend_count.to_i)
-    user.update_attribute(:thumbnail_url, "https://graph.facebook.com/#{user.uid}/picture?type=normal")
+    user.update_attribute(:thumbnail_url, "https://graph.facebook.com/#{user.uid}/picture?type=square")
     user
   end
 
