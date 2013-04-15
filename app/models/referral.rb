@@ -24,4 +24,11 @@ class Referral < ActiveRecord::Base
       raise "No referral found for user_uid:#{user_uid} and referred_id:#{referred_id}"
     end
 	end
+
+	def self.find_top_referrers result_size
+    #TODO: Insert custom query that gets the number of accepted referrals on the fly
+		#User.where("ticket_id is null").order("friend_count desc").limit(result_size)
+    Referral.joins(:user).select("user_id, count(user_id) as referral_count").where("accepted = ? AND users.ticket_id is null", true).group("user_id").order("referral_count DESC").limit(20)
+	end
+
 end

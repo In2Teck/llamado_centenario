@@ -23,7 +23,7 @@ class AdminController < ApplicationController
   end
 
 	def users_referrals
-		@users = User.find_top_referrers(20)
+		@referrals = Referral.find_top_referrers(20)
 	end
 
 end

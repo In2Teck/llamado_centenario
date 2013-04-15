@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :clue_id, :folio, :source_type
+  attr_accessible :clue_id, :folio, :source_type, :assigned
 	has_one :user
 	belongs_to :clue
 
@@ -32,7 +32,7 @@ class Ticket < ActiveRecord::Base
 	end
 
 	def self.create_and_assign_to_user user
-		user.update_attribute(:ticket, Ticket.create(:folio => SecureRandom.uuid.slice(0,7), :source_type => SOURCE_REFERRALS))
+		user.update_attribute(:ticket, Ticket.create(:folio => SecureRandom.uuid.slice(0,7), :source_type => SOURCE_REFERRALS, :assigned => true))
 	end
 
 end

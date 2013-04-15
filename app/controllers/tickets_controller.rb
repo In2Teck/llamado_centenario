@@ -81,12 +81,12 @@ class TicketsController < ApplicationController
     end
   end
 
-	def assign_ticket
-		@user = User.find(params[:id])
+	def assign_to_user
+		@user = User.find(params[:user_id])
 	  Ticket.create_and_assign_to_user @user if @user
 		
 		respond_to do |format|
-			format.json { render json: @user}
+      format.html { redirect_to :admin_users_referrals } 
 		end	
 	end	
 

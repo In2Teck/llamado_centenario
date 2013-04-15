@@ -52,11 +52,6 @@ class User < ActiveRecord::Base
 		self.update_attribute(:friend_count, friend_count)
 	end
 
-	def self.find_top_referrers result_size
-    #TODO: Insert custom query that gets the number of accepted referrals on the fly
-		User.where("ticket_id is null").order("friend_count desc").limit(result_size)
-	end
-
   def self.synch user_id, friend_count
     user = User.find(user_id)
     #TODO: fix a un solo update

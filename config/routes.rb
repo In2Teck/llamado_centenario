@@ -10,7 +10,9 @@ TorreCentenario::Application.routes.draw do
 		match 'assign_tickets', :on => :collection
 	end
 
-  resources :tickets
+  resources :tickets do
+    match 'assign_to_user', :on => :collection
+  end
 
   resources :roles
 
@@ -31,8 +33,6 @@ TorreCentenario::Application.routes.draw do
   get 'admin/edit_clue/:id', :to => "admin#edit_clue", :as => :admin_edit_clue
 
 	get 'admin/users_referrals', :to => "admin#users_referrals", :as => :admin_users_referrals
-
-	match 'users/:id/assign_ticket' => 'users#assign_ticket', :as => :users_assign_ticket
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 

@@ -30,7 +30,7 @@ class DisplayController < ApplicationController
   def invite_friends
     @no_referrals = current_user.referrals.blank?
     if not @no_referrals
-      @referrals = current_user.referrals.includes(:user)
+      @referrals = current_user.referrals.includes(:referred)
     end
   end
 
