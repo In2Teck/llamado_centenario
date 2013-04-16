@@ -1,0 +1,102 @@
+html {
+  height: 65%;
+}
+
+section {
+  margin: auto;
+  width: 80%;
+  position: relative;
+}
+
+#invite {
+  background: url("web/header_invita.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+}
+
+#fun {
+  background: url("web/header_fun.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+}
+
+#martin {
+  background: url("web/header_martin.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+}
+
+p {
+  font-weight: bold;
+  margin: 0;
+}
+
+#referral-count {
+  font-size: 1.8em;
+}
+
+#message-top {
+  font-size: 1.6em;
+}
+
+#message-bottom {
+  font-size: 1em;
+}
+
+#footer {
+  bottom: 18px;
+  font-size: 0.8em;
+  position: absolute;
+}
+
+#invite-friends {
+  background: url("web/invitar_boton.png");
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  width: 310px;
+  height: 52px;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+#invite-friends:hover{
+  opacity: 0.7;
+}
+
+#amigos {
+  display: inline-block;
+  height: 155px;
+  margin: 1em 0.5em;
+  overflow-y: auto;
+  vertical-align: middle;
+  width: 40%;
+}
+
+#invitar {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.thumbnail {
+  margin: 0.1em 0.1em;
+  display: inline-block;
+}
+
+nav {
+  text-align: right;
+  height: 30%;
+}
+
+nav a {
+  background: url("web/boton_esquina.png");
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+#content-text {
+  text-align: left;
+  font-size: .8em;
+  margin: 0.5em 1em;
+}

@@ -1,3 +1,6 @@
+<% content_for :head_style do %>
+  <%= stylesheet_link_tag "index" %>
+<% end %>
 <% content_for :head_script do %>
   <%= javascript_include_tag "index"%>
 <% end %>
@@ -8,11 +11,62 @@
     <p>(sólo puedes pertenecer a la primera que elijas)<p>
   </article>
   <article id="menu">
-    <h2>Descubre que te espera más cerca del cielo</h2>
-    <div data-path="search_clue">GANA TU PASE</div>
-    <div data-path="invite_friends">INVITA A TUS AMIGOS Y GANA TU PASE</div>
-    <div data-path="show_fun">FUN</div>
+    <article id="section1">
+      <div data-path="search_clue">
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p>EL CONCIERTO</p>
+          <p id="text_bold">GANA TU PASE</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+      <div data-path="invite_friends">  
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p>INVITA A TUS AMIGOS</p>
+          <p id="text_bold">GANA TU PASE</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+    </article>
+    <article id="section2">
+      <div data-path="fun_facts">
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p id="text_bold">FUN</p>
+          <p>FACTS</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+      <div data-path="martin_facts">  
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p id="text_bold">MARTIN SOLVEIG</p>
+          <p>FACTS</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+    </article>
+    <article id="section3">
+      <div>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p id="text_bold">CONOCE EL LLAMADO</p>
+          <p>YOUTUBE</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+      <div>  
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p>CONOCE EL CONCIERTO</p>
+          <p id="text_bold">MÁS CERCA DEL CIELO</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+      </div>
+    </article>
+    <article id="terms">
+      <div data-path="terms_and_conditions">
+        <%= image_tag "web/linea_amarilla_botones.png" %>
+          <p>TÉRMINOS Y</p>
+          <p id="text_bold">CONDICIONES</p>
+        <%= image_tag "web/linea_amarilla_botones.png" %>        
+      </div>
+    </article>
   </article>
   <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.try("id") %>" data-user-uid="<%= current_user.try("uid") %>" data-assigned-to-tower="<%= current_user.try("referred_user") ? true : false %>" data-terms-path="<%= terms_and_conditions_path %>"></div>
+  <br/> <br/>
+  <article id="footer">
+    <p id="footer_top">DESCUBRE QUE HAY MÁS ALLÁ DEL CIELO</p>
+    <p id="footer_bottom">PASA TU MOUSE SORE EL CIELO Y DESCUBRE QUÉ HAY MÁS ALLÁ</p>
+  </article>
 </section>
 

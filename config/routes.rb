@@ -39,6 +39,10 @@ TorreCentenario::Application.routes.draw do
   match 'make_guess' => 'display#make_guess', :as => :make_guess
 
   match 'invite_friends' => 'display#invite_friends', :as => :invite_friends
+  
+  match 'fun_facts' => 'display#fun_facts', :as => :fun_facts
+
+  match 'martin_facts' => 'display#martin_facts', :as => :martin_facts
 
   match 'mobile/' => 'mobile#index', :as => :mobile
 

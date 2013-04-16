@@ -33,6 +33,14 @@ class DisplayController < ApplicationController
       @referrals = current_user.referrals.includes(:referred)
     end
   end
+  
+  def fun_facts
+
+  end
+
+  def martin_facts
+
+  end
 
   def terms_and_conditions
     @authorized = params[:authorized]

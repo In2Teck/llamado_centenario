@@ -42,25 +42,6 @@ h2 {
   margin: 0;
 }
 
-nav {
-  text-align: right;
-  height: 30%;
-}
-
-nav a {
-  background: url("web/boton_esquina.png");
-  display: inline-block;
-  padding: 0.5em 0.5em;
-  width: 20px;
-  height: 20px;
-  text-decoration: none;
-  transition: all 1s ease;
-}
-
-nav a:hover {
-  opacity: 0.7;
-}
-
 header {
   margin: 1em 1em;
 }
@@ -92,25 +73,6 @@ section {
 
 #userTower {
   display: none;
-}
-
-#menu {
-  height: 100%;
-  width: 100%;
-}
-
-#menu div
-{
-  background: gray;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  height: 20%;
-  margin: 0.5em 1%;
-  opacity: 0.7;
-  padding: 5em 0 0 0;
-  vertical-align: top;
-  width: 25%; 
 }
 
 #num-tickets {

@@ -1,0 +1,56 @@
+html {
+  height: 65%;
+}
+
+#menu {
+  height: 100%;
+  width: 100%;
+}
+
+#menu div
+{
+  cursor: pointer;
+  display: inline-block;
+  margin: 1em 0;
+  vertical-align: top;
+  transition: all 1s ease;
+  width: 48%; 
+}
+
+#menu div:hover {
+  opacity: 0.7;
+}
+
+#menu p {
+  margin: 0;
+  font-size: 2em;
+}
+
+#text_bold {
+  font-weight: bold;
+}
+
+#footer {
+  bottom: 0;
+  margin: 0 0 5px 40px;
+  position: absolute;
+}
+
+#footer p {
+  margin: 0;
+}
+
+#footer_top {
+  font-size: 2.7em;
+  color: #b09648;
+}
+
+#footer_bottom {
+  font-size: 1.7em;
+}
+
+#terms{}
+
+#terms p {
+  font-size: 1em;
+}
