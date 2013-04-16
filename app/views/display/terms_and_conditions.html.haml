@@ -1,6 +1,20 @@
-- if @authorized == 'false'
-  %p Parece que tu cuenta no está autorizada para participar. Por favor lee los términos y condiciones a continuación.
+- content_for :head_style do
+  = stylesheet_link_tag "content"
+#fb-root
 %header
-  %h1 Términos y Condiciones
-%section
-  %p Para poder participar requieres mínimo 30 amigos en tu cuenta para comprobar que no estás intentando duplicar perfiles.
+  %hgroup
+    = image_tag "web/linea_amarilla_botones.png"
+    %h2#header-top CONOCE EL CONCIERTO
+    %h2#header-bottom MÁS CERCA DEL CIELO
+    = image_tag "web/linea_amarilla_botones.png"
+%section#terms
+  %nav
+    = link_to "", :root, :id => "home_button"
+  %article#content-text
+  - if @authorized == 'false'
+    %p#unauthorized Tu cuenta no está autorizada para participar. Por favor lee los términos y condiciones especificados a continuación.
+  %h1 BASES Y CONDICIONES
+  %p Participa en las mecánicas para ganar tu boleto al concierto más cerca del cielo.
+  %br
+  %p#bases Se requiere contar con una cuenta de usuario con antigüedad y actividad, tomando en cuenta amigos y publicaciones regulares.
+  %p#bases Para participar permanece atento a las publicaciones del muro cuando publiquemos la pista Centenario búscala en nuestra aplicación, dando click en el punto exacto donde crees que está localizada en el mapa.

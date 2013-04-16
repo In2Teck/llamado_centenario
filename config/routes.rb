@@ -50,6 +50,8 @@ TorreCentenario::Application.routes.draw do
 
   match 'terms_and_conditions' => 'display#terms_and_conditions', :as => :terms_and_conditions
 
+  match 'youtube_channel' => 'display#youtube_channel', :as => :youtube_channel
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -20,6 +20,14 @@ section {
   background: url("web/header_martin.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
 }
 
+#terms {
+  background: url("web/header_conoce.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+}
+
+#youtube {
+  background: url("web/header_youtube.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+}
+
 p {
   font-weight: bold;
   margin: 0;
@@ -97,6 +105,22 @@ nav a:hover {
 
 #content-text {
   text-align: left;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 0.5em 1em;
+}
+
+#unauthorized {
+  font-size: 0.9em;
+  color: red;
+  margin: 0.5em 1em;
+}
+
+#bases {
+  font-size: 0.9em;
+  margin: 0.5em 2em;
+  text-align: left;
+}
+
+#video-channel {
+
 }

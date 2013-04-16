@@ -42,6 +42,10 @@ class DisplayController < ApplicationController
 
   end
 
+  def youtube_channel
+
+  end
+
   def terms_and_conditions
     @authorized = params[:authorized]
   end  
