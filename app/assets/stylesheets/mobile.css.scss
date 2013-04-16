@@ -23,12 +23,31 @@
   src: url('Champagne & Limousines Italic.ttf');
 }
 
+.background {
+  background-image: url('mobile/fondo_informacion.png');
+  font-size: 24px;
+  height: 827px;
+  position: relative;
+  text-align: center;
+  width: 567px;
+}
+
+.btn-close {
+  position: absolute;
+  right: 0px;
+}
+
 .concert-logo {
   background-image: url('mobile/fun.png');
   bottom: 10px;
   height: 427px;
   position: absolute;
   width: 556px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0px;
 }
 
 .header-logo {
@@ -46,6 +65,10 @@
   width: 400px;
 }
 
+.separator.center {
+  margin: 0 auto;
+} 
+
 .social {
   font-size: 21px;
   position: absolute;
@@ -58,6 +81,21 @@
   vertical-align: top;
 }
 
+.subheader {
+  font-size: 26px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.title {
+  padding-top: 10px;
+}
+
+.ui-content {
+  /*width: 100%;*/
+}
+
 .ui-page {
   background-image: url('mobile/fondo.png');
   background-size: 100%;
@@ -68,6 +106,10 @@
   max-width: 640px;
   padding-left: 30px;
   width: 640px;
+}
+
+.yellow {
+  color: #b09648;
 }
 
 #btn-facebook {

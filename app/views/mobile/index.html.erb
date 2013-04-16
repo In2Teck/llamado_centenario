@@ -6,7 +6,7 @@
 <div data-role="page" id="login">
   <div class="header-logo"></div>
   <div data-role="content">
-    <div> DESCUBRE QUE HAY <br/> MÁS ALLÁ DEL CIELO </div><br/>
+    <div class="yellow"> DESCUBRE QUE HAY <br/> MÁS ALLÁ DEL CIELO </div><br/>
     <div class="separator"></div>
     <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
     <div class="separator"></div> <br/><br/>
@@ -14,19 +14,44 @@
     <div class="concert-logo">
       <div class="social">
         <div> CONOCE MÁS <br/>
-        <div><%= image_tag "mobile/facebook.png" %></div>
-        <div> /CentenarioT <br/> #mascercadelcielo </div>
+          <div><%= image_tag "mobile/facebook.png" %></div>
+          <div class="yellow"> /CentenarioT <br/> #mascercadelcielo </div>
+        </div>
       </div>
     </div>
-    <!--button onClick="login();">Login</button-->
   </div>
 </div>
 
 <div data-role="page" id="search">
   <div class="header-logo"></div>
   <div data-role="content">
-    Da click en el botón para buscar boletos
-    <button onClick="searchTicket();">Buscar</button>
+    <div class="subheader">
+      <div class="separator center"></div>
+      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
+      <div class="separator center"></div>
+    </div><br/> 
+    <div class="background">
+      <%= image_tag "mobile/boton_cerrar.png", :class => "btn-close"%>
+      <div id="txt-search" class="title yellow">PRESIONA EL BOTÓN PARA BUSCAR TU BOLETO</div><br/><br/>
+      <%= image_tag "mobile/busca_boton.png", :id => "btn-search"%>
+    </div>
+  </div>
+</div>
+
+<div data-role="page" id="result">
+  <div class="header-logo"></div>
+  <div data-role="content">
+    <div class="subheader">
+      <div class="separator center"></div>
+      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
+      <div class="separator center"></div>
+    </div><br/> 
+    <div class="background">
+      <%= image_tag "mobile/boton_cerrar.png", :class => "btn-close"%>
+      <div id="txt-result" class="title yellow"> </div><br/><br/>
+      <div id="txt-info"> </div><br/>
+      <%= image_tag :id => "img-result"%>
+    </div>
   </div>
 </div>
   <!--div id="logout">

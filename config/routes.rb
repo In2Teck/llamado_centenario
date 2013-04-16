@@ -42,7 +42,7 @@ TorreCentenario::Application.routes.draw do
 
   match 'mobile/' => 'mobile#index', :as => :mobile
 
-  match 'mobile/search_clue' => 'mobile#search_clue', :as => :mobile_search_clue
+  match 'mobile/search_ticket' => 'mobile#search_ticket', :as => :mobile_search_ticket
 
   match 'terms_and_conditions' => 'display#terms_and_conditions', :as => :terms_and_conditions
 
