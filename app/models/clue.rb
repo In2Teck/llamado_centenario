@@ -13,8 +13,8 @@ class Clue < ActiveRecord::Base
       total_tickets.each do |ticket|
         remain_tickets -= 1 if ticket.assigned == true
       end
-			hidden_clues << {:description => clue.description, :image_url => clue.image_url, :source_type => clue.source_type, 
-        :total_tickets => total_tickets.length, :remain_tickets => remain_tickets}
+			hidden_clues << {:id => clue.id, :description => clue.description, :image_url => clue.image_url, :source_type => clue.source_type, 
+        :total_tickets => total_tickets.length, :remain_tickets => total_tickets.length - remain_tickets}
 		end
 		return hidden_clues
 	end

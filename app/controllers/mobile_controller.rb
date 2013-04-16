@@ -9,8 +9,7 @@ class MobileController < ApplicationController
     lng = params[:lng]
     result = {}
     
-    guess = Ticket.locate_and_assign(lat, lng, :mobile, current_user)
-    result = {:result => guess}
+    result = Ticket.locate_and_assign(lat, lng, :mobile, current_user)
     
     render :json => result
   end

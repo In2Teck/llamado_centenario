@@ -25,7 +25,7 @@
 
 .background {
   background-image: url('mobile/fondo_informacion.png');
-  font-size: 24px;
+  font-size: 26px;
   height: 827px;
   position: relative;
   text-align: center;
@@ -87,7 +87,6 @@
   text-align: center;
 }
 
-
 .title {
   padding-top: 10px;
 }
@@ -114,4 +113,13 @@
 
 #btn-facebook {
   padding-left: 110px;
+}
+
+#txt-mail {
+  padding-top: 80px;
+  font-size: 21px;
+}
+
+#txt-info {
+  padding-top: 80px;
 }

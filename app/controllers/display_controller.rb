@@ -11,18 +11,18 @@ class DisplayController < ApplicationController
     @active_clue
     clues = Clue.active_to_user(:web)
     @active_clue = clues[0]
-    @can_guess = current_user.clues.length == 0 ? true : false
+    @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
   end
 
   def make_guess
     lat = params[:lat]
     lng = params[:lng]
+    clue_id = params[:clue_id]
     result = {}
-    if (current_user.clues.length == 0)
-      guess = Ticket.locate_and_assign(lat, lng, :web, current_user)
-      result = {:result => guess}
+    if (current_user.clues.where('clue_id = ?', clue_id).length == 0)
+      result = Ticket.locate_and_assign(lat, lng, :web, current_user)
     else
-      result = {:error => true}
+      result = {:won_ticket => false, :error => true, :code => 2}
     end
     render :json => result
   end

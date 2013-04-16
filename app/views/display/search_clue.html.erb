@@ -38,6 +38,7 @@
 
 <%= content_tag "div", id: "ruby-values", data: {
   clue: @active_clue ? true : false, 
+  clue_id: (@active_clue[:id] if @active_clue), 
   clue_image: (@active_clue[:image_url] if @active_clue), 
   total_tickets: (@active_clue[:total_tickets] if @active_clue), 
   remain_tickets: (@active_clue[:remain_tickets] if @active_clue), 

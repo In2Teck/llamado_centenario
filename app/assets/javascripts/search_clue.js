@@ -51,22 +51,35 @@ function placeMarker() {
   if (mapZoom == map.getZoom()) {
     google.maps.event.clearListeners(map, 'click');
 
-    $.ajax({url:"/make_guess", type:"POST", data:{lat: guess.lat(), lng: guess.lng()}, dataType: "json", success: onPlaceMarker});
+    var marker = new google.maps.Marker({
+      position: guess,
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+    $.ajax({url:"/make_guess", type:"POST", 
+      data:{lat: guess.lat(), lng: guess.lng(), clue_id: $("#ruby-values").data("clue-id")}, 
+      dataType: "json", success: onPlaceMarker});
   }
 }
 var result;
 function onPlaceMarker(data, textStatus, jqXHR) {
   result = data;
-  if (data.result != null) {
-     var marker = new google.maps.Marker({
+  if (data.won_ticket) {
+    alert("ganaste");
+     /*var marker = new google.maps.Marker({
       position: guess,
       animation: google.maps.Animation.DROP,
       map: map
-    });
-    alert(data.result);
+    });*/
   }
-  else if (data.error) {
-    alert("Solamente puedes participar 1 vez por pista. Espera la siguiente");
+  else if (!data.error) {
+    alert("No has encontrado la pista")
+  }
+  else if (data.code == 1) {
+    alert("Ya no hay boletos para esta pista. Espera la siguiente");
+  }
+  else {
+    alert("Solamente puedes participar 1 vez por pista. Espera la siguiente"); 
   }
 }
 
