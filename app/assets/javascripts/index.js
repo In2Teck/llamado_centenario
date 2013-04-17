@@ -2,7 +2,7 @@ var TAB_PAGE = 'http://www.facebook.com/In2Teck?v=app_132164533632870';
 var TERMS_PATH;
 
 // EVEN BEFORE the document is ready, so it doesn't load the page.
-if (getURLParameter('request_ids') != "null" ){
+if (getURLParameter('request_ids') != "null" ) {
   window.top.location.href = TAB_PAGE + "&app_data="+getURLParameter('request_ids');
 }
 
@@ -11,10 +11,13 @@ $(document).on("ready", onReady);
 function onReady() {
   $(document).on("fbLoaded", onFBLoaded);
   TERMS_PATH = $("#ruby-values").data("terms-path").replace("/","");
+  if ($("#ruby-values").data("is-fan")) {
+    $("#section-no-fan").css({display: "none"});
+    $("#section-fan").css({display: "block"});
+  }
 }
 
 function onFBLoaded() {
-
   verifyAccount();
 
   var appData = $("#ruby-values").data("app-data").toString();

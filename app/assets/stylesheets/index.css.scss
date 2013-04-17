@@ -2,32 +2,54 @@ html {
   height: 65%;
 }
 
-#menu {
-  height: 100%;
-  width: 100%;
+.concert-logo {
+  background-image: url('web/fun.png');
+  height: 360px;
+  width: 470px;
+  position: absolute;
+  top: 0;
 }
 
-#menu div
-{
-  cursor: pointer;
+.footer-no-fan-1 {
   display: inline-block;
-  margin: 1em 0;
+  height: 365px;
+  position: relative;
   vertical-align: top;
-  transition: all 1s ease;
-  width: 48%; 
+  width: 30%;
 }
 
-#menu div:hover {
-  opacity: 0.7;
+.footer-no-fan-2 {
+  display: inline-block;
+  height: 365px;
+  position: relative; 
+  vertical-align: top;
+  width: 475px; 
 }
 
-#menu p {
-  margin: 0;
-  font-size: 2em;
+.separator {
+  background-image: url('web/linea_amarilla_concierto.png');
+  height: 15px; 
+  width: 400px;
 }
 
-#text_bold {
+.social {
+  font-size: 21px;
+  position: absolute;
+  top: 270px;
+}
+
+.social div {
+  display: inline-block;
+  margin: 10px 5px;
+  vertical-align: top;
+}
+
+.text_bold {
   font-weight: bold;
+}
+
+.yellow {
+  color: #b09648;
 }
 
 #footer {
@@ -40,13 +62,49 @@ html {
   margin: 0;
 }
 
-#footer_top {
-  font-size: 2.7em;
-  color: #b09648;
-}
-
 #footer_bottom {
   font-size: 1.7em;
+}
+
+#footer_top {
+  color: #b09648;
+  font-size: 2.7em;
+}
+
+#menu {
+  height: 100%;
+  width: 100%;
+}
+
+#menu div
+{
+  cursor: pointer;
+  display: inline-block;
+  margin: 1em 0;
+  transition: all 1s ease;
+  vertical-align: top;
+  width: 48%; 
+}
+
+#menu div:hover {
+  opacity: 0.7;
+}
+
+#menu p {
+  font-size: 2em;
+  margin: 0;
+}
+
+#section-fan {
+  display: none;
+}
+
+#section-no-fan {
+  font-size: 2.5em;
+  height: auto;
+  padding-left: 40px;
+  text-align: left;
+  width: auto;
 }
 
 #terms{}

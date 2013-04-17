@@ -5,7 +5,7 @@
   <%= javascript_include_tag "index"%>
 <% end %>
 <div id="fb-root"></div>
-<section>
+<section id="section-fan">
   <article id="userTower">
     <h2>Selecciona a cuál torre pertenecer</h2>
     <p>(sólo puedes pertenecer a la primera que elijas)<p>
@@ -15,26 +15,26 @@
       <div data-path="search_clue">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>EL CONCIERTO</p>
-          <p id="text_bold">GANA TU PASE</p>
+          <p class="text_bold">GANA TU PASE</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
       <div data-path="invite_friends">  
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>INVITA A TUS AMIGOS</p>
-          <p id="text_bold">GANA TU PASE</p>
+          <p class="text_bold">GANA TU PASE</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
     </article>
     <article id="section2">
       <div data-path="fun_facts">
         <%= image_tag "web/linea_amarilla_botones.png" %>
-          <p id="text_bold">FUN</p>
+          <p class="text_bold">FUN</p>
           <p>FACTS</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
       <div data-path="martin_facts">  
         <%= image_tag "web/linea_amarilla_botones.png" %>
-          <p id="text_bold">MARTIN SOLVEIG</p>
+          <p class="text_bold">MARTIN SOLVEIG</p>
           <p>FACTS</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
@@ -42,23 +42,45 @@
     <article id="section3">
       <div data-path="youtube_channel">
         <%= image_tag "web/linea_amarilla_botones.png" %>
-          <p id="text_bold">CONOCE EL LLAMADO</p>
+          <p class="text_bold">CONOCE EL LLAMADO</p>
           <p>YOUTUBE</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
       <div data-path="terms_and_conditions">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>CONOCE EL CONCIERTO</p>
-          <p id="text_bold">MÁS CERCA DEL CIELO</p>
+          <p class="text_bold">MÁS CERCA DEL CIELO</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
     </article>
   </article>
-  <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.try("id") %>" data-user-uid="<%= current_user.try("uid") %>" data-assigned-to-tower="<%= current_user.try("referred_user") ? true : false %>" data-terms-path="<%= terms_and_conditions_path %>"></div>
+  <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.try("id") %>" data-user-uid="<%= current_user.try("uid") %>" data-assigned-to-tower="<%= current_user.try("referred_user") ? true : false %>" data-terms-path="<%= terms_and_conditions_path %>" data-is-fan="<%= @is_fan%>"></div>
   <br/> <br/>
   <article id="footer">
     <p id="footer_top">DESCUBRE QUE HAY MÁS ALLÁ DEL CIELO</p>
     <p id="footer_bottom">PASA TU MOUSE SORE EL CIELO Y DESCUBRE QUÉ HAY MÁS ALLÁ</p>
   </article>
+</section>
+
+<section id="section-no-fan">
+  <div class="yellow"> DESCUBRE QUE HAY MÁS ALLÁ DEL CIELO </div>
+  <div> DA CLICK EN "ME GUSTA" </div><br/>
+  <div class="separator"></div>
+  <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
+  <div class="separator"></div> <br/>
+  
+  <div class="footer-no-fan-1">
+     <div class="social">
+        CONOCE MÁS <br/>
+        <div><%= image_tag "mobile/facebook.png" %></div>
+        <div> /CentenarioT <br/> #mascercadelcielo </div>
+    </div>
+  </div>
+  <div class="footer-no-fan-2">
+    <div class="concert-logo"></div>
+  </div>
+  
+ 
+  
 </section>
 
