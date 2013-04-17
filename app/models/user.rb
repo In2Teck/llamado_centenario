@@ -52,11 +52,12 @@ class User < ActiveRecord::Base
 		self.update_attribute(:friend_count, friend_count)
 	end
 
-  def self.synch user_id, friend_count
+  def self.synch user_id, friend_count, is_fan
     user = User.find(user_id)
     #TODO: fix a un solo update
     user.update_attribute(:friend_count, friend_count.to_i)
     user.update_attribute(:thumbnail_url, "https://graph.facebook.com/#{user.uid}/picture?type=square")
+    user.update_attribute(:is_fan, is_fan)
     user
   end
 

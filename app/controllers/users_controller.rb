@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   def synch
-    @user = User.synch params[:user_id], params[:friend_count]
+    @user = User.synch params[:user_id], params[:friend_count], params[:is_fan]
     
     respond_to do |format|
       format.json { render json: @user }

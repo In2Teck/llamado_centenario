@@ -48,6 +48,10 @@ function synchUser(friend_count, user_id){
     friend_count: friend_count
   }
 
+  if (($("#ruby-values").data("is-fan")) != "") {
+    update_data["is_fan"] = $("#ruby-values").data("is-fan")
+  }
+
   $.ajax({
     type: "POST",
     url: "/users/" + user_id + "/synch",
