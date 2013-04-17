@@ -1,0 +1,36 @@
+- content_for :head_style do
+  = stylesheet_link_tag "map_content"
+- content_for :head_script do
+  = javascript_include_tag "search_clue"
+%header
+  %hgroup
+    = image_tag "web/linea_amarilla_botones.png"
+    %h2.header-bottom EL CONCIERTO
+    %h2.header-top MÁS CERCA DEL CIELO
+    = image_tag "web/linea_amarilla_botones.png"
+%section.map
+  %article#map-title
+    %p ENCUENTRA TU PASE AL CONCIERTO MÁS CERCA DEL CIELO, <br/> LOCALIZA EL PUNTO DONDE CREES QUE SE ENCUENTRA LA PISTA Y GANA.
+  %nav#map-nav
+    = link_to "", :root, :id => "home_button"
+  #clue-locator
+    #map-canvas
+  %figure#clue-info
+    %figcaption
+      %p Ubica esta pista en el mapa
+    %img#clue-image
+  .top-div PERSONAS PARTICIPANDO EN ESTE MOMENTO
+  %article#players
+    .player
+    .player
+    .player
+    .player
+    .player
+    .player
+    .player
+    .player
+    .player
+  #ticket-count.top-div
+    %div BOLETOS ENCONTRADOS
+    #num-tickets
+#ruby-values{ data: { clue: @active_clue ? "true" : "false", clue_id: (@active_clue[:id] if @active_clue), clue_image: (@active_clue[:image_url] if @active_clue), total_tickets: (@active_clue[:total_tickets] if @active_clue), remain_tickets: (@active_clue[:remain_tickets] if @active_clue), can_guess: @can_guess.to_s } }

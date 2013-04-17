@@ -8,19 +8,19 @@ section {
   position: relative;
 }
 
-#invite {
+.invite {
   background: url("web/header_invita.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
 }
 
-#fun {
+.fun {
   background: url("web/header_fun.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
 }
 
-#martin {
+.martin {
   background: url("web/header_martin.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
 }
 
-#terms {
+.terms {
   background: url("web/header_conoce.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
 }
 
@@ -37,11 +37,11 @@ p {
   font-size: 1.8em;
 }
 
-#message-top {
+.message-top {
   font-size: 1.6em;
 }
 
-#message-bottom {
+.message-bottom {
   font-size: 1em;
 }
 
@@ -103,7 +103,7 @@ nav a:hover {
   opacity: 0.7;
 }
 
-#content-text {
+.content-text {
   text-align: left;
   font-size: 0.8em;
   margin: 0.5em 1em;
@@ -124,3 +124,20 @@ nav a:hover {
 #video-channel {
 
 }
+
+.header-top {
+  font-weight: normal;
+}
+
+#map-title {
+  width: 85%;
+  display: inline-block;
+  margin: 1em 2em 1em 1.5em;
+}
+
+#map-nav {
+  height: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+

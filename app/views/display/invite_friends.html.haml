@@ -7,16 +7,16 @@
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"
-    %h2#header-top INVITA A TUS AMIGOS
-    %h2#header-bottom GANA TU PASE
+    %h2.header-top INVITA A TUS AMIGOS
+    %h2.header-bottom GANA TU PASE
     = image_tag "web/linea_amarilla_botones.png"
-%section#invite
+%section.invite
   %nav
     = link_to "", :root, :id => "home_button"
   - if @no_referrals
     %article#invita
-      %p#message-top TUS AMIGOS TE LLEVAN
-      %p#message-top MÁS CERCA DEL CIELO
+      %p.message-top TUS AMIGOS TE LLEVAN
+      %p.message-top MÁS CERCA DEL CIELO
       %br
       %br
       %br
@@ -29,8 +29,8 @@
       %p#referral-count
         = current_user.referrals.count
       = image_tag "web/linea_amarilla_botones.png"
-      %p#message-top AMIGOS TE PUEDEN LLEVAR MÁS CERCA DEL CIELO
-      %p#message-bottom TUS AMIGOS QUE TE ESTÁN AYUDANDO A LLEGAR CADA VEZ MÁS CERCA.
+      %p.message-top AMIGOS TE PUEDEN LLEVAR MÁS CERCA DEL CIELO
+      %p.message-bottom TUS AMIGOS QUE TE ESTÁN AYUDANDO A LLEGAR CADA VEZ MÁS CERCA.
       #amigos
         - @referrals.each do |referral|
           %figure.thumbnail

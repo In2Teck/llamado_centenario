@@ -12,7 +12,7 @@ function onFBLoaded() {
   if ($("#ruby-values").data("clue")) {
     if ($("#ruby-values").data("can-guess")) {
       // $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
-      $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " de " + $("#ruby-values").data("total-tickets"))
+      $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " DE " + $("#ruby-values").data("total-tickets"))
 
       var s = document.createElement("script");
       s.type = "text/javascript";

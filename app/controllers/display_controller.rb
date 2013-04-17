@@ -8,7 +8,6 @@ class DisplayController < ApplicationController
 	end
 
   def search_clue
-    @active_clue
     clues = Clue.active_to_user(:web)
     @active_clue = clues[0]
     @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue

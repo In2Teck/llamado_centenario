@@ -1,0 +1,115 @@
+html {
+  height: 65%;
+}
+
+figure {
+  margin: auto;
+}
+
+section {
+  margin: auto;
+  width: 80%;
+  position: relative;
+}
+
+.map {
+  background: url("web/fondo_informacion_esquina.png") no-repeat center top;
+}
+
+p {
+  font-weight: bold;
+  margin: 0;
+}
+
+nav {
+  text-align: right;
+  height: 30%;
+}
+
+nav a {
+  background: url("web/boton_esquina.png");
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+.content-text {
+  text-align: left;
+  font-size: 0.8em;
+  margin: 0.5em 1em;
+}
+
+.header-top {
+  font-weight: normal;
+}
+
+#map-title {
+  width: 85%;
+  display: inline-block;
+  margin: 1em 2em 0 1.5em;
+}
+
+#map-nav {
+  height: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#players {
+  width: 80%;
+  background: url("web/linea_amarilla_larga.png") no-repeat center top, url("web/linea_amarilla_larga.png") no-repeat center bottom;
+}
+
+.player {
+  background: red;
+  border: none;
+  display: inline-block;
+  height: 50px;
+  margin: 1em 0;
+  vertical-align: top;
+  width: 50px;
+}
+
+.top-div {
+  margin: 0.5em 0;
+}
+
+#clue-info {
+  background: gray;
+  border: 3px solid navy;
+  color: black;
+  height: 50%;
+  margin: 1em 1em;
+  opacity: 0.6;
+  width: 40%;  
+}
+
+#clue-locator {
+  height: 50%;
+  width: 40%;
+  margin: 1em 1em;
+}
+
+#clue-locator, #players, #clue-info
+{
+  display: inline-block;
+  vertical-align: top;
+  /*border-style: solid;*/
+}
+
+#map-canvas {
+  border: 3px solid gray;
+  height: 100%;
+}
+
+#num-tickets {
+  color: #b09648;
+}
+
