@@ -15,21 +15,16 @@
     = link_to "", :root, :id => "home_button"
   #clue-locator
     #map-canvas
-  %figure#clue-info
-    %figcaption
-      %p Ubica esta pista en el mapa
-    %img#clue-image
+  #clue-info
+    #clue-title
+      %p UBICA ESTA PISTA EN EL MAPA
+    %figure
+      = image_tag @active_clue[:image_url], :id => "clue-image" if @active_clue
   .top-div PERSONAS PARTICIPANDO EN ESTE MOMENTO
   %article#players
-    .player
-    .player
-    .player
-    .player
-    .player
-    .player
-    .player
-    .player
-    .player
+    - @players.each do |player|
+      .player
+        = image_tag player.thumbnail_url, :class => "player-pic"
   #ticket-count.top-div
     %div BOLETOS ENCONTRADOS
     #num-tickets

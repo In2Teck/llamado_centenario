@@ -14,10 +14,10 @@ section {
 
 .map {
   background: url("web/fondo_informacion_esquina.png") no-repeat center top;
+  font-weight: bold;
 }
 
 p {
-  font-weight: bold;
   margin: 0;
 }
 
@@ -63,17 +63,19 @@ nav a:hover {
 }
 
 #players {
-  width: 80%;
+  width: 100%;
   background: url("web/linea_amarilla_larga.png") no-repeat center top, url("web/linea_amarilla_larga.png") no-repeat center bottom;
 }
 
 .player {
-  background: red;
   border: none;
   display: inline-block;
-  height: 50px;
   margin: 1em 0;
   vertical-align: top;
+}
+
+.player-pic{
+  height: 50px;
   width: 50px;
 }
 
@@ -82,19 +84,37 @@ nav a:hover {
 }
 
 #clue-info {
-  background: gray;
-  border: 3px solid navy;
-  color: black;
+  color: white;
   height: 50%;
   margin: 1em 1em;
-  opacity: 0.6;
   width: 40%;  
+}
+
+#clue-info figure{
+  background: black;
+  height: 86%;
+  margin-top: 0.5em;
 }
 
 #clue-locator {
   height: 50%;
   width: 40%;
   margin: 1em 1em;
+}
+
+#clue-title {
+  background: black;
+  color: #b09648;
+  height: 13%;
+  width: 100%;
+}
+
+#clue-image {
+  margin: 1em 1em;
+}
+
+#clue-title p {
+  padding: 0.5em 0.5em;
 }
 
 #clue-locator, #players, #clue-info

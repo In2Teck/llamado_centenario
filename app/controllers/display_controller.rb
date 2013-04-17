@@ -11,6 +11,7 @@ class DisplayController < ApplicationController
     clues = Clue.active_to_user(:web)
     @active_clue = clues[0]
     @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
+    @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10)
   end
 
   def make_guess
