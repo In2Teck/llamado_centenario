@@ -6,7 +6,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <%= stylesheet_link_tag "display", :media => "all" %>
   <%= yield :head_style %>
-  <%= javascript_include_tag "application", "facebook" %>
+  <%= javascript_include_tag "application", "facebook", "util" %>
   <%= yield :head_script %>
   <%= csrf_meta_tags %>
 </head>
@@ -16,5 +16,9 @@
 </header>
 <%= yield %>
 <div id="ruby-session" data-session="<%= current_user ? true : false %>"></div>
+<div id="modal-alert">
+  <h3 id="modal-title"></h3>
+  <p id="modal-content"></p>
+</div>
 </body>
 </html>
