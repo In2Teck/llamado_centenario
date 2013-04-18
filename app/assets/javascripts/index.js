@@ -9,12 +9,22 @@ if (getURLParameter('request_ids') != "null" ) {
 $(document).on("ready", onReady);
 
 function onReady() {
+  $(document).on("updateData", onUpdateData);
   $(document).on("fbLoaded", onFBLoaded);
   TERMS_PATH = $("#ruby-values").data("terms-path").replace("/","");
   if ($("#ruby-values").data("is-fan")) {
     $("#section-no-fan").css({display: "none"});
     $("#section-fan").css({display: "block"});
   }
+}
+
+function onUpdateData(event, values) {
+  $("#ruby-values").append(values);
+  var attributes = $("#ruby-values div").prop("attributes");
+  $.each(attributes, function() {
+    $("#ruby-values").attr(this.name, this.value);
+  });
+  $(document).trigger('fbLoaded');
 }
 
 function onFBLoaded() {
@@ -29,7 +39,7 @@ function onFBLoaded() {
   $("#menu div").on("click", onMenuClick);
 }
 
-function verifyAccount(){
+function verifyAccount() {
   FB.api({
     method: 'fql.query',
     query: 'SELECT friend_count FROM user WHERE uid = ' + $("#ruby-values").data("user-uid")
@@ -42,8 +52,7 @@ function verifyAccount(){
   });
 }
 
-function synchUser(friend_count, user_id){
-  
+function synchUser(friend_count, user_id) {
   update_data = {
     friend_count: friend_count
   }

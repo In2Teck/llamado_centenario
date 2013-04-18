@@ -21,7 +21,16 @@ function loadFB() {
           $(document).trigger('fbLoaded');
         }
         else {
-          window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
+          $.ajax({
+            type: "GET",
+            url: "/users/auth/facebook/callback?signed_request=" + $('#ruby-values').data("signed-request"),
+            success: function(data, textStatus, jqXHR) {
+              $(document).trigger('updateData', data);   
+            },
+            error: function() {
+            } 
+          });
+          //window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
         }
       } else if (response.status === 'not_authorized') {
         login();

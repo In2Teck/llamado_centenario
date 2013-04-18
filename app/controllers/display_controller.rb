@@ -6,7 +6,7 @@ class DisplayController < ApplicationController
     @signed_request = params[:signed_request]
     @app_data = (decode_data @signed_request)["app_data"] if not @signed_request.blank?
     @is_fan = (decode_data @signed_request)["page"]["liked"] if not @signed_request.blank?
-    @is_fan = current_user.is_fan if @signed_request.blank?
+    @is_fan = current_user.is_fan if @signed_request.blank? && current_user != nil
 	end
 
   def search_clue

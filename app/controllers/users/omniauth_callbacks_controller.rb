@@ -7,7 +7,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			#flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
 			sign_in @user
 			if signed_request
-      	redirect_to "/?signed_request=" + signed_request
+      	#redirect_to "/?signed_request=" + signed_request
+        #render :json => {:status => "200"}
+        render :partial => 'update', :content_type => 'text/html'
       else
       	redirect_to "/mobile"
       end
