@@ -1,4 +1,3 @@
-var modalOptions = { onClose: function (dialog) { $.modal.close(); window.top.location.href = "http://www.facebook.com/In2Teck?v=app_132164533632870"; } };
 $(document).on("ready", onReady);
 
 function onReady() {
@@ -34,7 +33,7 @@ function createInvitesInBackend(response) {
     contentType: "application/json",
     data: JSON.stringify({referrals: referrals}),
     error: function() {
-      modalAlert("Error", "No se pudieron crear los referidos. Por favor intenta más tarde.", modalOptions);
+      modalAlert("Error", "No se pudieron crear los referidos. Por favor intenta más tarde.", null);
     } 
   });
 }
