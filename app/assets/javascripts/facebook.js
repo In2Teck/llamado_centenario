@@ -59,7 +59,7 @@ function login() {
       //window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
       $.ajax({
         type: "GET",
-        url: "/users/auth/facebook/callback?signed_request=" + response.authResponse.signed_request;
+        url: "/users/auth/facebook/callback?signed_request=" + response.authResponse.signed_request,
         success: function(data, textStatus, jqXHR) {
           $(document).trigger('updateData', data);   
         },
