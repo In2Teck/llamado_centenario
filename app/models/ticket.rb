@@ -11,7 +11,7 @@ class Ticket < ActiveRecord::Base
 		clues = Clue.find_all_by_active_and_source_type(true, source_type)
 		if (clues.length > 0)
 			clues.each do |clue|
-				current_user.clues << clue
+				#current_user.clues << clue
 				current_user.save
 				distance = clue.distance_from([latitude, longitude])
 				if (not current_user.ticket) and (distance <= clue.radius * KILOMETER_TO_MILE)
