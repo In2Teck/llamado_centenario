@@ -56,7 +56,16 @@ function loadFB() {
 function login() {
   FB.login(function(response) {
     if (response.authResponse) {
-      window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
+      //window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
+      $.ajax({
+        type: "GET",
+        url: "/users/auth/facebook/callback?signed_request=" + $('#ruby-values').data("signed-request"),
+        success: function(data, textStatus, jqXHR) {
+          $(document).trigger('updateData', data);   
+        },
+        error: function() {
+        } 
+      });
     } else {
       // cancelled
     }
