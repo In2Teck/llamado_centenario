@@ -40,7 +40,7 @@ function onPositionSuccess(position) {
 }
 
 function onPositionError(msg) {
-  alert(msg);
+  alert("Tu navegador no es compatible con la geolocalización");
 }
 
 var result;

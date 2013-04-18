@@ -56,7 +56,7 @@ function loadFB() {
 function login() {
   FB.login(function(response) {
     if (response.authResponse) {
-      window.location.href = '/users/auth/facebook/callback';
+      window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
     } else {
       // cancelled
     }
