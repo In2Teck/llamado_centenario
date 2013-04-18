@@ -40,7 +40,7 @@ function onPositionSuccess(position) {
 }
 
 function onPositionError(msg) {
-  
+  alert(msg);
 }
 
 var result;
