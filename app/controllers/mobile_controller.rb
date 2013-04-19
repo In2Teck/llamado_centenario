@@ -1,10 +1,10 @@
 class MobileController < ApplicationController
 
   def index
+    @has_ticket = current_user.ticket ? true : false;
   end
 
   def search_ticket
-    #puts 'diego diego ' + current_user.first_name
     lat = params[:lat]
     lng = params[:lng]
     result = {}

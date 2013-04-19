@@ -13,10 +13,25 @@
     <div><%= image_tag "mobile/conectar_facebook.png", :id => "btn-facebook" %></div>
     <div class="concert-logo">
       <div class="social">
-        CONOCE MÁS <br/>
+        CONOCE MÁS <br/>  
         <div><%= image_tag "mobile/facebook.png" %></div>
         <div class="yellow"> /CentenarioT <br/> #mascercadelcielo </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div data-role="page" id="like">
+  <div class="header-logo"></div>
+  <div data-role="content">
+    <div class="subheader">
+      <div class="separator center"></div>
+      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
+      <div class="separator center"></div>
+    </div><br/> 
+    <div class="subheader">
+      Para continuar tienes que ser fan de Centenario <br/><br/>
+      <fb:like-box href="http://www.facebook.com/CentenarioT" width="400" height="350" show_faces="true" colorscheme="dark" stream="false" border_color="#b09648" header="false"></fb:like-box>
     </div>
   </div>
 </div>
@@ -31,7 +46,7 @@
     </div><br/> 
     <div class="background">
       <%= image_tag "mobile/boton_cerrar.png", :class => "btn-close"%>
-      <div id="txt-search" class="title yellow">PRESIONA EL BOTÓN PARA COMENZAR</div><br/><br/>
+      <div id="txt-search" class="title yellow">PARA COMENZAR<br/>PRESIONA EL BOTÓN</div><br/><br/>
       <%= image_tag "mobile/busca_boton.png", :id => "btn-search"%>
     </div>
   </div>
@@ -54,6 +69,7 @@
     </div>
   </div>
 </div>
-  <!--div id="logout">
-   <p><button  onClick="FB.logout();">Logout</button></p>
-  </div-->
+
+<%= content_tag "div", id: "ruby-values", data: {
+  has_ticket: @has_ticket
+} do %><% end %>
