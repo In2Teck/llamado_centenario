@@ -52,16 +52,22 @@ section {
   width: 100%;
 }
 
-#userTower {
-  display: none;
-}
-
-.acceptRequestButton {
-}
-
-/* for modal alert */
+/* for modal */
 #modal-alert {
   display: none;
+}
+
+#modal-content div {
+  background-color: rgba(3,3,3,0.3);
+  height: 10%;
+  margin: 0.5em auto;
+  width: 70%;
+}
+
+#modal-content div a {
+  color: #b09648;
+  margin: 0.5em 1em;
+  text-decoration: none;
 }
 
 #simplemodal-overlay {background-color:#000;}
@@ -70,5 +76,9 @@ section {
 #simplemodal-container .simplemodal-data {padding: 0;}
 #simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:1em; margin-bottom:1em; padding:0.5em 0.5em 0.5em;}
 #simplemodal-container a {color:#ddd;}
-#simplemodal-container a.modalCloseImg {background:url("web/tache_min.png") no-repeat; width:25px; height:25px; display:inline; z-index:3200; position:absolute; top:-10px; right:-20px; cursor:pointer;}
+#simplemodal-container a.modalCloseImg {background:url("web/tache_min.png") no-repeat; width:25px; height:25px; z-index:3200; position:absolute; top:-10px; right:-20px; cursor:pointer;}
 #simplemodal-container h3 {color:#b09648;}
+
+.dialogueClass{display: none;}
+
+.closeClass{display: inline;}
