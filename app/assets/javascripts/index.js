@@ -29,7 +29,16 @@ function onUpdateData(event, values) {
 }
 
 function onFBLoaded() {
-  verifyAccount();
+  var signedRequest = $("#ruby-values").data("signed-request").toString();
+  var friendCount = $("#ruby-values").data("friend-count").toString();
+  if (signedRequest != "") {
+    verifyAccount();
+  } else if (friendCount < 30) {
+    $("#search-clue").removeAttr("class");
+    $("#search-clue").attr("style", "cursor: default; opacity: 0.2;");
+    $("#invite-friends").removeAttr("class");
+    $("#invite-friends").attr("style", "cursor: default; opacity: 0.2;");
+  }
 
   var appData = $("#ruby-values").data("app-data").toString();
   if (appData != ""){
@@ -37,7 +46,7 @@ function onFBLoaded() {
     callRequestsBatch(requestsList);
   }
   
-  $("#menu div").on("click", onMenuClick);
+  $(".clickable").on("click", onMenuClick);
 }
 
 function verifyAccount() {

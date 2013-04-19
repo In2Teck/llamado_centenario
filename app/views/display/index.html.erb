@@ -8,13 +8,13 @@
 <section id="section-fan">
   <article id="menu">
     <article id="section1">
-      <div data-path="search_clue">
+      <div data-path="search_clue" id="search-clue" class="clickable">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>EL CONCIERTO</p>
           <p class="text_bold">GANA TU PASE</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
-      <div data-path="invite_friends">  
+      <div data-path="invite_friends" id="invite-friends" class="clickable">  
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>INVITA A TUS AMIGOS</p>
           <p class="text_bold">GANA TU PASE</p>
@@ -22,13 +22,13 @@
       </div>
     </article>
     <article id="section2">
-      <div data-path="fun_facts">
+      <div data-path="fun_facts" class="clickable">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p class="text_bold">FUN</p>
           <p>FACTS</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
-      <div data-path="martin_facts">  
+      <div data-path="martin_facts" class="clickable">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p class="text_bold">MARTIN SOLVEIG</p>
           <p>FACTS</p>
@@ -36,13 +36,13 @@
       </div>
     </article>
     <article id="section3">
-      <div data-path="youtube_channel">
+      <div data-path="youtube_channel" class="clickable">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p class="text_bold">CONOCE EL LLAMADO</p>
           <p>YOUTUBE</p>
         <%= image_tag "web/linea_amarilla_botones.png" %>
       </div>
-      <div data-path="terms_and_conditions">
+      <div data-path="terms_and_conditions" class="clickable">
         <%= image_tag "web/linea_amarilla_botones.png" %>
           <p>CONOCE EL CONCIERTO</p>
           <p class="text_bold">MÁS CERCA DEL CIELO</p>
@@ -50,7 +50,7 @@
       </div>
     </article>
   </article>
-  <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.try("id") %>" data-user-uid="<%= current_user.try("uid") %>" data-assigned-to-tower="<%= current_user.try("referred_user") ? true : false %>" data-terms-path="<%= terms_and_conditions_path %>" data-is-fan="<%= @is_fan%>"></div>
+  <div id="ruby-values" data-signed-request="<%= @signed_request %>" data-app-data="<%= @app_data %>" data-user-id="<%= current_user.try("id") %>" data-user-uid="<%= current_user.try("uid") %>" data-assigned-to-tower="<%= current_user.try("referred_user") ? true : false %>" data-terms-path="<%= terms_and_conditions_path %>" data-is-fan="<%= @is_fan%>" data-friend-count="<%= current_user.try("friend_count") %>"></div>
   <br/> <br/>
   <article id="footer">
     <p id="footer_top">DESCUBRE QUE HAY MÁS ALLÁ DEL CIELO</p>
