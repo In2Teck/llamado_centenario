@@ -1,6 +1,7 @@
 $(document).on("ready", onReady);
 
 function onReady() {
+  $("#amigos").mCustomScrollbar();
   $(document).on("fbLoaded", onFBLoaded);
 }
 

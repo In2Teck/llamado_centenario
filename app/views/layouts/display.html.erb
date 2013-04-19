@@ -4,9 +4,9 @@
   <title>El Concierto Más Cerca del Cielo</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <%= stylesheet_link_tag "display", :media => "all" %>
+  <%= stylesheet_link_tag "display", "jquery.mCustomScrollbar", :media => "all" %>
   <%= yield :head_style %>
-  <%= javascript_include_tag "application", "facebook", "jquery.simplemodal.min.js", "util" %>
+  <%= javascript_include_tag "application", "facebook", "jquery.simplemodal.min.js", "util", "jquery.mCustomScrollbar.concat.min.js" %>
   <%= yield :head_script %>
   <%= csrf_meta_tags %>
 </head>

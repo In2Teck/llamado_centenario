@@ -7,7 +7,10 @@ function modalAlert(title, message, options){
 
   $("#modal-title")[0].innerHTML = title;
   $("#modal-content")[0].innerHTML = message;
+  $("#modal-alert").css("height", "160px");
   $("#modal-alert").modal(options);
+  $("#modal-alert").mCustomScrollbar();
+  $(".simplemodal-wrap").css("overflow","");
 }
 
 function modalDialogue(title, message, usersHash, options){
@@ -27,5 +30,8 @@ function modalDialogue(title, message, usersHash, options){
     $("#modal-content").append("<div id='"+value+"'>"+key+"</div>");
     $("#"+value).append("<a href='#' onclick='acceptRequest("+value+")'>aceptar invitación</a>");
   });
+  $("#modal-alert").css("height", "300px");
   $("#modal-alert").modal(options);
+  $("#modal-alert").mCustomScrollbar();
+  $(".simplemodal-wrap").css("overflow","");
 }
