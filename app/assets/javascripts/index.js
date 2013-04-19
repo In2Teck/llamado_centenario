@@ -1,4 +1,5 @@
 var TAB_PAGE = 'http://www.facebook.com/In2Teck?v=app_132164533632870';
+var modalOptions = { onClose: function (dialog) { $.modal.close(); window.location.href = "/"; } };
 var TERMS_PATH;
 
 // EVEN BEFORE the document is ready, so it doesn't load the page.
@@ -28,7 +29,16 @@ function onUpdateData(event, values) {
 }
 
 function onFBLoaded() {
-  verifyAccount();
+  var signedRequest = $("#ruby-values").data("signed-request").toString();
+  var friendCount = $("#ruby-values").data("friend-count").toString();
+  if (signedRequest != "") {
+    verifyAccount();
+  } else if (friendCount < 30) {
+    $("#search-clue").removeAttr("class");
+    $("#search-clue").attr("style", "cursor: default; opacity: 0.2;");
+    $("#invite-friends").removeAttr("class");
+    $("#invite-friends").attr("style", "cursor: default; opacity: 0.2;");
+  }
 
   var appData = $("#ruby-values").data("app-data").toString();
   if (appData != ""){
@@ -36,7 +46,7 @@ function onFBLoaded() {
     callRequestsBatch(requestsList);
   }
   
-  $("#menu div").on("click", onMenuClick);
+  $(".clickable").on("click", onMenuClick);
 }
 
 function verifyAccount() {
@@ -125,13 +135,7 @@ function getURLParameter(name) {
 }
 
 function selectUsersTower(usersHash) {
-  $("#userTower").show();
-  $("#menu").hide();
-  $.each(usersHash, function(value, key){
-    // ADDING USER REQUESTS
-    $("#userTower").append("<div id='"+value+"'>"+key+"</div>");
-    $("#"+value).append("<button class='acceptRequestButton' onclick='acceptRequest("+value+")'>SELECT</button>");
-  });
+  modalDialogue("Selecciona tu torre", "Sólo puedes pertenecer a la del primer amigo que elijas.", usersHash);
 }
 
 function acceptRequest(userUID){
@@ -148,9 +152,7 @@ function acceptRequest(userUID){
     data: referral,
     success: function(){
       removeRequests($("#ruby-values").data("app-data").toString().split(','));
-
-      $("#userTower").hide();
-      $("#menu").show();
+      $.modal.close();
     },
     error: function() {
       modalAlert("Error", "La invitación que recibiste fue eliminada. Intenta aceptando otra.",null);
