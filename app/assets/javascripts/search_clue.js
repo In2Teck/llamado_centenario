@@ -1,6 +1,7 @@
 var map;
 var guess;
 var mapZoom;
+var modalOptions = { onClose: function (dialog) { $.modal.close(); window.location.href = "/"; } };
 
 $(document).on("ready", onReady);
 
@@ -20,11 +21,11 @@ function onFBLoaded() {
       $("head").append(s); 
     }
     else {
-      alert("Solamente puedes participar 1 vez por pista. Espera la siguiente");
+      modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);
     }
   }
   else {
-    alert("Por el momento no hay ninguna pista. Espera la siguiente");
+    modalAlert("Lo sentimos", "Por el momento no hay ninguna pista. Espera a la siguiente.", modalOptions);
   }
 }
 
@@ -65,7 +66,7 @@ var result;
 function onPlaceMarker(data, textStatus, jqXHR) {
   result = data;
   if (data.won_ticket) {
-    alert("ganaste");
+    modalAlert("Felicidades", "Has ganado un boleto!", null);
      /*var marker = new google.maps.Marker({
       position: guess,
       animation: google.maps.Animation.DROP,
@@ -73,13 +74,13 @@ function onPlaceMarker(data, textStatus, jqXHR) {
     });*/
   }
   else if (!data.error) {
-    alert("No has encontrado la pista")
+    modalAlert("Lo sentimos", "No has encontrado la pista", modalOptions);
   }
   else if (data.code == 1) {
-    alert("Ya no hay boletos para esta pista. Espera la siguiente");
+    modalAlert("Lo sentimos", "Ya no hay boletos para esta pista. Espera a la siguiente.", modalOptions);
   }
   else {
-    alert("Solamente puedes participar 1 vez por pista. Espera la siguiente"); 
+    modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);
   }
 }
 

@@ -61,16 +61,17 @@ function synchUser(friend_count, user_id) {
     update_data["is_fan"] = $("#ruby-values").data("is-fan")
   }
 
+  //TODO: llamar solo con signed request
+
   $.ajax({
     type: "POST",
     url: "/users/" + user_id + "/synch",
     dataType: "json",
     data: update_data,
     success: function(){
-      //alert("synch succesful");
     },
     error: function() {
-      alert("Error sincronizando la información del usuario. Intenta entrar nuevamente a la aplicación.");
+      modalAlert("Error", "Falla de comunicación con Facebook. Intenta entrar nuevamente a la aplicación.",null);
     } 
   });
   
@@ -91,7 +92,7 @@ function callRequestsBatch(requestsList){
       batch: requestsBatch
     }, function(response){
       if (!response || response.error) {
-        alert("Error de comunicación con Facebook, intenta nuevamente en unos minutos.");
+        modalAlert("Error", "Falla de comunicación con Facebook. Intenta entrar nuevamente a la aplicación.",null);
       } else {
         var usersHash = {};
         $.each(response, function(){
@@ -104,7 +105,7 @@ function callRequestsBatch(requestsList){
     });
   } else if (assignedToTower) {
     if (requestsList.length > 0) {
-      alert("No has podido aceptar la invitación. Ya fuiste asignado a la torre de otro amigo.");
+      modalAlert("Error", "No has podido aceptar la invitación. Ya fuiste asignado a la torre de otro amigo.",null);
     }
     if (requestsBatch.length > 0) {
       removeRequests(requestsList);
@@ -152,7 +153,7 @@ function acceptRequest(userUID){
       $("#menu").show();
     },
     error: function() {
-      alert("Error aceptando la invitación. Probablemente fue eliminada, intenta aceptando otra.");
+      modalAlert("Error", "La invitación que recibiste fue eliminada. Intenta aceptando otra.",null);
     } 
   });
 }
@@ -169,7 +170,7 @@ function removeRequests(requestsList){
     batch: requestsBatch
   }, function(response) {
     if (!response || response.error) {
-      alert("Error de comunicación con Facebook, intenta nuevamente en unos minutos.");
+      modalAlert("Error", "Falla de comunicación con Facebook. Intenta entrar nuevamente a la aplicación.",null);
     } else {
       //Para debuggear
       //console.log(response);
