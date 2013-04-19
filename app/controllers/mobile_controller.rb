@@ -1,7 +1,7 @@
 class MobileController < ApplicationController
 
   def index
-    @has_ticket = current_user.blank && current_user.ticket ? true : false;
+    @has_ticket =  current_user && current_user.ticket ? true : false;
   end
 
   def search_ticket
