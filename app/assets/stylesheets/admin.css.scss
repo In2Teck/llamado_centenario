@@ -1,9 +1,11 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 html { 
  	height: 100%;
   width: 100%;
+  font-family: arial;
 }
       
 body {
@@ -11,19 +13,14 @@ body {
 	margin: 0; 
 	padding: 0;
   width: 100%;
-}
-    
-section {
-  height: 100%;
-  width: 100%;
+} 
+
+header {
+  background-color: rgba(246,246,246,0.9);
+  height: 10%;
+  text-align: center;
 }
 
-#clue-creator {
-  height: 100%;
-  width:  70%;
-}
-
-#map-canvas { 
-  height: 70%;
-  width: 50%;
+header h1,h2,h3,h4{
+  margin: 0;
 }
