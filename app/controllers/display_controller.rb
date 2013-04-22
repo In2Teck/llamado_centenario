@@ -11,6 +11,7 @@ class DisplayController < ApplicationController
 
   def search_clue
     clues = Clue.active_to_user(:web)
+    @has_ticket = (current_user && current_user.ticket) ? true : false
     @active_clue = clues[0]
     @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
     @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10)
@@ -30,6 +31,7 @@ class DisplayController < ApplicationController
   end
 
   def invite_friends
+    @has_ticket = (current_user && current_user.ticket) ? true : false
     @no_referrals = current_user.referrals.blank?
     if not @no_referrals
       @referrals = current_user.referrals.includes(:referred)
