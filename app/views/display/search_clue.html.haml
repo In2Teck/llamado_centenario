@@ -11,7 +11,7 @@
 %section.map
   %article#map-title
     %p ENCUENTRA TU PASE AL CONCIERTO MÁS CERCA DEL CIELO, <br/> LOCALIZA EL PUNTO DONDE CREES QUE SE ENCUENTRA LA PISTA Y GANA.
-  %nav#map-nav
+  %nav.map-nav
     = link_to "", :root, :id => "home_button"
   #clue-locator
     #map-canvas
@@ -28,4 +28,36 @@
   #ticket-count.top-div
     %div BOLETOS ENCONTRADOS
     #num-tickets
-#ruby-values{ data: { clue: @active_clue ? "true" : "false", clue_id: (@active_clue[:id] if @active_clue), clue_image: (@active_clue[:image_url] if @active_clue), total_tickets: (@active_clue[:total_tickets] if @active_clue), remain_tickets: (@active_clue[:remain_tickets] if @active_clue), can_guess: @can_guess.to_s } }
+
+%section.map-found
+  %nav
+    = link_to "", :root, :id => "home_button"
+  %article
+    %p.message-top.yellow ¡FELICIDADES!
+    %br
+    %br
+    %p.message-bottom ENCONTRASTE TU BOLETO
+    %br
+    %br
+    = image_tag "web/ticket_centenario.png"
+    %br
+    %br
+    %p.message-winner Revisa tu correo electrónico y sigue las instrucciones para recoger tu premio
+
+%section.map-not-found
+  %nav
+    = link_to "", :root, :id => "home_button"
+  %article
+    %p#result.message-top.yellow
+    %br
+    %br
+    %p.message-bottom Aún tienes muchas oportunidades de conseguir tu pase al CONCIERTO MÁS CERCA DEL CIELO.
+    %br
+    %br
+    %p.message-bottom También puedes hacer que tus amigos te lleven al cielo y participar por un boleto.
+    %br
+    %br
+    #invitar
+      = link_to "", :invite_friends, :id => "invite-friends"
+
+#ruby-values{ data: { clue: @active_clue ? "true" : "false", clue_id: (@active_clue[:id] if @active_clue), clue_image: (@active_clue[:image_url] if @active_clue), total_tickets: (@active_clue[:total_tickets] if @active_clue), remain_tickets: (@active_clue[:remain_tickets] if @active_clue), can_guess: @can_guess.to_s, has_ticket: @has_ticket.to_s } }

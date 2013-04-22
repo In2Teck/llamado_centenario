@@ -3,11 +3,17 @@ $(document).on("ready", onReady);
 function onReady() {
   $("#amigos").mCustomScrollbar();
   $(document).on("fbLoaded", onFBLoaded);
+  if ($("#ruby-values").data("has-ticket")) {
+    $(".invite").css({display: "none"});
+    $(".has-ticket").css({display: "block"});
+  }
 }
 
 function onFBLoaded() {
   // READY AFTER INTEGRATING THE FB INITS
-  $("#invite-friends").on("click", sendRequestViaMultiFriendSelector);
+  if (!$("#ruby-values").data("has-ticket")) {
+    $("#invite-friends").on("click", sendRequestViaMultiFriendSelector);
+  }
 }
 
 function sendRequestViaMultiFriendSelector() {

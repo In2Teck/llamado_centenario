@@ -11,7 +11,7 @@ class Ticket < ActiveRecord::Base
 		clues = Clue.find_all_by_active_and_source_type(true, source_type)
 		if (clues.length > 0)
 			clues.each do |clue|
-				#current_user.clues << clue
+				current_user.clues << clue
 				current_user.save
 				distance = clue.distance_from([latitude, longitude])
 				if (not current_user.ticket) and (distance <= clue.radius * KILOMETER_TO_MILE)
@@ -21,10 +21,10 @@ class Ticket < ActiveRecord::Base
 						ticket_to_assign = tickets_to_assign.first
 						ticket_to_assign.update_attribute(:assigned, true)
 						current_user.update_attribute(:ticket, ticket_to_assign)
+						UserMailer.send_win_notification(current_user).deliver
 						if ticket_count == 1
 							clue.update_attribute(:active, false)
 						end
-						#return {:won_ticket => true, :error => false}
 						result = {:won_ticket => true, :error => false}
 					else
 						raise 'No more tickets to assign and the clue is still active.'
@@ -36,7 +36,6 @@ class Ticket < ActiveRecord::Base
 		else
 			result = {:won_ticket => false, :error => true, :code => 1}
 		end
-		#return false
 		return result
 	end
 

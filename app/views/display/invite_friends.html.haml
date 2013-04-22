@@ -3,7 +3,7 @@
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
-#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s}
+#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s, "data-has-ticket" => @has_ticket.to_s}
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"
@@ -38,3 +38,18 @@
       #invitar
         = link_to "", "#", :id => "invite-friends"
   %p#footer Invita a tus amigos a que te lleven "MÁS CERCA DEL CIELO" los 50 que al final tengan la mayor cantidad de amigos se llevan su pase. Los seguidores solo pueden participar una sola vez.
+
+%section.has-ticket
+  %nav
+    = link_to "", :root, :id => "home_button"
+  %article
+    %p.message-top.yellow ¡FELICIDADES!
+    %br
+    %br
+    %p.message-bottom ENCONTRASTE TU BOLETO
+    %br
+    %br
+    = image_tag "web/ticket_centenario.png"
+    %br
+    %br
+    %p.message-winner Revisa tu correo electrónico y sigue las instrucciones para recoger tu premio

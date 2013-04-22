@@ -115,7 +115,7 @@ function callRequestsBatch(requestsList){
     });
   } else if (assignedToTower) {
     if (requestsList.length > 0) {
-      modalAlert("Error", "No has podido aceptar la invitación. Ya fuiste asignado a la torre de otro amigo.",null);
+      modalAlert("Error", "No has podido aceptar la invitación. Ya fuiste asignado en el equipo de otro amigo",null);
     }
     if (requestsBatch.length > 0) {
       removeRequests(requestsList);

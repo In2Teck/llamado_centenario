@@ -7,25 +7,31 @@ $(document).on("ready", onReady);
 
 function onReady() {
   $(document).on("fbLoaded", onFBLoaded);
+  if ($("#ruby-values").data("has-ticket")) {
+    $(".map").css({display: "none"});
+    $(".map-found").css({display: "block"});
+  }
 }
 
 function onFBLoaded() {
-  if ($("#ruby-values").data("clue")) {
-    if ($("#ruby-values").data("can-guess")) {
-      // $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
-      $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " DE " + $("#ruby-values").data("total-tickets"))
+  if (!$("#ruby-values").data("has-ticket")) {
+    if ($("#ruby-values").data("clue")) {
+      if ($("#ruby-values").data("can-guess")) {
+        // $("#clue-image").attr("src", $("#ruby-values").data("clue-image"));
+        $("#num-tickets").text($("#ruby-values").data("remain-tickets") + " DE " + $("#ruby-values").data("total-tickets"))
 
-      var s = document.createElement("script");
-      s.type = "text/javascript";
-      s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
-      $("head").append(s); 
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
+        $("head").append(s); 
+      }
+      else {
+        modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);
+      }
     }
     else {
-      modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);
+      modalAlert("Lo sentimos", "Por el momento no hay ninguna pista. Espera a la siguiente.", modalOptions);
     }
-  }
-  else {
-    modalAlert("Lo sentimos", "Por el momento no hay ninguna pista. Espera a la siguiente.", modalOptions);
   }
 }
 
@@ -66,7 +72,9 @@ var result;
 function onPlaceMarker(data, textStatus, jqXHR) {
   result = data;
   if (data.won_ticket) {
-    modalAlert("Felicidades", "Has ganado un boleto!", null);
+    $(".map").css({display: "none"});
+    $(".map-found").css({display: "block"});
+    //modalAlert("Felicidades", "Has ganado un boleto!", null);
      /*var marker = new google.maps.Marker({
       position: guess,
       animation: google.maps.Animation.DROP,
@@ -74,10 +82,16 @@ function onPlaceMarker(data, textStatus, jqXHR) {
     });*/
   }
   else if (!data.error) {
-    modalAlert("Lo sentimos", "No has encontrado la pista", modalOptions);
+    $(".map").css({display: "none"});
+    $("#result").text("PISTA CENTENARIO NO ENCONTRADA");
+    $(".map-not-found").css({display: "block"});
+    //modalAlert("Lo sentimos", "No has encontrado la pista", modalOptions);
   }
   else if (data.code == 1) {
-    modalAlert("Lo sentimos", "Ya no hay boletos para esta pista. Espera a la siguiente.", modalOptions);
+    $(".map").css({display: "none"});
+    $("#result").text("SE TERMINARON LOS BOLETOS");
+    $(".map-not-found").css({display: "block"});
+    //modalAlert("Lo sentimos", "Ya no hay boletos para esta pista. Espera a la siguiente.", modalOptions);
   }
   else {
     modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);

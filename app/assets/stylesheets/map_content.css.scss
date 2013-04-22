@@ -15,6 +15,17 @@ section {
 .map {
   background: url("web/fondo_informacion_esquina.png") no-repeat center top;
   font-weight: bold;
+  display: block;
+}
+
+.map-found {
+  background: url("web/header_pista.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+  display: none;
+}
+
+.map-not-found {
+  background: url("web/header_pista.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
+  display: none;
 }
 
 p {
@@ -50,13 +61,29 @@ nav a:hover {
   font-weight: normal;
 }
 
+.message-top {
+  font-size: 1.6em;
+}
+
+.message-bottom {
+  font-size: 1.6em;
+}
+
+.message-winner {
+  font-size: 22px;
+}
+
+.yellow {
+  color: #b09648;
+}
+
 #map-title {
   width: 85%;
   display: inline-block;
   margin: 1em 2em 0 1.5em;
 }
 
-#map-nav {
+.map-nav {
   height: 0;
   display: inline-block;
   vertical-align: top;
@@ -111,6 +138,7 @@ nav a:hover {
 
 #clue-image {
   margin: 1em 1em;
+  max-width: 257px;
 }
 
 #clue-title p {
@@ -133,3 +161,21 @@ nav a:hover {
   color: #b09648;
 }
 
+#invitar {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#invite-friends {
+  background: url("web/invitar_boton.png");
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  width: 310px;
+  height: 52px;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+#invite-friends:hover{
+  opacity: 0.7;
+}
