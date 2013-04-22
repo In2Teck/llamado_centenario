@@ -5,8 +5,11 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
     = stylesheet_link_tag "admin", :media => "all"
+    = yield :head_style
     = javascript_include_tag "application"
     = yield :head_script
     = csrf_meta_tags
   %body
+    %header
+      %h2 Administrador de Concierto Más Cerca Del Cielo
     = yield

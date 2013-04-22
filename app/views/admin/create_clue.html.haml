@@ -1,10 +1,9 @@
+- content_for :head_style do
+  = stylesheet_link_tag "admin_map"
 - content_for :head_script do
   = javascript_include_tag "admin_map"
-%header
-  %h1 Información de la pista
-%section
-  %figure#clue-creator
-    %figcaption Selecciona la ubicación
+%section.map
+  #clue-creator
     #map-canvas
   %section
     = form_for(@clue, :url => :assign_tickets_clues) do |f|
@@ -15,6 +14,9 @@
         = f.label :image_url
         = f.text_field :image_url
       .field
+        = f.label :source_type
+        = f.text_field :source_type, :placeholder => "web or mobile"
+      .field
         = f.hidden_field :id, :value => @clue.id
         = f.hidden_field :longitude, :value => @clue.longitude
         = f.hidden_field :latitude, :value => @clue.latitude
@@ -24,7 +26,6 @@
           = f.check_box :active
         - else
           = f.hidden_field :active, :value => true
-        = f.hidden_field :source_type, :value => "web"
       .field
         %label{"for" => "ticket_number"} Tickets para repartir
         %input#ticket_number{"name" => "ticket_number", "value" => @tickets}

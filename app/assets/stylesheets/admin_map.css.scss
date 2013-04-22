@@ -1,0 +1,24 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+section {
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
+.map {
+  height: 85%;
+  width: 70%;
+}
+
+#clue-creator {
+  height: 50%;
+  width:  70%;
+  margin: 1em 1em;
+}
+
+#map-canvas {
+  height: 100%;
+}
