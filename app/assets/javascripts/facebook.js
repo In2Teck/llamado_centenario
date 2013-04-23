@@ -22,6 +22,10 @@ function loadFB() {
         }
         else {
           $.ajax({
+            beforeSend: function( xhr ) {
+              var token = $('meta[name="csrf-token"]').attr('content');
+              if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+            }, 
             type: "GET",
             url: "/users/auth/facebook/callback?signed_request=" + $('#ruby-values').data("signed-request"),
             success: function(data, textStatus, jqXHR) {
