@@ -135,7 +135,7 @@ function getURLParameter(name) {
 }
 
 function selectUsersTower(usersHash) {
-  modalDialogue("Selecciona tu torre", "Sólo puedes pertenecer a la del primer amigo que elijas.", usersHash);
+  modalDialogue("Selecciona tu invitación", "Sólo puedes participar en la del primer amigo que elijas.", usersHash);
 }
 
 function acceptRequest(userUID){

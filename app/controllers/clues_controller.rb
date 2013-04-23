@@ -91,6 +91,11 @@ class CluesController < ApplicationController
     @clue.assign_tickets(params[:ticket_number])
 
 		respond_to do |format|
+      if @clue.source_type == 'web'
+        format.html { redirect_to :admin_clues_list_web }
+      elsif @clue.source_type == 'mobile'
+        format.html { redirect_to :admin_clues_list_mobile }
+      end
 			format.json { render json: @clue}
 		end
 	end

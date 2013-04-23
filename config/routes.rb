@@ -27,12 +27,22 @@ TorreCentenario::Application.routes.draw do
   resources :users do
     match 'synch'
   end
-
-	get 'admin/create_clue', :to => "admin#create_clue", :as => :admin_create_clue
 	
-  get 'admin/edit_clue/:id', :to => "admin#edit_clue", :as => :admin_edit_clue
+  get 'admin/index', :to => "admin#index", :as => :admin_index
 
-	get 'admin/users_referrals', :to => "admin#users_referrals", :as => :admin_users_referrals
+  get 'admin/create_clue_mobile', :to => "admin#create_clue_mobile", :as => :admin_create_clue_mobile
+	
+  get 'admin/create_clue_web', :to => "admin#create_clue_web", :as => :admin_create_clue_mobile
+	
+  get 'admin/edit_clue_mobile/:id', :to => "admin#edit_clue_mobile", :as => :admin_edit_clue_mobile
+  
+  get 'admin/edit_clue_web/:id', :to => "admin#edit_clue_web", :as => :admin_edit_clue_web
+
+  get 'admin/users_referrals', :to => "admin#users_referrals", :as => :admin_users_referrals
+
+  get 'admin/clues_list_mobile', :to => "admin#clues_list_mobile", :as => :admin_clues_list_mobile
+
+  get 'admin/clues_list_web', :to => "admin#clues_list_web", :as => :admin_clues_list_web
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 
