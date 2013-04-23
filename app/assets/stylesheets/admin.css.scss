@@ -23,4 +23,10 @@ header {
 
 header h1,h2,h3,h4{
   margin: 0;
+  padding-top: 1em;
+}
+
+header a {
+  float: right;
+  margin: 0 1em 0 0;
 }

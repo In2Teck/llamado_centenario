@@ -28,7 +28,7 @@ TorreCentenario::Application.routes.draw do
     match 'synch'
   end
 	
-  get 'admin/index', :to => "admin#index", :as => :admin_index
+  get 'admin/', :to => "admin#index", :as => :admin_index
 
   get 'admin/create_clue_mobile', :to => "admin#create_clue_mobile", :as => :admin_create_clue_mobile
 	
@@ -43,6 +43,8 @@ TorreCentenario::Application.routes.draw do
   get 'admin/clues_list_mobile', :to => "admin#clues_list_mobile", :as => :admin_clues_list_mobile
 
   get 'admin/clues_list_web', :to => "admin#clues_list_web", :as => :admin_clues_list_web
+
+  get 'admin/reports', :to => "admin#reports", :as => :admin_reports
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 

@@ -11,5 +11,6 @@
     = csrf_meta_tags
   %body
     %header
-      %h2 Administrador de Concierto Más Cerca Del Cielo
+      = link_to "logout", "logout"
+      %h2 Administrador #{yield :header_title}
     = yield
