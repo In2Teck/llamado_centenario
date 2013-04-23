@@ -10,6 +10,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'cancan'
 gem 'geocoder'
 gem 'haml-rails'
+gem 'rack-p3p'
 
 # Gems used only for assets and not required
 # in production environments by default.

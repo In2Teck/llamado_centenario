@@ -58,5 +58,8 @@ module TorreCentenario
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Rack P3P configuration to prevent CSRF errors in IE
+    config.middleware.insert_before ActionDispatch::Session::CookieStore, Rack::P3p
   end
 end
