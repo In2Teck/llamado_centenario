@@ -1,5 +1,7 @@
 class Clue < ActiveRecord::Base
-  attr_accessible :active, :description, :image_url, :latitude, :longitude, :radius, :source_type
+  attr_accessible :active, :description, :image_url, :latitude, :longitude, :radius, :source_type, :avatar
+  has_attached_file :avatar, :styles => { :medium => "190x190", :thumb => "50x50" }
+  after_save :update_image_url
 	has_many :tickets
   has_and_belongs_to_many :users
 	geocoded_by :description
@@ -69,5 +71,11 @@ class Clue < ActiveRecord::Base
   def deactivate
     self.update_attribute(:active, false)
     self
+  end
+
+  private
+
+  def update_image_url
+    self.update_column(:image_url, self.avatar.url(:medium))
   end
 end

@@ -22,3 +22,24 @@ section {
 #map-canvas {
   height: 100%;
 }
+
+.image {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+}
+  
+.form-data {
+  display: inline-block;
+  width: 60%;
+  margin: 2em 0;
+}
+
+.form-data-label {
+  display: inline-block;
+  width: 15%;
+}
+
+.form-data-input {
+  width: 50%;
+}
