@@ -67,9 +67,12 @@ function placeMarker() {
       animation: google.maps.Animation.DROP,
       map: map
     });
+
+    setTimeout(function(){
     $.ajax({url:"/make_guess", type:"POST", 
       data:{lat: guess.lat(), lng: guess.lng(), clue_id: $("#ruby-values").data("clue-id")}, 
       dataType: "json", success: onPlaceMarker});
+    }, 2000);
   }
 }
 
@@ -77,12 +80,6 @@ function onPlaceMarker(data, textStatus, jqXHR) {
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
-    //modalAlert("Felicidades", "Has ganado un boleto!", null);
-     /*var marker = new google.maps.Marker({
-      position: guess,
-      animation: google.maps.Animation.DROP,
-      map: map
-    });*/
   }
   else if (!data.error) {
     $(".map").css({display: "none"});
