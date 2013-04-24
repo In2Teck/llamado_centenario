@@ -99,5 +99,28 @@ class CluesController < ApplicationController
 			format.json { render json: @clue}
 		end
 	end
+  
+  def activate_web
+    @clue = Clue.find(params[:clue_id]).activate_web
 
+    respond_to do |format|
+      format.json { render json: @clue }
+    end
+  end
+
+  def activate
+    @clue = Clue.find(params[:clue_id]).activate
+
+    respond_to do |format|
+      format.json { render json: @clue }
+    end
+  end
+
+  def deactivate
+    @clue = Clue.find(params[:clue_id]).deactivate
+
+    respond_to do |format|
+      format.json { render json: @clue }
+    end
+  end
 end

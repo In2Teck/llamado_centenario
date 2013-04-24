@@ -2,17 +2,19 @@
   = stylesheet_link_tag "admin_map"
 - content_for :head_script do
   = javascript_include_tag "admin_map"
+- content_for :header_title do
+  crear pista móvil
 %section.map
   #clue-creator
     #map-canvas
   %section
     = form_for(@clue, :url => :assign_tickets_clues) do |f|
       .field
-        = f.label "descripción", :for => :clue_description
-        = f.text_field :description
+        = f.label "descripción", :for => :clue_description, :class => "form-data-label"
+        = f.text_field :description, :class => "form-data-input"
       .field
-        = f.label "URL de imagen", :for => :clue_image_url
-        = f.text_field :image_url
+        = f.label "URL de imagen", :for => :clue_image_url, :class => "form-data-label"
+        = f.text_field :image_url, :class => "form-data-inptu"
       .field
         = f.hidden_field :id, :value => @clue.id
         = f.hidden_field :longitude, :value => @clue.longitude
@@ -22,7 +24,7 @@
         - if not @disable_option
           = f.hidden_field :active, :value => false
       .field
-        %label{"for" => "ticket_number"} Tickets para repartir
-        %input#ticket_number{"name" => "ticket_number", "value" => @tickets}
+        %label{"for" => "ticket_number", "class" => "form-data-label"} Tickets para repartir
+        %input#ticket_number{"name" => "ticket_number", "value" => @tickets, "type" => "number", "min" => "1", "max" => "200"}
       .actions
-        = f.submit
+        = f.submit "salvar pista", :class => "link-to-button"

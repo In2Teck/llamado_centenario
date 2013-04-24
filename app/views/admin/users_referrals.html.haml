@@ -12,10 +12,10 @@
           %li
             .item
               %figure
-                = image_tag user.thumbnail_url
+                = image_tag user.thumbnail_url, :class => "thumbnail"
               .item-text
                 = link_to "#{user.first_name} #{user.last_name}", "http://facebook.com/#{user.uid}", :target => "_blank"
                 %p #{referral.referral_count} referidos
               .item-button
                 = link_to "asigna premio", "#", :onclick => "submitReferral(#{user.id},'#{user.first_name}')", :class => "link-to-button"
-#winners Usuarios premiados: #{@winners}
+#float-action Usuarios premiados: #{@winners}

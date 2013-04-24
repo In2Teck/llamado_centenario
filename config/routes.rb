@@ -8,6 +8,9 @@ TorreCentenario::Application.routes.draw do
 
   resources :clues do
 		match 'assign_tickets', :on => :collection
+    match 'activate_web'
+    match 'activate'
+    match 'deactivate'
 	end
 
   resources :tickets do
@@ -32,7 +35,7 @@ TorreCentenario::Application.routes.draw do
 
   get 'admin/create_clue_mobile', :to => "admin#create_clue_mobile", :as => :admin_create_clue_mobile
 	
-  get 'admin/create_clue_web', :to => "admin#create_clue_web", :as => :admin_create_clue_mobile
+  get 'admin/create_clue_web', :to => "admin#create_clue_web", :as => :admin_create_clue_web
 	
   get 'admin/edit_clue_mobile/:id', :to => "admin#edit_clue_mobile", :as => :admin_edit_clue_mobile
   

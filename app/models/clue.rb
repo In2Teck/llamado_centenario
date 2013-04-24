@@ -55,4 +55,19 @@ class Clue < ActiveRecord::Base
     return tickets
   end
 
+  def activate_web
+    Clue.update_all("active = false", "source_type = 'web'")
+    self.update_attribute(:active, true)
+    self
+  end
+
+  def activate
+    self.update_attribute(:active, true)
+    self
+  end
+
+  def deactivate
+    self.update_attribute(:active, false)
+    self
+  end
 end

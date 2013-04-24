@@ -1,6 +1,24 @@
-- @clues.each do |clue|
-  #clue
-    %ul
-      %li
-        = clue.id
-        = clue.description
+- content_for :head_script do
+  = javascript_include_tag "admin_clues"
+- content_for :header_title do
+  pistas para web
+%section#divided-content.aligned
+  %article
+    %ul#item-list
+      - @clues.each do |clue|
+        %li
+          .item
+            %figure
+              = image_tag clue.image_url, :class => "thumbnail"
+            .item-text
+              %p #{clue.description}
+              %p #{clue.tickets.count} boletos disponibles
+              %p Creada: #{clue.created_at.to_formatted_s(:short)}
+            .item-button
+              = link_to "editar", "edit_clue_web/#{clue.id}", :class => "link-to-button"
+              - if clue.active?
+                %p.inline-text activa
+              - else
+                = link_to "activar", "#", :onclick => "activateWebClue('#{clue.id}')", :class => "link-to-button"
+#float-action
+  = link_to "crear nueva", :admin_create_clue_web , :class => "link-to-button"
