@@ -34,7 +34,7 @@ class DisplayController < ApplicationController
     @has_ticket = (current_user && current_user.ticket) ? true : false
     @no_referrals = current_user.referrals.blank?
     if not @no_referrals
-      @referrals = current_user.referrals.includes(:referred)
+      @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
     end
   end
   

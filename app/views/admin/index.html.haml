@@ -1,0 +1,11 @@
+- content_for :header_title do
+  del Concierto Más Cerca del Cielo
+%section#index-menu
+  #index-menu-item
+    = link_to "Referidos", :admin_users_referrals, :class => "link-to-button-big"
+  #index-menu-item
+    = link_to "Pistas para web", :admin_clues_list_web, :class => "link-to-button-big" 
+  #index-menu-item
+    = link_to "Pistas para móvil", :admin_clues_list_mobile, :class => "link-to-button-big"
+  #index-menu-item
+    = link_to "Reportes", :admin_reports, :class => "link-to-button-big"

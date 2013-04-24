@@ -1,12 +1,12 @@
 class AdminController < ApplicationController
 
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   DF_COORDS = [19.433333, -99.133333]
   DEFAULT_RADIUS = 0.2
 
   def index
-
+  
   end
 
   def create_clue_mobile
@@ -49,6 +49,10 @@ class AdminController < ApplicationController
 
 	def users_referrals
 		@referrals = Referral.find_top_referrers(20)
+    @winners = Ticket.where("source_type = 'referrals'").count
 	end
 
+  def reports
+    
+  end
 end

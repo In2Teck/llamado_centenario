@@ -1,16 +1,21 @@
 - content_for :head_script do
   = javascript_include_tag "admin_referrals"
-%header
-  %h1 Asigna ganador
-%section
-  = form_tag(:assign_to_user_tickets, :id => :ticket_form) do
-    = hidden_field_tag :user_id, ""
-    %ul
-      - @referrals.each do |referral|
-        - user = User.find(referral.user_id)
-        %li
-          = image_tag user.thumbnail_url
-          = user.first_name
-          = user.last_name
-          = referral.referral_count
-          = link_to "Asigna", "#", :onclick => "submitReferral(#{user.id})"
+- content_for :header_title do
+  de Referidos
+%section#divided-content.aligned
+  %article
+    = form_tag(:assign_to_user_tickets, :id => :ticket_form) do
+      = hidden_field_tag :user_id, ""
+      %ul#item-list
+        - @referrals.each do |referral|
+          - user = User.find(referral.user_id)
+          %li
+            .item
+              %figure
+                = image_tag user.thumbnail_url, :class => "thumbnail"
+              .item-text
+                = link_to "#{user.first_name} #{user.last_name}", "http://facebook.com/#{user.uid}", :target => "_blank"
+                %p #{referral.referral_count} referidos
+              .item-button
+                = link_to "asigna premio", "#", :onclick => "submitReferral(#{user.id},'#{user.first_name}')", :class => "link-to-button"
+#float-action Usuarios premiados: #{@winners}

@@ -1,7 +1,7 @@
 !!!
 %html{:lang => "es"}
   %head
-    %title Torre Centenario
+    %title Concierto Centenario
     %meta{:charset => "utf-8"}
     %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
     = stylesheet_link_tag "admin", :media => "all"
@@ -11,5 +11,7 @@
     = csrf_meta_tags
   %body
     %header
-      %h2 Administrador de Concierto Más Cerca Del Cielo
+      = link_to "logout", "logout", :class => "link-to-button"
+      = link_to "home", "/admin", :class => "link-to-button"
+      %h2 Administrador #{yield :header_title}
     = yield

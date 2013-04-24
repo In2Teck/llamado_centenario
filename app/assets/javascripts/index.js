@@ -71,8 +71,6 @@ function synchUser(friend_count, user_id) {
     update_data["is_fan"] = $("#ruby-values").data("is-fan")
   }
 
-  //TODO: llamar solo con signed request
-
   $.ajax({
     type: "POST",
     url: "/users/" + user_id + "/synch",
