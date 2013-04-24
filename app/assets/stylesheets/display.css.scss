@@ -1,25 +1,27 @@
 @font-face {
   font-family: centenario;
-  src: url('Champagne & Limousines.ttf');
+  font-style: normal;
+  font-weight: normal;
+  src: url('Champagne_Limousines.eot'), url('Champagne_Limousines.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-weight: bold;
-  src: url('Champagne & Limousines Bold.ttf');
+  src: url('Champagne_Limousines_Bold.eot'), url('Champagne_Limousines_Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-style: italic;
   font-weight: bold;
-  src: url('Champagne & Limousines Bold Italic.ttf');
+  src: url('Champagne_Limousines_Bold_Italic.eot'), url('Champagne_Limousines_Bold_Italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-style: italic;
-  src: url('Champagne & Limousines Italic.ttf');
+  src: url('Champagne_Limousines_Italic.eot'), url('Champagne_Limousines_Italic.ttf') format('truetype');
 }
 
 html {

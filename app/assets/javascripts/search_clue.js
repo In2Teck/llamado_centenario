@@ -1,6 +1,7 @@
 var map;
 var guess;
 var mapZoom;
+var timer;
 var modalOptions = { onClose: function (dialog) { $.modal.close(); window.location.href = "/"; } };
 
 $(document).on("ready", onReady);
@@ -23,7 +24,10 @@ function onFBLoaded() {
         var s = document.createElement("script");
         s.type = "text/javascript";
         s.src  = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDpJbkdk6ozglAO_Fp4bfop3uSg63auvPI&sensor=false&callback=initMap";
-        $("head").append(s); 
+        $("head").append(s);
+
+        checkAvailability();
+        timer = setInterval(checkAvailability, 15000);
       }
       else {
         modalAlert("Lo sentimos", "Solamente puedes participar una vez por pista. Espera a la siguiente.", modalOptions);
@@ -68,9 +72,8 @@ function placeMarker() {
       dataType: "json", success: onPlaceMarker});
   }
 }
-var result;
+
 function onPlaceMarker(data, textStatus, jqXHR) {
-  result = data;
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
@@ -98,4 +101,21 @@ function onPlaceMarker(data, textStatus, jqXHR) {
   }
 }
 
-function testMarker() { alert("added");}
+function checkAvailability() {
+  $.ajax({url:"/check_availability", type:"GET", dataType: "json", success: onCheckAvailability});
+}
+
+function onCheckAvailability(data, textStatus, jqXHR) {
+  if (data.result) {
+    $("#num-tickets").text(data.clue.remain_tickets + " DE " + $("#ruby-values").data("total-tickets"));
+    //var visible_players = 0;//$("#players .player img").length;
+    $("#players").empty();
+    $.each(data.players, function(index, value) {
+      $("#players").append('<div class="player"><img class="player-pic" src="' + value.thumbnail_url +'"/></div>');
+    });
+  }
+  else {
+    
+    clearInterval(timer);
+  }
+}

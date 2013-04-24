@@ -14,7 +14,7 @@ class DisplayController < ApplicationController
     @has_ticket = (current_user && current_user.ticket) ? true : false
     @active_clue = clues[0]
     @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
-    @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10)
+    @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10).reverse
   end
 
   def make_guess
@@ -26,6 +26,16 @@ class DisplayController < ApplicationController
       result = Ticket.locate_and_assign(lat, lng, :web, current_user)
     else
       result = {:won_ticket => false, :error => true, :code => 2}
+    end
+    render :json => result
+  end
+
+  def check_availability
+    clues = Clue.active_to_user(:web)
+    result = {:result => false}
+    if (clues.length > 0)
+      @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10).reverse
+      result = {:result => true, :clue => clues[0], :players => @players}
     end
     render :json => result
   end

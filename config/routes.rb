@@ -67,6 +67,8 @@ TorreCentenario::Application.routes.draw do
 
   match 'youtube_channel' => 'display#youtube_channel', :as => :youtube_channel
 
+  get 'check_availability' => 'display#check_availability', :as => :check_availability
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
