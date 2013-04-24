@@ -16,7 +16,7 @@ body {
 } 
 
 header {
-  background-color: rgba(246,246,246,0.9);
+  background-color: rgba(230,230,230,0.9);
   height: 10%;
   text-align: center;
 }
@@ -29,4 +29,97 @@ header h1,h2,h3,h4{
 header a {
   float: right;
   margin: 0 1em 0 0;
+}
+
+.aligned {
+  display: inline-block;
+  vertical-align: top;
+  margin: 1em 1em;
+}
+
+#divided-content{
+  width: 70%;
+}
+
+#winners {
+  float: right;
+  margin: 1em 1em;
+}
+
+#item-list {
+  list-style-type: none;
+  width: 80%;
+}
+
+#item-list li {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: rgba(245 ,245 , 245, 0.9);
+  height: 90px;
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.item {
+  margin: 1em;
+}
+
+.item figure {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 1em 0 0;
+}
+
+.item-text {
+  display: inline-block;
+  vertical-align: top; 
+  margin: 0 1em 0 1em;
+}
+
+.item-button {
+  display: inline-block;
+  vertical-align: top;
+  margin: 1em;
+  float: right;
+}
+
+.link-to-button {
+  background: rgba(165, 165, 165, 0.8);
+  border-radius: 0.5em;
+  color: black;
+  margin: 1em 0.5em;
+  padding: 0.5em;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+.link-to-button:hover{
+  background: rgba(130, 130, 130, 1);
+}
+
+.link-to-button-big {
+  background: rgba(220, 220, 220, 0.9);
+  border-radius: 0.5em;
+  color: black;
+  display: block;
+  font-size: 1.5em;
+  line-height: 4em;
+  margin: 1em;
+  padding: 0.5em;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+.link-to-button-big:hover{
+  background: rgba(180, 180, 180, 1);
+}
+
+#index-menu {
+  margin: 1em;
+  text-align: center;
+}
+
+#index-menu-item {
+  margin: auto;
+  width: 20%;
 }

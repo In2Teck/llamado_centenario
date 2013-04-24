@@ -11,6 +11,7 @@
     = csrf_meta_tags
   %body
     %header
-      = link_to "logout", "logout"
+      = link_to "logout", "logout", :class => "link-to-button"
+      = link_to "home", "/admin", :class => "link-to-button"
       %h2 Administrador #{yield :header_title}
     = yield

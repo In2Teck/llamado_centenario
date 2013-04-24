@@ -49,9 +49,10 @@ class AdminController < ApplicationController
 
 	def users_referrals
 		@referrals = Referral.find_top_referrers(20)
+    @winners = Ticket.where("source_type = 'referrals'").count
 	end
 
   def reports
-
+    
   end
 end
