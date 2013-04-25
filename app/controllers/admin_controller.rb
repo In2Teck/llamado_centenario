@@ -19,7 +19,8 @@ class AdminController < ApplicationController
 
   def edit_clue_mobile
     @clue = Clue.find(params[:id])
-    @tickets = @clue.tickets_not_assigned.count
+    @tickets_not_assigned = @clue.tickets_not_assigned.count
+    @tickets_assigned = @clue.tickets_assigned.count
     @disable_option = true
     render :create_clue_mobile
   end
@@ -34,7 +35,8 @@ class AdminController < ApplicationController
 
   def edit_clue_web
     @clue = Clue.find(params[:id])
-    @tickets = @clue.tickets_not_assigned.count
+    @tickets_not_assigned = @clue.tickets_not_assigned.count
+    @tickets_assigned = @clue.tickets_assigned.count
     @disable_option = true
     render :create_clue_web
   end

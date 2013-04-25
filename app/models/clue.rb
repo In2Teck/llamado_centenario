@@ -50,11 +50,11 @@ class Clue < ActiveRecord::Base
   end
 
   def tickets_not_assigned
-    tickets = []
-    self.tickets.each do |ticket|
-      tickets << ticket unless ticket.user
-    end
-    return tickets
+    Ticket.joins(:clue).where("clue_id = ? and assigned = ?",self.id , false)
+  end
+
+  def tickets_assigned
+    Ticket.joins(:clue).where("clue_id = ? and assigned = ?",self.id , true)
   end
 
   def activate_web

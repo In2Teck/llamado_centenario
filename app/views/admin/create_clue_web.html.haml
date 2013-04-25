@@ -29,7 +29,10 @@
         - if not @disable_option
           = f.hidden_field :active, :value => false
       .field
+        %label.form-data-label Tickets asignados:
+        %label #{@tickets_assigned}
+        %br
         %label{"for" => "ticket_number", "class" => "form-data-label"} Tickets para repartir
-        %input#ticket_number{"name" => "ticket_number", "value" => @tickets, "type" => "number", "min" => "1", "max" => "200"}
+        %input#ticket_number{"name" => "ticket_number", "value" => @tickets_not_assigned, "type" => "number", "min" => "1", "max" => "200"}
       .actions
         = f.submit "salvar pista", :class => "link-to-button"

@@ -12,7 +12,7 @@
               = image_tag clue.image_url, :class => "thumbnail"
             .item-text
               %p #{clue.description}
-              %p #{clue.tickets.count} boletos disponibles
+              %p Tickets: #{clue.tickets_not_assigned.count} disponibles, #{clue.tickets_assigned.count} asignados
               %p Creada: #{clue.created_at.to_formatted_s(:short)}
             .item-button
               = link_to "editar", "edit_clue_web/#{clue.id}", :class => "link-to-button"
