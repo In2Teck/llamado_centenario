@@ -26,7 +26,7 @@ function checkRedirect(){
   } else if (referrerIsFacebookApp()) {
     redirectToServer();
   }
-});
+}
    
 function redirectToMobile() {
   top.location = 'http://boletos.centenario.com/mobile';
