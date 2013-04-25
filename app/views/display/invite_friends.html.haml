@@ -3,7 +3,7 @@
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
-#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s, "data-has-ticket" => @has_ticket.to_s}
+#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s, "data-has-ticket" => @has_ticket.to_s, "data-users" => @referrals.to_json}
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"

@@ -58,9 +58,8 @@ function loadFB() {
 }
 
 function login() {
-  FB.login(function(response) {
+ FB.login(function(response) {
     if (response.authResponse) {
-      //window.location.href = '/users/auth/facebook/callback?signed_request=' + $('#ruby-values').data("signed-request");
       FB.api('/me/feed', 'post', 
         {name: 'MÁS CERCA DEL CIELO', 
         message: 'Mi camino para estar MÁS CERCA DEL CIELO ha comenzado y puedo ser 1 de los asistentes al concierto de FUN y MARTIN SOLVEIG',
@@ -82,4 +81,5 @@ function login() {
       // cancelled
     }
   }, {scope: 'email,user_likes,publish_actions'});
+  
 }

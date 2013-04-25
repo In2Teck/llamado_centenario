@@ -17,9 +17,13 @@ function onFBLoaded() {
 }
 
 function sendRequestViaMultiFriendSelector() {
+  var ids = []
+  $.each($("#ruby-values").data("users"), function(index, value) {
+      ids.push(value.referred_uid);
+  });
   FB.ui({method: 'apprequests',
     message: 'Acepta esta invitación y apoya a tu amigo a estar MÁS CERCA DEL CIELO con Tequila Centenario.',
-    filters: ['app_non_users']
+    exclude_ids: ids
   }, createInvitesInBackend);
 }
 

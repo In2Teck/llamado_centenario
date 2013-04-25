@@ -15,6 +15,7 @@ class MobileController < ApplicationController
   end
 
   def new_fan
+    current_user.update_attribute(:is_fan, true)
     current_user.activities << Activity.find_by_description(:fan)
     render :nothing => true
   end
