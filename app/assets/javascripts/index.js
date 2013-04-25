@@ -10,6 +10,7 @@ if (getURLParameter('request_ids') != "null" ) {
 $(document).on("ready", onReady);
 
 function onReady() {
+  checkRedirect();
   $(document).on("updateData", onUpdateData);
   $(document).on("fbLoaded", onFBLoaded);
   TERMS_PATH = $("#ruby-values").data("terms-path").replace("/","");
@@ -17,6 +18,35 @@ function onReady() {
     $("#section-no-fan").css({display: "none"});
     $("#section-fan").css({display: "block"});
   }
+}
+
+function checkRedirect(){
+  if ( /android|webos|iphone|ipad|ipod|blackberry|iemobile/i.test(navigator.userAgent.toLowerCase()) ) {
+    redirectToMobile();
+  } else if (referrerIsFacebookApp()) {
+    redirectToServer();
+  }
+});
+   
+function redirectToMobile() {
+  top.location = 'http://boletos.centenario.com/mobile';
+}
+
+function redirectToServer() {
+  var querystring = location.search;
+  top.location = 'http://www.facebook.com/CentenarioT/app_132164533632870' + querystring;
+}
+   
+function referrerIsFacebookApp() {
+  var isInIFrame = (window.location != window.parent.location) ? true : false;
+  if (document.URL) {
+    if (isInIFrame) {
+      return document.URL.indexOf("apps.facebook.com") != -1;
+    } else {
+      return document.URL.indexOf("centenario.com") != -1;
+    }
+  }
+  return false;
 }
 
 function onUpdateData(event, values) {
