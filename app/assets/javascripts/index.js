@@ -18,6 +18,9 @@ function onReady() {
     $("#section-no-fan").css({display: "none"});
     $("#section-fan").css({display: "block"});
   }
+  else {
+    $("header").css({margin: 0});
+  }
 }
 
 function checkRedirect(){
