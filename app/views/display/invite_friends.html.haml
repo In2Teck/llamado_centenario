@@ -3,7 +3,7 @@
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
-#ruby-values{"data-user-id" => current_user.id, "data-no-referrals" => @no_referrals.to_s, "data-has-ticket" => @has_ticket.to_s, "data-users" => @referrals.to_json}
+#ruby-values{"data-user-id" => current_user.id, "data-has-ticket" => @has_ticket.to_s, "data-users" => @referrals.to_json}
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"
@@ -13,7 +13,7 @@
 %section.invite
   %nav
     = link_to "", :root, :id => "home_button"
-  - if @no_referrals
+  - if @referrals.blank?
     %article#invita
       %p.message-top TUS AMIGOS TE LLEVAN
       %p.message-top MÁS CERCA DEL CIELO
@@ -27,7 +27,7 @@
     %article#torre
       = image_tag "web/linea_amarilla_botones.png"
       %p#referral-count
-        = current_user.referrals.count
+        = @referrals.count
       = image_tag "web/linea_amarilla_botones.png"
       %p.message-top AMIGOS TE PUEDEN LLEVAR MÁS CERCA DEL CIELO
       %p.message-bottom TUS AMIGOS QUE TE ESTÁN AYUDANDO A LLEGAR CADA VEZ MÁS CERCA.

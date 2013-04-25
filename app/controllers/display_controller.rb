@@ -42,10 +42,7 @@ class DisplayController < ApplicationController
 
   def invite_friends
     @has_ticket = (current_user && current_user.ticket) ? true : false
-    @no_referrals = current_user.referrals.blank?
-    if not @no_referrals
-      @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
-    end
+    @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
   end
   
   def fun_facts
