@@ -21,7 +21,7 @@ class Ticket < ActiveRecord::Base
 						ticket_to_assign = tickets_to_assign.first
 						ticket_to_assign.update_attribute(:assigned, true)
 						current_user.update_attribute(:ticket, ticket_to_assign)
-						UserMailer.send_win_notification(current_user).deliver
+            Ticket.send_winning_email current_user
 						if ticket_count == 1
 							clue.update_attribute(:active, false)
 						end
@@ -41,6 +41,15 @@ class Ticket < ActiveRecord::Base
 
 	def self.create_and_assign_to_user user
 		user.update_attribute(:ticket, Ticket.create(:folio => SecureRandom.uuid.slice(0,7), :source_type => SOURCE_REFERRALS, :assigned => true))
+    Ticket.send_winning_email user
 	end
+
+  def self.send_winning_email user
+    begin
+      UserMailer.send_win_notification(user).deliver
+    rescue
+      logger.error "The email couldn't be delivered to #{user.first_name}. Please check the settings."
+    end
+  end
 
 end

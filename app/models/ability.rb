@@ -3,10 +3,14 @@ class Ability
 
   def initialize(user)
 	  user ||= User.new # guest user
-    	  if user.role? :admin
-      		  can :manage, :all
+    
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
+    if user.role? :admin
+      can :manage, :all
 	  else
 		  can :read, :all
+      
 	  end
   end
 end

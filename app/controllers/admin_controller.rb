@@ -14,7 +14,8 @@ class AdminController < ApplicationController
     @clue.latitude = DF_COORDS[0]
     @clue.longitude = DF_COORDS[1]
     @clue.radius = DEFAULT_RADIUS
-    @tickets = 1
+    @tickets_assigned = 0
+    @tickets_not_assigned = 1
 	end
 
   def edit_clue_mobile
@@ -30,7 +31,8 @@ class AdminController < ApplicationController
     @clue.latitude = DF_COORDS[0]
     @clue.longitude = DF_COORDS[1]
     @clue.radius = DEFAULT_RADIUS
-    @tickets = 1
+    @tickets_assigned = 0
+    @tickets_not_assigned = 1
 	end
 
   def edit_clue_web

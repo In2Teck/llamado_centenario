@@ -128,7 +128,7 @@ function DistanceWidget(map) {
   });
 
   this.set('minDistance', 0.05);
-  this.set('maxDistance', 0.2);
+  this.set('maxDistance', 0.6);
 
   marker.bindTo('map', this);
 

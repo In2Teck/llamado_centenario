@@ -71,9 +71,13 @@ function placeMarker() {
     setTimeout(function(){
     $.ajax({url:"/make_guess", type:"POST", 
       data:{lat: guess.lat(), lng: guess.lng(), clue_id: $("#ruby-values").data("clue-id")}, 
-      dataType: "json", success: onPlaceMarker});
+      dataType: "json", success: onPlaceMarker, error: tryAgain });
     }, 2000);
   }
+}
+
+function tryAgain(){
+  modalAlert("Lo sentimos","Tu intento no se pudo registrar. Por favor vuelve a participar.", modalOptions); 
 }
 
 function onPlaceMarker(data, textStatus, jqXHR) {
