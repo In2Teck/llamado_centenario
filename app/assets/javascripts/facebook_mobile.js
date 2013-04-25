@@ -65,7 +65,7 @@ function login() {
 }
 
 function handleStatusChange(response) {
-  if (response.authResponse) {
+  /*if (response.authResponse) {
     FB.Event.unsubscribe('auth.statusChange', handleStatusChange);
     FB.api('/me/feed', 'post', {
       name: 'MÁS CERCA DEL CIELO', 
@@ -74,5 +74,5 @@ function handleStatusChange(response) {
       description: ' ',
       picture: 'http://boletos.centenario.com/assets/web/75x75.png'
     });
-  }
+  }*/
 }
