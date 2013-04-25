@@ -1,4 +1,4 @@
-var TAB_PAGE = 'http://www.facebook.com/CentenarioT/app_132164533632870';
+var TAB_PAGE = 'http://www.facebook.com/CentenarioT?v=app_132164533632870';
 var modalOptions = { onClose: function (dialog) { $.modal.close(); window.location.href = "/"; } };
 var TERMS_PATH;
 
