@@ -63,6 +63,8 @@ TorreCentenario::Application.routes.draw do
 
   match 'mobile/search_ticket' => 'mobile#search_ticket', :as => :mobile_search_ticket
 
+  match 'mobile/new_fan' => 'mobile#new_fan', :as => :mobile_new_fan
+
   match 'terms_and_conditions' => 'display#terms_and_conditions', :as => :terms_and_conditions
 
   match 'youtube_channel' => 'display#youtube_channel', :as => :youtube_channel

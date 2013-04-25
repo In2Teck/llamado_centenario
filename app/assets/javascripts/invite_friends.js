@@ -18,7 +18,7 @@ function onFBLoaded() {
 
 function sendRequestViaMultiFriendSelector() {
   FB.ui({method: 'apprequests',
-    message: 'Test request',
+    message: 'Acepta esta invitación y apoya a tu amigo a estar MÁS CERCA DEL CIELO con Tequila Centenario.',
     filters: ['app_non_users']
   }, createInvitesInBackend);
 }

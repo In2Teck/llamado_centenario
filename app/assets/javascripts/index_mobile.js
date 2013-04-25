@@ -29,6 +29,12 @@ function onFBLogin() {
 
 function onLike(response) {
   goHome();
+  $.ajax({url:"/mobile/new_fan",
+    beforeSend: function( xhr ) {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+      }, 
+    type:"POST", success: function(){} });
 }
 
 function goHome() { 
@@ -71,6 +77,7 @@ var result;
 function onSearchTicket(data, textStatus, jqXHR) {
   result = data;
  if (data.won_ticket) {
+    publishFound(true);
     $("#ruby-values").data("has-ticket", true);
     $("#txt-result").text("¡ FELICIDADES !");
     $("#txt-info").text("ENCONTRASTE TU BOLETO :)");
@@ -83,6 +90,7 @@ function onSearchTicket(data, textStatus, jqXHR) {
     });*/
   }
   else {
+    publishFound(false);
     $("#txt-result").text("¡ LO SENTIMOS !");
     $("#img-result").attr("src", "assets/mobile/tache.png");
     if (!data.error) {
@@ -94,4 +102,25 @@ function onSearchTicket(data, textStatus, jqXHR) {
   }
   $.mobile.loading("hide");
   $.mobile.changePage($("#result"));
+}
+
+function publishFound(found) {
+  var text = '';
+  var image = '';
+  if (found) {
+    text = '¡Ya estoy MÁS CERCA DEL CIELO! e iré a ver a FUN y MARTIN SOLVEIG este 30 de Mayo, ¡tu también participa!';
+    image = 'http://boletos.centenario.com/assets/web/ticket_centenario.png';
+  }
+  else {
+    text = '¡Estuve a punto de poder estar MÁS CERCA DEL CIELO con FUN y MARTIN SOLVEIG, tú también tienes oportunidad de hacerlo.';
+    image = 'http://boletos.centenario.com/assets/web/75x75.png';
+  }
+  
+  FB.api('/me/feed', 'post', 
+    {name: 'MÁS CERCA DEL CIELO', 
+    message: text,
+    link: 'http://boletos.centenario.com/',
+    description: ' ',
+    picture: image
+  });
 }

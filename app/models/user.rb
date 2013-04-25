@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 		unless user
 			# CHECK FOR NEW/CREATE
 			user = User.create(first_name:auth.info.first_name, last_name:auth.info.last_name, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20], thumbnail_url:"https://graph.facebook.com/#{auth.uid}/picture?type=square")
+      user.activities << Activity.find_by_description(:install)
 		end
 		user
 	end
@@ -57,6 +58,9 @@ class User < ActiveRecord::Base
     #TODO: fix a un solo update
     user.update_attribute(:friend_count, friend_count.to_i)
     user.update_attribute(:thumbnail_url, "https://graph.facebook.com/#{user.uid}/picture?type=square")
+    if user.is_fan == false && is_fan
+      user.activities << Activity.find_by_description(:fan)
+    end
     user.update_attribute(:is_fan, is_fan)
     user
   end

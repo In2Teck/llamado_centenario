@@ -66,9 +66,8 @@ function synchUser(friend_count, user_id) {
   update_data = {
     friend_count: friend_count
   }
-
-  if (($("#ruby-values").data("is-fan")) != "") {
-    update_data["is_fan"] = $("#ruby-values").data("is-fan")
+  if ($("#ruby-values").data("is-fan") != undefined) {
+    update_data["is_fan"] = $("#ruby-values").data("is-fan");
   }
 
   $.ajax({
@@ -79,7 +78,7 @@ function synchUser(friend_count, user_id) {
     success: function(){
     },
     error: function() {
-      modalAlert("Error", "Falla de comunicación con Facebook. Intenta entrar nuevamente a la aplicación.",null);
+      modalAlert("Error", "Falla de comunicación con Facebook. Intenta entrar nuevamente a la aplicación.", null);
     } 
   });
   

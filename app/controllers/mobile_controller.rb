@@ -14,4 +14,9 @@ class MobileController < ApplicationController
     render :json => result
   end
 
+  def new_fan
+    current_user.activities << Activity.find_by_description(:fan)
+    render :nothing => true
+  end
+
 end

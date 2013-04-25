@@ -80,17 +80,20 @@ function onPlaceMarker(data, textStatus, jqXHR) {
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
+    publishFound(true);
   }
   else if (!data.error) {
     $(".map").css({display: "none"});
     $("#result").text("PISTA CENTENARIO NO ENCONTRADA");
     $(".map-not-found").css({display: "block"});
+    publishFound(false);
     //modalAlert("Lo sentimos", "No has encontrado la pista", modalOptions);
   }
   else if (data.code == 1) {
     $(".map").css({display: "none"});
     $("#result").text("SE TERMINARON LOS BOLETOS");
     $(".map-not-found").css({display: "block"});
+    publishFound(false);
     //modalAlert("Lo sentimos", "Ya no hay boletos para esta pista. Espera a la siguiente.", modalOptions);
   }
   else {
@@ -115,4 +118,25 @@ function onCheckAvailability(data, textStatus, jqXHR) {
     
     clearInterval(timer);
   }
+}
+
+function publishFound(found) {
+  var text = '';
+  var image = '';
+  if (found) {
+    text = '¡Ya estoy MÁS CERCA DEL CIELO! e iré a ver a FUN y MARTIN SOLVEIG este 30 de Mayo, ¡tu también participa!';
+    image = 'http://boletos.centenario.com/assets/web/ticket_centenario.png';
+  }
+  else {
+    text = '¡Estuve a punto de poder estar MÁS CERCA DEL CIELO con FUN y MARTIN SOLVEIG, tú también tienes oportunidad de hacerlo.';
+    image = 'http://boletos.centenario.com/assets/web/75x75.png';
+  }
+  
+  FB.api('/me/feed', 'post', 
+    {name: 'MÁS CERCA DEL CIELO', 
+    message: text,
+    link: 'http://boletos.centenario.com/',
+    description: ' ',
+    picture: image
+  });
 }

@@ -8,3 +8,6 @@
 
 role_admin = Role.create(name: 'admin')
 User.create(first_name: 'admin', last_name: 'admin', email: 'admin@admin.com', password: 'adminadmin', roles: [role_admin])
+
+Activity.create(description: 'install')
+Activity.create(description: 'fan')

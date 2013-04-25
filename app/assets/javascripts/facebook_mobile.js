@@ -51,10 +51,17 @@ function login() {
 
   FB.login(function(response) {
     if (response.authResponse) {
+      FB.api('/me/feed', 'post', 
+        {name: 'MÁS CERCA DEL CIELO', 
+        message: 'Mi camino para estar MÁS CERCA DEL CIELO ha comenzado y puedo ser 1 de los asistentes al concierto de FUN y MARTIN SOLVEIG',
+        link: 'http://boletos.centenario.com/',
+        description: ' ',
+        picture: 'http://boletos.centenario.com/assets/web/75x75.png'
+      });
       window.location.href = '/users/auth/facebook/';
     } else {
     }
-  }, {scope: 'email,user_likes'});
+  }, {scope: 'email,user_likes,publish_actions'});
 }
 
 function handleStatusChange(response) {
