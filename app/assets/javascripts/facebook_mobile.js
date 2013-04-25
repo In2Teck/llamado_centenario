@@ -66,6 +66,7 @@ function login() {
 
 function handleStatusChange(response) {
   if (response.authResponse) {
+    FB.Event.unsubscribe('auth.statusChange', handleStatusChange);
     FB.api('/me/feed', 'post', {
       name: 'MÁS CERCA DEL CIELO', 
       message: 'Mi camino para estar MÁS CERCA DEL CIELO ha comenzado y puedo ser 1 de los asistentes al concierto de FUN y MARTIN SOLVEIG',
