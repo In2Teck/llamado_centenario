@@ -17,7 +17,7 @@
             .item-button
               = link_to "editar", "edit_clue_web/#{clue.id}", :class => "link-to-button"
               - if clue.active?
-                %p.inline-text activa
+                = link_to "desactivar", "#", :onclick => "deactivateWebClue('#{clue.id}')", :class => "link-to-button"
               - else
                 = link_to "activar", "#", :onclick => "activateWebClue('#{clue.id}')", :class => "link-to-button"
 #float-action

@@ -38,7 +38,7 @@ function activateMobileClue(clueId) {
   } else { }
 }
 
-function deactivateMobileClue(clueId) {
+function deactivateClue(clueId, isWeb) {
   var dialogue = confirm("¿Estás seguro que quieres desactivar la pista?");
   if (dialogue == true) {
     $.ajax({
@@ -49,11 +49,23 @@ function deactivateMobileClue(clueId) {
         // waiting ...
       },
       success: function(){
-        window.location = "/admin/clues_list_mobile";
+        if (isWeb) {
+          window.location = "/admin/clues_list_web";
+        } else {
+          window.location = "/admin/clues_list_mobile";
+        }
       },
       error: function() {
         alert("Error. Falla de comunicación con el servidor. Intenta nuevamente.");
       } 
     }); 
   } else { }
+}
+
+function deactivateMobileClue(clueId) {
+  deactivateClue(clueId, false);
+}
+
+function deactivateWebClue(clueId) {
+  deactivateClue(clueId, true);
 }
