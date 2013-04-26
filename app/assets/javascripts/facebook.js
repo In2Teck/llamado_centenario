@@ -9,7 +9,7 @@ function loadFB() {
     // init the FB JS SDK
     FB.init({
       appId      : '132164533632870', // App ID from the App Dashboard
-      channelUrl : 'http://localhost:3000/channel.html', // Channel File for x-domain communication
+      channelUrl : 'http://apps.t2omedia.com.mx/channel.html', // Channel File for x-domain communication
       status     : true, // check the login status upon init?
       cookie     : true, // set sessions cookies to allow your server to access the session?
       xfbml      : true  // parse XFBML tags on this page?
