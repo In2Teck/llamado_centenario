@@ -1,6 +1,6 @@
 class DisplayController < ApplicationController
 
-  #before_filter :authenticate_user!
+  authorize_resource :class => false
 
   def index
     @signed_request = params[:signed_request]

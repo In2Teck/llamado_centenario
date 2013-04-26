@@ -1,4 +1,7 @@
 class CluesController < ApplicationController
+  
+  authorize_resource
+  
   # GET /clues
   # GET /clues.json
   def index

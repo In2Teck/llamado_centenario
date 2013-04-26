@@ -1,4 +1,7 @@
 class ReferralsController < ApplicationController
+  
+  authorize_resource
+
   # GET /referrals
   # GET /referrals.json
   def index
@@ -93,7 +96,7 @@ class ReferralsController < ApplicationController
     @referral = Referral.accept params[:origin_user_uid], params[:referred_user_id]
   
     respond_to do |format|
-      format.json { render json: @referrals}
+      format.json { render json: @referral}
     end
   end
 

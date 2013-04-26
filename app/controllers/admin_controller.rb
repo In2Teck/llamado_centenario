@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 
-  #before_filter :authenticate_user!
+  authorize_resource :class => false
 
   DF_COORDS = [19.433333, -99.133333]
   DEFAULT_RADIUS = 0.2

@@ -1,4 +1,7 @@
 class ActivitiesController < ApplicationController
+
+  authorize_resource
+
   # GET /activities
   # GET /activities.json
   def index

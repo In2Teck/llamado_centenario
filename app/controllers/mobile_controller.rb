@@ -1,5 +1,7 @@
 class MobileController < ApplicationController
 
+  authorize_resource :class => false
+
   def index
     @has_ticket =  current_user && current_user.ticket ? true : false;
   end

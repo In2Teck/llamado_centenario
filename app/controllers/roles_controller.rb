@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
 
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /roles
   # GET /roles.json
