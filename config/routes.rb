@@ -22,16 +22,18 @@ TorreCentenario::Application.routes.draw do
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
   devise_scope :user do
-	  get 'logout', :to => "devise/sessions#destroy"
-	  get 'signin', :to => "devise/sessions#new"
-	  get 'signup', :to => "devise/registrations#new"
+	  get 'logout', :to => "devise/sessions#destroy", :as => :logout
+	  get 'signin', :to => "devise/sessions#new", :as => :signin
+	  get 'signup', :to => "devise/registrations#new", :as => :signup
   end
 
   resources :users do
     match 'synch'
   end
 	
-  get 'admin/', :to => "admin#index", :as => :admin_index
+  get 'admin', :to => "admin#index", :as => :admin_index
+  
+  get 'admin/logout', :to => "admin#logout", :as => :admin_logout
 
   get 'admin/create_clue_mobile', :to => "admin#create_clue_mobile", :as => :admin_create_clue_mobile
 	
