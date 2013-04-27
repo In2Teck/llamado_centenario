@@ -9,7 +9,6 @@ class Ability
     if user.role? :admin
       can :manage, :all
 	  else
-		  can :read, :all
       can :manage, :display
       can :manage, :mobile
       can [:create_batch, :accept], Referral
@@ -17,6 +16,7 @@ class Ability
       cannot :assign_to_user, Ticket
       cannot [:assign_tickets, :activate_web, :activate, :deactivate], Clue 
       cannot :manage, :admin
+      can :index, :admin
 	  end
   end
 end

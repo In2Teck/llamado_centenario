@@ -5,8 +5,16 @@ class AdminController < ApplicationController
   DF_COORDS = [19.433333, -99.133333]
   DEFAULT_RADIUS = 0.2
 
+  def logout
+    reset_session
+    redirect_to :signin
+  end
+
   def index
-  
+    if not(current_user.try("roles") and current_user.role? :admin)
+      reset_session
+      redirect_to :signin
+    end 
   end
 
   def create_clue_mobile
