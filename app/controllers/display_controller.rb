@@ -14,7 +14,8 @@ class DisplayController < ApplicationController
     @has_ticket = (current_user && current_user.ticket) ? true : false
     @active_clue = clues[0]
     @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
-    @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10).reverse
+    # HACK: para no traer al admin user id != 1
+    @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
   end
 
   def make_guess
@@ -34,7 +35,8 @@ class DisplayController < ApplicationController
     clues = Clue.active_to_user(:web)
     result = {:result => false}
     if (clues.length > 0)
-      @players = User.where("current_sign_in_at is not null").order("current_sign_in_at DESC").limit(10).reverse
+      # HACK: para no traer al admin user id != 1
+      @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
       result = {:result => true, :clue => clues[0], :players => @players}
     end
     render :json => result
