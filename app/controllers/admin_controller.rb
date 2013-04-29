@@ -83,7 +83,7 @@ class AdminController < ApplicationController
   end
 
   def reports_users
-
+    @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:activities).where("roles_users.role_id is null")
   end
 
 end
