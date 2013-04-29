@@ -1,2 +1,27 @@
 #float-action
   = link_to "regresar", :admin_reports , :class => "link-to-button"
+- content_for :header_title do
+  reportes: usuarios
+%section#divided-content.aligned
+  %article
+    %table#user-list
+      %tr
+        %th 
+        %th nombre
+        %th email 
+        %th es fan
+        %th ganó boleto
+        %th invitados
+        %th intentos web
+        %th intentos móvil
+      - @users.each do |user|
+        %tr
+          %td
+            = image_tag user.thumbnail_url, :class => "thumbnail" 
+          %td #{user.first_name} #{user.last_name}
+          %td #{user.email}
+          %td #{(not user.is_fan) ? "No" : ( (not user.activities.find_by_description("fan").blank?) ? "Nuevo" : "Sí") }
+          %td #{user.ticket.blank? ? "No" : "Sí"}
+          %td #{user.referrals.count} enviados, #{user.referrals.where("accepted = ?", true).count} aceptados
+          %td #{user.clues.where("source_type = 'web'").count}
+          %td #{user.clues.where("source_type = 'mobile'").count}

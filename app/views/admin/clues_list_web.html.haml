@@ -20,7 +20,7 @@
                 = link_to "desactivar", "#", :onclick => "deactivateWebClue('#{clue.id}')", :class => "link-to-button"
               - else
                 - if clue.tickets_not_assigned.count == 0
-                  %p inactiva
+                  %p.aligned-inline inactiva
                 - else
                   = link_to "activar", "#", :onclick => "activateWebClue('#{clue.id}')", :class => "link-to-button"
 #float-action
