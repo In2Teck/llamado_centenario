@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 role_admin = Role.create(name: 'admin')
-User.create(first_name: 'admin', last_name: 'admin', email: 'admin@admin.com', password: 'adminadmin', roles: [role_admin])
+User.create(first_name: 'admin', last_name: 'admin', email: 'admin', password: 'T2Oconcierto2013', roles: [role_admin])
 
 Activity.create(description: 'install')
 Activity.create(description: 'fan')

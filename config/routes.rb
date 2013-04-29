@@ -50,6 +50,10 @@ TorreCentenario::Application.routes.draw do
   get 'admin/clues_list_web', :to => "admin#clues_list_web", :as => :admin_clues_list_web
 
   get 'admin/reports', :to => "admin#reports", :as => :admin_reports
+  
+  get 'admin/reports_summary', :to => "admin#reports_summary", :as => :admin_reports_summary
+  
+  get 'admin/reports_users', :to => "admin#reports_users", :as => :admin_reports_users
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 

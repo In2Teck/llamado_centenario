@@ -19,6 +19,9 @@
               - if clue.active?
                 = link_to "desactivar", "#", :onclick => "deactivateWebClue('#{clue.id}')", :class => "link-to-button"
               - else
-                = link_to "activar", "#", :onclick => "activateWebClue('#{clue.id}')", :class => "link-to-button"
+                - if clue.tickets_not_assigned.count == 0
+                  %p inactiva
+                - else
+                  = link_to "activar", "#", :onclick => "activateWebClue('#{clue.id}')", :class => "link-to-button"
 #float-action
   = link_to "crear nueva", :admin_create_clue_web , :class => "link-to-button"
