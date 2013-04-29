@@ -1,2 +1,14 @@
 #float-action
   = link_to "regresar", :admin_reports , :class => "link-to-button"
+- content_for :header_title do
+  reportes: resumen
+%section#divided-content.aligned
+  %p Usuarios totales: #{@total_users}
+  %p Usuarios participando: #{@active_users}
+  %p Usuarios invitados: #{@total_referrals}
+  %p Usuarios que aceptaron invitación: #{@accepted_referrals}
+  %p Fans nuevos: #{@new_fans}
+  %p Boletos creados: #{@total_tickets}
+  %p Boletos asignados: #{@assigned_tickets}
+  %p Pistas creadas: #{@assigned_tickets}
+  %p Pistas activas: #{@assigned_tickets}

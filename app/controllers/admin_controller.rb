@@ -69,7 +69,15 @@ class AdminController < ApplicationController
   end
 
   def reports_summary
-
+    @total_users = User.count
+    @total_active_users = User.joins(:clues, :referrals).where("clues is not null or referrals is not null").count
+    @total_referrals = Referral.count
+    @accepted_referrals = Referral.where("accepted = ?", true).count
+    @new_fans = User.select("DISTINCT(user_id)").joins(:activities).where("activity_id = 2").count
+    @total_tickets = Ticket.count
+    @assigned_tickets = Ticket.where("assigned = ?", true).count
+    @total_clues = Clue.count
+    @active_clues = Clue.where("active = ?", true).count
   end
 
   def reports_users
