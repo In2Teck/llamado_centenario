@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+  ACTIVE_USERS_QUERY = "SELECT COUNT(*) FROM (SELECT DISTINCT(referrals.user_id) FROM `users` LEFT OUTER JOIN `referrals` ON `referrals`.`user_id` = `users`.`id` WHERE (referrals.user_id is not null) UNION SELECT DISTINCT(clues_users.user_id) FROM `users` LEFT OUTER JOIN `clues_users` ON `clues_users`.`user_id` = `users`.`id` WHERE (clues_users.user_id is not null) ) as ACTIVE_USERS"
+
   authorize_resource :class => false
 
   DF_COORDS = [19.433333, -99.133333]
@@ -70,7 +72,7 @@ class AdminController < ApplicationController
 
   def reports_summary
     @total_users = User.count
-    @total_active_users = User.joins(:clues, :referrals).where("clues is not null or referrals is not null").count
+    @total_active_users = ActiveRecord::Base.connection.execute(ACTIVE_USERS_QUERY).first[0]
     @total_referrals = Referral.count
     @accepted_referrals = Referral.where("accepted = ?", true).count
     @new_fans = User.select("DISTINCT(user_id)").joins(:activities).where("activity_id = 2").count
