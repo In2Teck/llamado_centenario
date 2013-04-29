@@ -67,4 +67,13 @@ class AdminController < ApplicationController
   def reports
     
   end
+
+  def reports_summary
+
+  end
+
+  def reports_users
+
+  end
+
 end
