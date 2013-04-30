@@ -84,17 +84,17 @@ class AdminController < ApplicationController
 
   def reports_users
     if params[:sort]
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:activities).where("roles_users.role_id IS null").order(params[:sort] + " " + params[:direction])
+      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:clues, :activities, :referrals).where("roles_users.role_id IS null").order(params[:sort] + " " + params[:direction])
     else
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:activities).where("roles_users.role_id IS null")
+      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:clues, :activities, :referrals).where("roles_users.role_id IS null")
     end
   end
 
   def reports_winners
     if params[:sort]
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket).where("roles_users.role_id IS null AND users.ticket_id IS NOT null").order(params[:sort] + " " + params[:direction])
+      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket => :clue).where("roles_users.role_id IS null AND users.ticket_id IS NOT null").order(params[:sort] + " " + params[:direction])
     else
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket).where("roles_users.role_id IS null AND users.ticket_id IS NOT NULL")
+      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket => :clue).where("roles_users.role_id IS null AND users.ticket_id IS NOT NULL")
     end
   end
 
