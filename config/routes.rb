@@ -54,6 +54,8 @@ TorreCentenario::Application.routes.draw do
   get 'admin/reports_summary', :to => "admin#reports_summary", :as => :admin_reports_summary
   
   get 'admin/reports_users', :to => "admin#reports_users", :as => :admin_reports_users
+  
+  get 'admin/reports_winners', :to => "admin#reports_winners", :as => :admin_reports_winners
 
   match 'search_clue' => 'display#search_clue', :as => :search_clue
 

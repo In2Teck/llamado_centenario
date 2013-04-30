@@ -1,0 +1,26 @@
+#float-action
+  = link_to "regresar", :admin_reports , :class => "link-to-button"
+- content_for :header_title do
+  reportes: usuarios
+%section#divided-content.aligned
+  %article
+    %table#user-list
+      %tr
+        %th 
+        %th
+          = sortable "first_name", "nombre"
+        %th
+          = sortable "email", "email" 
+        %th
+          = sortable "tickets.updated_at", "¿cuándo ganó?"
+        %th ticket por
+        %th pista
+      - @users.each do |user|
+        %tr
+          %td
+            = image_tag user.thumbnail_url, :class => "thumbnail" 
+          %td #{user.first_name} #{user.last_name}
+          %td #{user.email}
+          %td #{user.ticket.updated_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
+          %td #{user.ticket.source_type}
+          %td #{user.ticket.clue.try("description")}

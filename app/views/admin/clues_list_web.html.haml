@@ -13,7 +13,7 @@
             .item-text
               %p #{clue.description}
               %p Tickets: #{clue.tickets_not_assigned.count} disponibles, #{clue.tickets_assigned.count} asignados
-              %p Creada: #{clue.created_at.to_formatted_s(:short)}
+              %p Intentos: #{clue.users.count}, Creada: #{clue.created_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
             .item-button
               = link_to "editar", "edit_clue_web/#{clue.id}", :class => "link-to-button"
               - if clue.active?
