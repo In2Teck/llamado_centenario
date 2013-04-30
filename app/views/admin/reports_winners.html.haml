@@ -13,13 +13,16 @@
           = sortable "email", "email" 
         %th
           = sortable "tickets.updated_at", "¿cuándo ganó?"
-        %th ticket por
-        %th pista
+        %th
+          = sortable "tickets.source_type", "ticket por"
+        %th
+          = sortable "clues.description", "pista"
       - @users.each do |user|
         %tr
           %td
             = image_tag user.thumbnail_url, :class => "thumbnail" 
-          %td #{user.first_name} #{user.last_name}
+          %td
+            = link_to "#{user.first_name} #{user.last_name}", "http://facebook.com/#{user.uid}", :target => "_blank"
           %td #{user.email}
           %td #{user.ticket.updated_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
           %td #{user.ticket.source_type}

@@ -22,11 +22,12 @@
         %tr
           %td
             = image_tag user.thumbnail_url, :class => "thumbnail" 
-          %td #{user.first_name} #{user.last_name}
+          %td
+            = link_to "#{user.first_name} #{user.last_name}", "http://facebook.com/#{user.uid}", :target => "_blank"
           %td #{user.email}
           %td #{user.created_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
-          %td #{(not user.is_fan) ? "No" : ( (not user.activities.find_by_description("fan").blank?) ? "Nuevo" : "Sí") }
-          %td #{user.ticket.blank? ? "No" : "Sí"}
-          %td #{user.referrals.where("accepted = ?", true).count} / #{user.referrals.count}
-          %td #{user.clues.where("source_type = 'web'").count}
-          %td #{user.clues.where("source_type = 'mobile'").count}
+          %td #{(not user.is_fan) ? "No" : ( (not user.activities.select{|activity| activity.description == "fan"}.size >= 1) ? "Sí" : "Nuevo") }
+          %td #{user.ticket_id.blank? ? "No" : "Sí"}
+          %td #{user.referrals.select{|referral| referral.accepted == true}.count} / #{user.referrals.size}
+          %td #{user.clues.select{|clue| clue.source_type == 'web'}.size}
+          %td #{user.clues.select{|clue| clue.source_type == 'mobile'}.size}
