@@ -12,6 +12,7 @@ gem 'geocoder'
 gem 'haml-rails'
 gem 'rack-p3p'
 gem 'paperclip'
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -31,3 +31,4 @@
           %td #{user.referrals.select{|referral| referral.accepted == true}.count} / #{user.referrals.size}
           %td #{user.clues.select{|clue| clue.source_type == 'web'}.size}
           %td #{user.clues.select{|clue| clue.source_type == 'mobile'}.size}
+= will_paginate @users
