@@ -2,6 +2,8 @@ class AdminController < ApplicationController
 
   ACTIVE_USERS_QUERY = "SELECT COUNT(*) FROM (SELECT DISTINCT(referrals.user_id) FROM `users` LEFT OUTER JOIN `referrals` ON `referrals`.`user_id` = `users`.`id` WHERE (referrals.user_id is not null) UNION SELECT DISTINCT(clues_users.user_id) FROM `users` LEFT OUTER JOIN `clues_users` ON `clues_users`.`user_id` = `users`.`id` WHERE (clues_users.user_id is not null) ) as ACTIVE_USERS"
 
+  helper_method :sort_column, :sort_direction
+
   authorize_resource :class => false
 
   DF_COORDS = [19.433333, -99.133333]
@@ -83,19 +85,20 @@ class AdminController < ApplicationController
   end
 
   def reports_users
-    if params[:sort]
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:clues, :activities, :referrals).where("roles_users.role_id IS null").order(params[:sort] + " " + params[:direction])
-    else
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:clues, :activities, :referrals).where("roles_users.role_id IS null")
-    end
+    @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:clues, :activities, :referrals).where("roles_users.role_id IS null").order(sort_column + " " + sort_direction).paginate(:per_page => 100, :page => params[:page])
   end
 
   def reports_winners
-    if params[:sort]
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket => :clue).where("roles_users.role_id IS null AND users.ticket_id IS NOT null").order(params[:sort] + " " + params[:direction])
-    else
-      @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket => :clue).where("roles_users.role_id IS null AND users.ticket_id IS NOT NULL")
-    end
+    @users = User.joins("LEFT OUTER JOIN roles_users on roles_users.user_id = users.id").includes(:ticket => :clue).where("roles_users.role_id IS null AND users.ticket_id IS NOT null").order(sort_column + " " + sort_direction).paginate(:per_page => 100, :page => params[:page])
   end
 
+  private
+
+  def sort_column
+    params[:sort] || "id"
+  end
+
+  def sort_direction
+    params[:direction] || "ASC"
+  end
 end

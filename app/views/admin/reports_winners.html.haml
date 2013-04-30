@@ -1,7 +1,7 @@
 #float-action
   = link_to "regresar", :admin_reports , :class => "link-to-button"
 - content_for :header_title do
-  reportes: usuarios
+  reportes: ganadores
 %section#divided-content.aligned
   %article
     %table#user-list
@@ -27,3 +27,4 @@
           %td #{user.ticket.updated_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
           %td #{user.ticket.source_type}
           %td #{user.ticket.clue.try("description")}
+= will_paginate @users
