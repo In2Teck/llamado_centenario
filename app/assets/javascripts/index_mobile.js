@@ -97,7 +97,7 @@ function onSearchTicket(data, textStatus, jqXHR) {
       $("#txt-info").text("HAY BOLETOS CERCA DE AQUI, PERO NO ESTAS EN EL LUGAR CORRECTO");
     }
     else if (data.code == 1) {
-      $("#txt-info").text("ENCONTRASTE EL LUGAR CORRECTO, PERO YA NO HAY BOLETOS DISPONIBLES");
+      $("#txt-info").text("NO HAY BOLETOS DISPONIBLES EN ESTE LUGAR");
     }
   }
   $.mobile.loading("hide");
