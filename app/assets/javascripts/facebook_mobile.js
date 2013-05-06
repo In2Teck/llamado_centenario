@@ -9,7 +9,7 @@ function loadFB() {
     // init the FB JS SDK
     FB.init({
       appId      : '132164533632870', // App ID from the App Dashboard
-      channelUrl : 'http://localhost:3000/channel.html', // Channel File for x-domain communication
+      channelUrl : 'http://boletos.centenario.com/channel.html', // Channel File for x-domain communication
       status     : true, // check the login status upon init?
       cookie     : true, // set sessions cookies to allow your server to access the session?
       xfbml      : true  // parse XFBML tags on this page?
@@ -49,7 +49,10 @@ function loadFB() {
 
 function login() {
 
-  FB.login(function(response) {
+  var permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=" + 132164533632870 + "&response_type=code&redirect_uri=" + "http://boletos.centenario.com/mobile" + "&scope=" + "email,user_likes,publish_actions";
+  window.location = permissionUrl;
+
+  /*FB.login(function(response) {
     if (response.authResponse) {
     /*  FB.api('/me/feed', 'post', 
         {name: 'MÁS CERCA DEL CIELO', 
@@ -58,11 +61,11 @@ function login() {
         description: ' ',
         picture: 'http://boletos.centenario.com/assets/web/75x75.png'
       });
-    */
+    
       window.location.href = '/users/auth/facebook/';
     } else {
     }
-  }, {scope: 'email,user_likes,publish_actions'});
+  }, {scope: 'email,user_likes,publish_actions'});*/
 }
 
 function handleStatusChange(response) {
