@@ -49,6 +49,7 @@ function loadFB() {
 
 function login() {
 
+  //BUG#5329429825671 Changed to permission URL instead of FB.login
   var permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=" + 132164533632870 + "&response_type=code&redirect_uri=" + "http://boletos.centenario.com/mobile" + "&scope=" + "email,user_likes,publish_actions";
   window.location = permissionUrl;
 
