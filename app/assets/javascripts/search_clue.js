@@ -2,6 +2,7 @@ var map;
 var guess;
 var mapZoom;
 var timer;
+var searchMode = true;
 var modalOptions = { onClose: function (dialog) { $.modal.close(); window.location.href = "/"; } };
 
 $(document).on("ready", onReady);
@@ -47,16 +48,30 @@ function initMap()
     zoom: 13,
     maxZoom: 17,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    draggableCursor: 'crosshair'
+    draggableCursor: null
   };
   map = new google.maps.Map($("#map-canvas")[0], mapOptions);
   google.maps.event.addListener(map, 'click', onClick);
 }
 
+function switchModes() {
+  if (searchMode) {
+    map.setOptions({draggableCursor: 'crosshair'});
+    $("#action-btn").css({background: "url('assets/web/movermapa_btn.png')"});
+  }
+  else {
+    map.setOptions({draggableCursor: null});
+    $("#action-btn").css({background: "url('assets/web/encuentrapista_btn.png')"});
+  }
+  searchMode = !searchMode
+}
+
 function onClick(event) {
-  guess = event.latLng;
-  mapZoom = map.getZoom();
-  setTimeout("placeMarker()", 600);
+  if (!searchMode) {
+    guess = event.latLng;
+    mapZoom = map.getZoom();
+    setTimeout("placeMarker()", 600);
+  }
 }
 
 function placeMarker() {

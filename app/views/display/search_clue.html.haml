@@ -15,11 +15,14 @@
     = link_to "", :root, :id => "home_button"
   #clue-locator
     #map-canvas
+    %button#action-btn{:onclick=>"switchModes()"}
   #clue-info
     #clue-title
       %p UBICA ESTA PISTA EN EL MAPA
     %figure
       = image_tag @active_clue[:image_url], :id => "clue-image" if @active_clue
+  - 2.times do
+    %br
   .top-div PERSONAS PARTICIPANDO EN ESTE MOMENTO
   %article#players
     - @players.each do |player|
