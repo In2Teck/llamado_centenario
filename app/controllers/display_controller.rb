@@ -10,12 +10,16 @@ class DisplayController < ApplicationController
 	end
 
   def search_clue
-    clues = Clue.active_to_user(:web)
-    @has_ticket = (current_user && current_user.ticket) ? true : false
-    @active_clue = clues[0]
-    @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
-    # HACK: para no traer al admin user id != 1
-    @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
+    if current_user
+      clues = Clue.active_to_user(:web)
+      @has_ticket = (current_user && current_user.ticket) ? true : false
+      @active_clue = clues[0]
+      @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
+      # HACK: para no traer al admin user id != 1
+      @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
+    else
+      redirect_to :root
+    end
   end
 
   def make_guess
