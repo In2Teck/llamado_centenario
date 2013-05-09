@@ -12,6 +12,7 @@ function onReady() {
   if ($("#ruby-values").data("has-ticket")) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
+    $("#folio").append(" " + $("#ruby-values").data("folio"));
   }
 }
 
@@ -100,6 +101,7 @@ function onPlaceMarker(data, textStatus, jqXHR) {
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
+    $("#folio").append(" " + data.folio);
     publishFound(true);
   }
   else if (!data.error) {

@@ -6,6 +6,7 @@ function onReady() {
   if ($("#ruby-values").data("has-ticket")) {
     $(".invite").css({display: "none"});
     $(".has-ticket").css({display: "block"});
+    $("#folio").append(" " + $("#ruby-values").data("folio"));
   }
 }
 

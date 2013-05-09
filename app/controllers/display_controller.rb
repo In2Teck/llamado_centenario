@@ -7,18 +7,22 @@ class DisplayController < ApplicationController
     @app_data = (decode_data @signed_request)["app_data"] if not @signed_request.blank?
     @is_fan = (decode_data @signed_request)["page"]["liked"] if not @signed_request.blank?
     @is_fan = current_user.is_fan if @signed_request.blank? && current_user != nil
+    @user_error = params[:user_error]
 	end
 
   def search_clue
     if current_user
       clues = Clue.active_to_user(:web)
       @has_ticket = (current_user && current_user.ticket) ? true : false
+      if @has_ticket
+        @folio = current_user.ticket.folio
+      end
       @active_clue = clues[0]
       @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
       # HACK: para no traer al admin user id != 1
       @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
     else
-      redirect_to :root
+      redirect_to "/?user_error=true"
     end
   end
 
@@ -49,9 +53,12 @@ class DisplayController < ApplicationController
   def invite_friends
     if current_user
       @has_ticket = current_user.ticket ? true : false
+      if @has_ticket
+        @folio = current_user.ticket.folio
+      end
       @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
     else
-      redirect_to :root
+      redirect_to "/?user_error=true"
     end
   end
   

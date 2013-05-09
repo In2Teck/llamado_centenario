@@ -39,7 +39,7 @@
     %p.message-top.yellow ¡FELICIDADES!
     %br
     %br
-    %p.message-bottom ENCONTRASTE TU BOLETO
+    %p#folio.message-bottom ENCONTRASTE TU BOLETO
     %br
     %br
     = image_tag "web/ticket_centenario.png"
@@ -63,4 +63,4 @@
     #invitar
       = link_to "", :invite_friends, :id => "invite-friends"
 
-#ruby-values{ data: { clue: @active_clue ? "true" : "false", clue_id: (@active_clue[:id] if @active_clue), clue_image: (@active_clue[:image_url] if @active_clue), total_tickets: (@active_clue[:total_tickets] if @active_clue), remain_tickets: (@active_clue[:remain_tickets] if @active_clue), can_guess: @can_guess.to_s, has_ticket: @has_ticket.to_s } }
+#ruby-values{ data: { clue: @active_clue ? "true" : "false", clue_id: (@active_clue[:id] if @active_clue), clue_image: (@active_clue[:image_url] if @active_clue), total_tickets: (@active_clue[:total_tickets] if @active_clue), remain_tickets: (@active_clue[:remain_tickets] if @active_clue), can_guess: @can_guess.to_s, has_ticket: @has_ticket.to_s, folio: @folio } }

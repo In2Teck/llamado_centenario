@@ -3,7 +3,7 @@
 - content_for :head_script do
   = javascript_include_tag "invite_friends"
 #fb-root
-#ruby-values{"data-user-id" => current_user.id, "data-has-ticket" => @has_ticket.to_s, "data-users" => @referrals.to_json}
+#ruby-values{"data-user-id" => current_user.id, "data-has-ticket" => @has_ticket.to_s, "data-users" => @referrals.to_json, "data-folio" => @folio}
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"
@@ -46,7 +46,7 @@
     %p.message-top.yellow ¡FELICIDADES!
     %br
     %br
-    %p.message-bottom ENCONTRASTE TU BOLETO
+    %p#folio.message-bottom ENCONTRASTE TU BOLETO
     %br
     %br
     = image_tag "web/ticket_centenario.png"
