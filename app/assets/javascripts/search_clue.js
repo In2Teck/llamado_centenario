@@ -135,9 +135,11 @@ function onCheckAvailability(data, textStatus, jqXHR) {
     $.each(data.players, function(index, value) {
       $("#players").append('<div class="player"><img class="player-pic" src="' + value.thumbnail_url +'"/></div>');
     });
+    if (data.clue.remain_tickets == data.clue.total_tickets) {
+      modalAlert("Lo sentimos", "Se han terminado los boletos.", modalOptions);
+    }
   }
   else {
-    
     clearInterval(timer);
   }
 }
