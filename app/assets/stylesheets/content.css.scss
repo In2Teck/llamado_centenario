@@ -29,7 +29,7 @@ section {
 }
 
 p {
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 }
 
@@ -42,7 +42,7 @@ p {
 }
 
 .message-bottom {
-  font-size: 1em;
+  font-size: 1.6em;
 }
 
 #footer {
@@ -144,4 +144,12 @@ nav a:hover {
 .has-ticket {
   background: url("web/header_pista.png") no-repeat center top, url("web/fondo_informacion_esquina.png") no-repeat center;
   display: none;
+}
+
+.yellow {
+  color: #b09648;
+}
+
+.message-winner {
+  font-size: 22px;
 }
