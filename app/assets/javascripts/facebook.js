@@ -1,7 +1,33 @@
 $(document).on("ready", onReady);
 
 function onReady() {
-  loadFB();
+  if (isIECompatible()) {
+    loadFB();
+  }
+  else {
+    window.location = '/ie8.html';
+  }
+}
+
+function isIECompatible() {
+  var compatible = true;
+  var browser = (function() {
+    var rv = -1; // Return value assumes failure.
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+      var ua = navigator.userAgent;
+      var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+      if (re.exec(ua) != null)
+        rv = parseFloat( RegExp.$1 );
+   }
+   return rv;
+  })();
+
+  if (browser > -1) {
+    if (browser < 9) {
+      compatible = false;
+    }
+  }
+  return compatible
 }
 
 function loadFB() {
