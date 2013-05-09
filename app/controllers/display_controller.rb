@@ -7,6 +7,7 @@ class DisplayController < ApplicationController
     @app_data = (decode_data @signed_request)["app_data"] if not @signed_request.blank?
     @is_fan = (decode_data @signed_request)["page"]["liked"] if not @signed_request.blank?
     @is_fan = current_user.is_fan if @signed_request.blank? && current_user != nil
+    @user_error = params[:user_error]
 	end
 
   def search_clue
@@ -18,7 +19,7 @@ class DisplayController < ApplicationController
       # HACK: para no traer al admin user id != 1
       @players = User.where("current_sign_in_at is not null and id != 1").order("current_sign_in_at DESC").limit(10).reverse
     else
-      redirect_to :root
+      redirect_to "/?user_error=true"
     end
   end
 
@@ -51,7 +52,7 @@ class DisplayController < ApplicationController
       @has_ticket = current_user.ticket ? true : false
       @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
     else
-      redirect_to :root
+      redirect_to "/?user_error=true"
     end
   end
   

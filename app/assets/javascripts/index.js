@@ -13,6 +13,8 @@ function onReady() {
   checkRedirect();
   $(document).on("updateData", onUpdateData);
   $(document).on("fbLoaded", onFBLoaded);
+  if($("#ruby-values").data("user-error")) {
+    modalAlert("Error", "Intenta entrar nuevamente a la aplicación con otro navegador.", null);
   TERMS_PATH = $("#ruby-values").data("terms-path").replace("/","");
   if ($("#ruby-values").data("is-fan")) {
     $("#section-no-fan").css({display: "none"});
