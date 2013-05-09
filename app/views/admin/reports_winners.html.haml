@@ -17,6 +17,8 @@
           = sortable "tickets.source_type", "ticket por"
         %th
           = sortable "clues.description", "pista"
+        %th
+          = sortable "tickets.folio", "folio"
       - @users.each do |user|
         %tr
           %td
@@ -27,4 +29,5 @@
           %td #{user.ticket.updated_at.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)}
           %td #{user.ticket.source_type}
           %td #{user.ticket.clue.try("description")}
+          %td #{user.ticket.folio}
 = will_paginate @users
