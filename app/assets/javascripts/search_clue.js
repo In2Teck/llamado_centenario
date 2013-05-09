@@ -98,6 +98,7 @@ function tryAgain(){
 }
 
 function onPlaceMarker(data, textStatus, jqXHR) {
+  clearInterval(timer);
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
