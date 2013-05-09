@@ -139,6 +139,9 @@ function onCheckAvailability(data, textStatus, jqXHR) {
       modalAlert("Lo sentimos", "Se han terminado los boletos.", modalOptions);
     }
   }
+  else if (data.result == false) {
+    modalAlert("Lo sentimos", "Se han terminado los boletos.", modalOptions);
+  }
   else {
     clearInterval(timer);
   }
