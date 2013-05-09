@@ -14,6 +14,9 @@ class DisplayController < ApplicationController
     if current_user
       clues = Clue.active_to_user(:web)
       @has_ticket = (current_user && current_user.ticket) ? true : false
+      if @has_ticket
+        @folio = current_user.ticket.folio
+      end
       @active_clue = clues[0]
       @can_guess = (current_user.clues.where('clue_id = ?',  @active_clue[:id]).length == 0 ? true : false) if @active_clue
       # HACK: para no traer al admin user id != 1
@@ -50,6 +53,9 @@ class DisplayController < ApplicationController
   def invite_friends
     if current_user
       @has_ticket = current_user.ticket ? true : false
+      if @has_ticket
+        @folio = current_user.ticket.folio
+      end
       @referrals = current_user.referrals.includes(:referred).where("referrals.accepted = ?", true)
     else
       redirect_to "/?user_error=true"

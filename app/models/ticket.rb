@@ -26,7 +26,7 @@ class Ticket < ActiveRecord::Base
 						if ticket_count == 1
 							clue.update_attribute(:active, false)
 						end
-						result = {:won_ticket => true, :error => false}
+						result = {:won_ticket => true, :error => false, :folio => ticket_to_assign.folio}
 					else
 						raise 'No more tickets to assign and the clue is still active.'
 					end

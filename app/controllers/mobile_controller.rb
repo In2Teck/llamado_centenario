@@ -4,6 +4,9 @@ class MobileController < ApplicationController
 
   def index
     @has_ticket =  current_user && current_user.ticket ? true : false;
+    if @has_ticket
+      @folio = current_user.ticket.folio
+    end
   end
 
   def search_ticket
