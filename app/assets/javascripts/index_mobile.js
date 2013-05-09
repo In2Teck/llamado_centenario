@@ -40,7 +40,8 @@ function onLike(response) {
 function goHome() { 
    if ($("#ruby-values").data("has-ticket")) {
     $("#txt-result").text("¡ FELICIDADES !");
-    $("#txt-info").text("YA CUENTAS CON TU BOLETO " + $("#ruby-values").data("folio"));
+    $("#txt-info").text("YA CUENTAS CON TU BOLETO");
+    $("#txt-folio").text("Tu folio es " + $("#ruby-values").data("folio"));
     $("#txt-mail").text("Muchas gracias por participar. Nos vemos en el concierto");
     $("#img-result").attr("src", "assets/mobile/boleto_centenario.png");
     $.mobile.changePage($("#result"));
@@ -80,7 +81,8 @@ function onSearchTicket(data, textStatus, jqXHR) {
     publishFound(true);
     $("#ruby-values").data("has-ticket", true);
     $("#txt-result").text("¡ FELICIDADES !");
-    $("#txt-info").text("ENCONTRASTE TU BOLETO " + data.folio);
+    $("#txt-info").text("ENCONTRASTE TU BOLETO");
+    $("#txt-folio").text("Tu folio es " + data.folio);
     $("#txt-mail").text("Revisa tu correo electrónico y sigue las instrucciones para recoger tu premio");
     $("#img-result").attr("src", "assets/mobile/boleto_centenario.png");
      /*var marker = new google.maps.Marker({

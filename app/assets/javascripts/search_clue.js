@@ -12,7 +12,7 @@ function onReady() {
   if ($("#ruby-values").data("has-ticket")) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
-    $("#folio").append(" " + $("#ruby-values").data("folio"));
+    $("#folio").append("<p style='font-size:0.5em;'> Tu folio es " + $("#ruby-values").data("folio") + "</p>");
   }
 }
 
@@ -98,10 +98,11 @@ function tryAgain(){
 }
 
 function onPlaceMarker(data, textStatus, jqXHR) {
+  clearInterval(timer);
   if (data.won_ticket) {
     $(".map").css({display: "none"});
     $(".map-found").css({display: "block"});
-    $("#folio").append(" " + data.folio);
+    $("#folio").append("<p style='font-size:0.5em;'> Tu folio es " + data.folio + "</p>");
     publishFound(true);
   }
   else if (!data.error) {
@@ -138,6 +139,9 @@ function onCheckAvailability(data, textStatus, jqXHR) {
     if (data.clue.remain_tickets == data.clue.total_tickets) {
       modalAlert("Lo sentimos", "Se han terminado los boletos.", modalOptions);
     }
+  }
+  else if (data.result == false) {
+    modalAlert("Lo sentimos", "Se han terminado los boletos.", modalOptions);
   }
   else {
     clearInterval(timer);
