@@ -7,6 +7,7 @@ class Ticket < ActiveRecord::Base
 	SOURCE_REFERRALS = "referrals"
 
 	def self.locate_and_assign latitude, longitude, source_type, current_user
+    Ticket.log_user_try current_user, source_type, latitude, longitude
 		result = {}
 		clues = Clue.find_all_by_active_and_source_type(true, source_type)
 		if (clues.length > 0)
@@ -49,6 +50,20 @@ class Ticket < ActiveRecord::Base
       UserMailer.send_win_notification(user).deliver
     rescue
       logger.error "The email couldn't be delivered to #{user.first_name}. Please check the settings."
+    end
+  end
+
+  #custom try logger
+
+  def self.try_logger
+    @@try_logger ||= Logger.new(File.join(Rails.root, 'log', 'try_log.log'))
+  end
+
+  def self.log_user_try current_user, source_type, latitude, longitude
+    begin
+      Ticket.try_logger.info("#{Time.now.in_time_zone('Central Time (US & Canada)').to_formatted_s(:short)} user: #{current_user.uid}, type: #{source_type}, lat: #{latitude}, lng: #{longitude}")
+    rescue
+      logger.error "The custom try_logger is not working."
     end
   end
 
