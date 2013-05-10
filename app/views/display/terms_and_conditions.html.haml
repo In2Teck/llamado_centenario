@@ -1,20 +1,78 @@
 - content_for :head_style do
   = stylesheet_link_tag "content"
+- content_for :head_script do
+  = javascript_include_tag "terms"
 #fb-root
 %header
   %hgroup
     = image_tag "web/linea_amarilla_botones.png"
-    %h2.header-top CONOCE EL CONCIERTO
-    %h2.header-bottom MÁS CERCA DEL CIELO
+    %h2.header-top TÉRMINOS Y
+    %h2.header-bottom CONDICIONES
     = image_tag "web/linea_amarilla_botones.png"
 %section.terms
   %nav
     = link_to "", :root, :id => "home_button"
-  %article.content-text
-  - if @authorized == 'false'
-    %p#unauthorized Tu cuenta no está autorizada para participar. Por favor lee los términos y condiciones especificados a continuación.
-  %h1 BASES Y CONDICIONES
-  %p Participa en las mecánicas para ganar tu boleto al concierto más cerca del cielo.
-  %br
-  %p#bases Se requiere contar con una cuenta de usuario con antigüedad y actividad, tomando en cuenta amigos y publicaciones regulares.
-  %p#bases Para participar permanece atento a las publicaciones del muro cuando publiquemos la pista Centenario búscala en nuestra aplicación, dando click en el punto exacto donde crees que está localizada en el mapa.
+  %h1 CONOCE EL CONCIERTO MÁS CERCA DEL CIELO
+  %article#terms.content-text.bases
+    - if @authorized == 'false'
+      %p#unauthorized Tu cuenta no está autorizada para participar. Por favor lee los términos y condiciones especificados a continuación.
+    %br
+    %p Tequila Centenario® te invita a participar en las diferentes dinámicas que tendremos para obtener boletos para asistir al concierto “Más cerca del cielo”, el cual se llevará a cabo el 30 de Mayo de 2013, en un lugar que aún está por definirse, dentro del Distrito Federal y área Metropolitana.
+    %p Si resultas ganador de alguna de las dinámicas te lo haremos saber vía correo elctrónico con el que te encuentras registrado en Facebook, y te notificaremos el lugar y día en el que podrás recoger tus boletos. Recuerda llevar original y copia de una identificación oficial. 
+    %p Las dinámicas que tenemos para ti son:
+    %br
+    %h2.bases-sub-header Mecánicas y premios 
+    %br
+    %h3 Dinámica 1: “Encuentra tu pase utilizando la app en tu celular”
+    %p Para participar en esta dinámica deberás contar con una cuenta de Facebook y con teléfono celular con acceso a Internet y localización GPS disponible. Antes de participar verifica que el modelo de tu celular sea compatible con la aplicación Boletos Más Cerca del Cielo la cual se encuentra disponible en la página de internet: boletos.centenario.com.
+    %p Para utilizar esta aplicación deberás aceptar los términos que permitan a la aplicación usar tus siguientes datos: cuenta de Facebook, correo electrónico, nombre de usuario y permiso para publicar tu nombre a través de tu cuenta de Facebook. Las publicaciones que se realicen a través de esta aplicación serán única y exclusivamente sólo mientras participes en la dinámica y no se publicarán actividades que no hayas realizado. 
+    %ul
+      %li Tequila Centenario@ emitirá una pista a través de sus redes sociales oficiales: www.facebook.com/CentenarioT y www.twitter.com/CentenarioT ,  dicha pista será una imagen que muestre un lugar de la ciudad de México al cual tendrás que asistir lo más rápido posible. Cuando te encuentres físicamente en el lugar indicado deberás abrir en tu teléfono celular la aplicación Boletos Más Cerca del Cielo, vía la página de internet.
+      %li Dentro de la aplicación Boletos Más Cerca del Cielo, se te pedirá que encuentres el boleto virtual. Una vez que lo encuentres y resultes ganador del boleto, te llegará un e-mail de confirmación al correo con el que te encuentres suscrito a Facebook;  en donde se te indicará el lugar y fecha para recoger físicamente tu boleto, recuerda entregarnos copia de una identificación oficial.
+    %p Todos los usuarios tienen sólo una oportunidad por pista y vuelven a tener otra cuando exista una dinámica similar con una pista diferente.
+    %p Tequila Centenario® comunicará a través de sus cuentas de  www.facebook.com/CentenarioT y www.twitter.com/CentenarioT  cuando ya no existan boletos disponibles en dicha localización.
+    %p *Tequila Centenario@ no se hace responsable de los medios de transporte que utilice el participante o de cualquier incidente que por el uso de estos medios puedan sufrir los participantes en la realización de esta dinámica, es completa responsabilidad del usuario utilizar los medios y transportes que considere apropiados para  llegar al lugar indicado.
+    %h3 Dinámica 2: “Encuentra tu pase utilizando la app en tu computadora”
+    %p Para participar en esta dinámica deberás contar con una cuenta de Facebook y abrir la aplicación Boletos Más Cerca del Cielo a través de tu computadora, ordenador o tablet, dicha aplicación  se encuentra disponible en la página de internet: boletos.centenario.com. 
+    %p Para utilizar esta aplicación deberás aceptar los términos que permitan a la aplicación usar tus siguientes datos: cuenta de Facebook, correo electrónico, nombre de usuario y permiso para publicar tu nombre a través de tu cuenta de Facebook. Las publicaciones que se realicen a través de esta aplicación serán única y exclusivamente sólo mientras participes en la dinámica y no se publicarán actividades que no hayas realizado.
+    %ul
+      %li Tequila Centenario@ emitirá una pista a través de sus redes sociales oficiales: www.facebook.com/CentenarioT y www.twitter.com/CentenarioT ,  dicha pista será una imagen que muestre un lugar de la ciudad de México, el cual tienes que localizar en el mapa que se encuentra disponible en la aplicación Boletos Más Cerca del Cielo, la cual puedes obtener a través de la página de internet  boletos.centenario.com, en la sección “Encuentra tu boleto”. Una vez dentro del mapa virtual tendrás que localizar el punto exacto donde se encuentra la pista y obtener el boleto virtual.
+    %p Todos los usuarios sólo tienen una oportunidad por pista y vuelven a tener otra cuando exista una dinámica similar con una pista diferente.
+    %p Tequila Centenario® comunicará a través de  www.facebook.com/CentenarioT y www.twitter.com/CentenarioT  cuando ya no existan boletos disponibles en dicha localización.
+    %h3 Dinámica 3: “Obtén tus boletos con el apoyo de tus amigos”
+    %p Para participar en esta dinámica tú y tus amigos deberán de contar con una cuenta de Facebook y abrir la aplicación Boletos Más Cerca del Cielo a través de tu computadora, ordenador o tablet, dicha aplicación  se encuentra disponible en la página de internet: boletos.centenario.com., en la sección “Invita a tus amigos”.
+    %p Para utilizar esta aplicación deberás aceptar los términos que permitan a la aplicación usar tus siguientes datos: cuenta de Facebook, correo electrónico, nombre de usuario y permiso para publicar tu nombre a través de tu cuenta de Facebook. Las publicaciones que se realicen a través de esta aplicación serán única y exclusivamente sólo mientras participes en la dinámica y no se publicarán actividades que no hayas realizado.
+    %ul
+      %li Para ganar uno de los tres premios de esta dinámica deberás invitar a tus amigos de Facebook a que te apoyen a través de la aplicación Boletos Más Cerca del Cielo, los tres participantes con el mayor número de amigos que los apoyen serán los ganadores. 
+    %p Si un usuario ya se encuentra apoyando a otro concursante, no podrá estar en dos grupos, sólo en uno, pero todos los usuarios pueden crear sus propios grupos de apoyo aunque estén apoyando a otro.
+    %p Los premios de esta dinámica son:
+    %h3 1er lugar. <i> Meet & Greet con FUN. o Martin Solveig y un pase doble al concierto “Más cerca del cielo”. </i>
+    %p El ganador del primer lugar podrá escoger con cuál de los dos artistas desea tener el <i>Meet & Greet</i>, el cual consiste en conocer al artista y estar el tiempo que previamente se le indique conviviendo con él o ellos y podrá asistir al concierto “Más cerca del cielo” con un acompañante.
+    %p El participante que resulte ser el ganador del 1er lugar se le confirmará vía el correo electrónico con el que se encuentra registrado en Facebook, el lugar y fecha para recoger físicamente su boleto y el de su acompañante, previa entrega de una copia de la identificación oficial de cada uno de ellos.
+    %p * El <i>Meet & Greet</i> puede ser cancelado por condiciones del evento y del artista.
+    %h3 2do lugar. Pase doble al concierto “Más cerca del cielo”.
+    %p El ganador podrá ir con un acompañante al concierto  “Más cerca del cielo”. 
+    %p El participante que resulte ser el ganador del 2do lugar se le confirmará vía el correo electrónico con el que se encuentra registrado en Facebook, el lugar y fecha para recoger físicamente su boleto y el de su acompañante, previa entrega de una copia de la identificación oficial de cada uno de ellos.
+    %h3 3er lugar.- Pase sencillo al concierto
+    %p El participante que resulte ser el ganador del 3er lugar se le confirmará vía el correo electrónico con el que se encuentra registrado en Facebook, el lugar y fecha para recoger físicamente su boleto, previa entrega de una copia de la identificación oficial.
+    %h3 Dinámica 4: “Obtén tus boletos a través de Trivias”
+    %p Tequila Centenario®, a través de su cuenta oficial de Facebook  www.Facebook.com/CentenarioT, emitirá diferentes trivias para obtener boletos al instante. Los ganadores de dichas trivias serán notificados vía el correo electrónico con el que se encuentra registrado en Facebook y se les indicará la fecha y el lugar para recoger sus boletos, previa entrega de copia de su identificación oficial. 
+    %p Solo tienes que estar al pendiente de las publicaciones que realice Tequila Centenario® y responder correctamente en el menor tiempo posible, a lo que se te pide, que  puede ser una respuesta textual o una publicación gráfica.
+    %h2.bases-sub-header Restricciones y Condiciones de las dinámicas:
+    %ul
+      %li Para poder participar en las dinámicas necesitas ser mayor de edad, tener una identificación oficial y vivir dentro de la República Mexicana.
+      %li Para todas las dinámicas es necesario contar con una cuenta de Facebook con antigüedad, lo anterior con la finalidad de verificar tu identidad. 
+      %li Los boletos son personales, intransferibles, no reembolsables, ni canjeables; si deseas que otra persona ocupe tu lugar en el concierto “Más cerca del cielo” deberás notificárnoslo con 7 días de anticipación, así como entregar copia de la identificación oficial de la persona.
+      %li Tequila Centenario® promueve la competencia sana y rechaza los ataques relacionados directa o indirectamente a cualquiera de las dinámicas antes detalladas, por lo que se reserva el derecho de descalificar a los participantes cuya actitud sea considerada inapropiada u ofensiva en contra de las dinámicas, de Tequila Centenario® o en contra de los demás participantes, así como de eliminar de las dinámicas aquellas participantes que no cumplan con cualquiera de los requisitos establecidos en los presentes Términos.
+      %li Los concursantes que resulten ganadores de un boleto para el concierto “Más cerca del cielo”, no podrán participar o ganar en otra dinámica, sólo se entrega un boleto por ganador,  sin excepción alguna.
+      %li En caso de cancelación del evento por casusas de fuerza mayor o caso fortuito, Tequila Centenario® emitirá un comunicado a través de sus espacios oficiales, explicando las casusas de dicha  cancelación y la manera de remuneración.
+    %p Te invitamos a estar #MASCERCADELCIELO participando en las diferentes dinámicas y disfrutar con nosotros esta única experiencia.
+    %h3.bases-sub-header Aviso de Privacidad para participantes de las dinámicas para el concierto “MÁS CERCA DEL CIELO”
+    %p Casa Cuervo, S.A. de C.V. (en lo subsecuente Casa Cuervo) con domicilio en Avenida Rio Churubusco número 213, Colonia Granjas México, C.P. 08400, en la Ciudad de México, Distrito Federal, en estricto cumplimiento a lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y su Reglamento (en adelante la Legislación), hace de tu conocimiento, que puede obtener, transferir y tratar tus siguientes datos personales: Nombre y usuario de Facebook, nombre, correo electrónico y copia de tu identificación oficial. Los datos anteriores los utilizaremos exclusivamente con la finalidad de que participes en las dinámicas referidas en estas bases y te ganes un boleto para el concierto “MÁS CERCA DEL CIELO”, y si eres uno de los ganadores te lo notifiquemos y reservemos tu lugar en el concierto el 30 de mayo de 2013.
+    %p Casa Cuervo tratará tus datos personales de conformidad con los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad en términos de lo dispuesto en la Legislación. 
+    %p Con el objeto de impedir el acceso y revelación no autorizada, mantener la exactitud de los datos y garantizar el uso correcto de la información, Cuervo utiliza los procedimientos físicos, tecnológicos y administrativos apropiados para proteger la información que recaba.
+    %p Podrás ejercer tus derechos de acceso, rectificación, cancelación y oposición conocidos como derechos ARCO, así como la revocación del consentimiento, contenidos en la Legislación, mediante formulario que podrás obtener previa solicitud a la siguiente dirección electrónica avisoprivacidad@cuervo.com.mx. Asimismo, Cuervo ha puesto a tu disposición, el procedimiento por el cual puedes ejercer tus derechos ARCO y revocación de consentimiento en la página web www.cuervoavisodeprivacidad.com.mx
+    %p Casa Cuervo se abstendrá de vender, arrendar, alquilar o transferir a terceros los datos personales que nos proporciones; excepto en el caso de los concursantes que resulten ganadores de boletos para el concierto “MÁS CERCA DEL CIERLO”, cuyo nombre y copia de identificación oficial será trasferido a la agencia que se encargará de la reservación y logística el día del. 
+    %p En caso de que ocurra una vulneración de seguridad en cualquier fase del tratamiento de datos personales, Cuervo a través de la figura del responsable, lo hará de tu conocimiento de manera inmediata y pública en la siguiente página de internet www.cuervoavisodeprivacidad.com.mx, para que tomes las medidas correspondientes a fin de resguardar tus derechos.
+    %p Cuervo se reserva el derecho a modificar el presente aviso de privacidad, mismo que se anunciará en www.cuervoavisodeprivacidad.com.mx  con razonable antelación a su puesta en práctica.
+    %p 9 de mayo de 2013
