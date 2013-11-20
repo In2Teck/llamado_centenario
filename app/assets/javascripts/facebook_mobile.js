@@ -8,7 +8,7 @@ function loadFB() {
   window.fbAsyncInit = function() {
     // init the FB JS SDK
     FB.init({
-      appId      : '132164533632870', // App ID from the App Dashboard
+      appId      : '479003828864751', // App ID from the App Dashboard
       channelUrl : 'http://boletos.centenario.com/channel.html', // Channel File for x-domain communication
       status     : true, // check the login status upon init?
       cookie     : true, // set sessions cookies to allow your server to access the session?
@@ -50,7 +50,7 @@ function loadFB() {
 function login() {
 
   //BUG#5329429825671 Changed to permission URL instead of FB.login
-  var permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=" + 132164533632870 + "&response_type=code&redirect_uri=" + "http://boletos.centenario.com/mobile" + "&scope=" + "email,user_likes,publish_actions";
+  var permissionUrl = "https://m.facebook.com/dialog/oauth?client_id=" + 479003828864751 + "&response_type=code&redirect_uri=" + "http://llamado.in2teck.com/mobile" + "&scope=" + "email,user_likes,publish_actions";
   window.location = permissionUrl;
 
   /*FB.login(function(response) {
