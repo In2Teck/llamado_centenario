@@ -5,7 +5,7 @@ function onReady() {
   $(document).on("fbLogin", onFBLogin);
   $("#btn-facebook").on("click", login);
   $("#btn-search").on("click", searchTicket);
-  $(".btn-close").on("click", goHome);
+  $("#btn-regresar").on("click", goHome);
 }
 
 function onFBLoaded() {
@@ -39,12 +39,7 @@ function onLike(response) {
 
 function goHome() { 
    if ($("#ruby-values").data("has-ticket")) {
-    $("#txt-result").text("¡ FELICIDADES !");
-    $("#txt-info").text("YA CUENTAS CON TU BOLETO");
-    $("#txt-folio").text("Tu folio es " + $("#ruby-values").data("folio"));
-    $("#txt-mail").text("Muchas gracias por participar. Nos vemos en el concierto");
-    $("#img-result").attr("src", "assets/mobile/boleto_centenario.png");
-    $.mobile.changePage($("#result"));
+    $.mobile.changePage($("#won"));
   }
   else {
     $.mobile.changePage($("#search"));
@@ -77,37 +72,17 @@ function onPositionError(msg) {
 var result;
 function onSearchTicket(data, textStatus, jqXHR) {
   result = data;
- if (data.won_ticket) {
-    publishFound(true);
-    $("#ruby-values").data("has-ticket", true);
-    $("#txt-result").text("¡ FELICIDADES !");
-    $("#txt-info").text("ENCONTRASTE TU BOLETO");
-    $("#txt-folio").text("Tu folio es " + data.folio);
-    $("#txt-mail").text("Revisa tu correo electrónico y sigue las instrucciones para recoger tu premio");
-    $("#img-result").attr("src", "assets/mobile/boleto_centenario.png");
-     /*var marker = new google.maps.Marker({
-      position: guess,
-      animation: google.maps.Animation.DROP,
-      map: map
-    });*/
+  if (data.won_ticket) {
+    
   }
   else {
-    publishFound(false);
-    $("#txt-result").text("¡ LO SENTIMOS !");
-    $("#img-result").attr("src", "assets/mobile/tache.png");
-    if (!data.error) {
-      $("#txt-info").text("HAY BOLETOS CERCA DE AQUI, PERO NO ESTAS EN EL LUGAR CORRECTO");
-    }
-    else if (data.code == 1) {
-      $("#txt-info").text("NO HAY BOLETOS DISPONIBLES EN ESTE LUGAR");
-    }
   }
   $.mobile.loading("hide");
   $.mobile.changePage($("#result"));
 }
 
 function publishFound(found) {
-  var text = '';
+  /*var text = '';
   var image = '';
   if (found) {
     text = '¡Ya estoy MÁS CERCA DEL CIELO! e iré a ver a FUN y MARTIN SOLVEIG este 30 de Mayo, ¡tu también participa!';
@@ -119,10 +94,10 @@ function publishFound(found) {
   }
   
   FB.api('/me/feed', 'post', 
-    {name: 'MÁS CERCA DEL CIELO', 
+    {name: 'EL LLAMADO CENTENARIO', 
     message: text,
-    link: 'http://boletos.centenario.com/',
+    link: 'http://centenario.com/',
     description: ' ',
     picture: image
-  });
+  });*/
 }

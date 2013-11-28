@@ -6,68 +6,84 @@
 <div data-role="page" id="login">
   <div class="header-logo"></div>
   <div data-role="content">
-    <div class="yellow"> DESCUBRE QUE HAY <br/> MÁS ALLÁ DEL CIELO </div><br/>
-    <div class="separator"></div>
-    <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
-    <div class="separator"></div> <br/><br/>
-    <div><%= image_tag "mobile/conectar_facebook.png", :id => "btn-facebook" %></div>
-    <div class="concert-logo">
-      <div class="social">
-        CONOCE MÁS <br/>  
-        <div><%= image_tag "mobile/facebook.png" %></div>
-        <div class="yellow"> /CentenarioT <br/> #mascercadelcielo </div>
-      </div>
+    <div class="yellow-header">ENCIENDE LA LETRA</div>
+    <div class="letra-instrucciones">
+        <div class="letra-div"></div>
+        <div class="instrucciones-div">
+          <div class="foo"></div>
+        </div>
     </div>
+    <div class="home-div">
+      <div>ENCIENDE LA TERCERA LETRA L Y PARTICIPA PARA GANAR <br> BOLETOS DEL CONCIERTO DE <b class="yellow"> FOO FIGHTERS</b></div>
+    </div>
+    <div><%= image_tag "mobile/conectar_facebook.png", :id => "btn-facebook" %></div>
+    <div class="bases">Revisa la bases en www.centenario.com</div>
+    <div class="footer">alcoholinformate.org.mx | TODOS LOS DERECHOS RESERVADOS. TEQUILA CENTENARIO MMXIII | CONOCER ES NO EXCEDERSE</div>
   </div>
 </div>
 
 <div data-role="page" id="like">
   <div class="header-logo"></div>
   <div data-role="content">
-    <div class="subheader">
-      <div class="separator center"></div>
-      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
-      <div class="separator center"></div>
-    </div><br/> 
-    <div class="subheader">
-      Para continuar tienes que ser fan de Centenario <br/><br/>
+    <div class="subheader">PARA PARTICIPAR TIENES QUE SER FAN DE <br/><br/>
       <fb:like-box href="http://www.facebook.com/CentenarioT" width="400" height="350" show_faces="true" colorscheme="dark" stream="false" border_color="#b09648" header="false"></fb:like-box>
     </div>
+    <div class="bases">Revisa la bases en www.centenario.com</div>
+    <div class="footer">alcoholinformate.org.mx | TODOS LOS DERECHOS RESERVADOS. TEQUILA CENTENARIO MMXIII | CONOCER ES NO EXCEDERSE</div>
   </div>
 </div>
 
 <div data-role="page" id="search">
   <div class="header-logo"></div>
   <div data-role="content">
-    <div class="subheader">
-      <div class="separator center"></div>
-      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
-      <div class="separator center"></div>
-    </div><br/> 
-    <div class="background">
-      <%= image_tag "mobile/boton_cerrar.png", :class => "btn-close"%>
-      <div id="txt-search" class="title yellow">PARA COMENZAR<br/>PRESIONA EL BOTÓN</div><br/><br/>
-      <%= image_tag "mobile/busca_boton.png", :id => "btn-search"%>
+    <div class="yellow-header">ENCIENDE LA LETRA</div>
+    <div class="letra-instrucciones">
+        <div class="letra-div"></div>
+        <div class="instrucciones-div">
+          <div class="instrucciones">
+            TIENES QUE HACER <b class="yellow">CHECKIN</b> PARA COMENZAR
+          </div>
+        </div>
     </div>
+    <%= image_tag "mobile/check_btn.png", :id => "btn-search"%>
+    <div class="bases">Revisa la bases en www.centenario.com</div>
+    <div class="footer">alcoholinformate.org.mx | TODOS LOS DERECHOS RESERVADOS. TEQUILA CENTENARIO MMXIII | CONOCER ES NO EXCEDERSE</div>
   </div>
 </div>
 
 <div data-role="page" id="result">
   <div class="header-logo"></div>
   <div data-role="content">
-    <div class="subheader">
-      <div class="separator center"></div>
-      <div> EL CONCIERTO <br/> MÁS CERCA DEL CIELO </div>
-      <div class="separator center"></div>
-    </div><br/> 
-    <div class="background">
-      <%= image_tag "mobile/boton_cerrar.png", :class => "btn-close"%>
-      <div id="txt-result" class="title yellow"> </div><br/><br/>
-      <div id="txt-info"> </div><br/>
-      <div id="txt-folio"> </div><br/><br/>
-      <img id="img-result"/><br/><br/>
-      <div id="txt-mail"> </div>
+    <div class="yellow-header">ENCIENDE LA LETRA</div>
+    <div class="letra-instrucciones">
+        <div class="letra-div"></div>
+        <div class="instrucciones-div">
+          <div class="instrucciones">
+            NO ESTAS EN EL LUGAR <b class="yellow">INDICADO.</b> POR FAVOR INTENTA NUEVAMENTE
+          </div>
+        </div>
     </div>
+    <%= image_tag "mobile/regresar_btn.png", :id => "btn-regresar"%>
+    <div class="bases">Revisa la bases en www.centenario.com</div>
+    <div class="footer">alcoholinformate.org.mx | TODOS LOS DERECHOS RESERVADOS. TEQUILA CENTENARIO MMXIII | CONOCER ES NO EXCEDERSE</div>
+  </div>
+</div>
+
+<div data-role="page" id="won">
+  <div class="header-logo"></div>
+  <div data-role="content">
+    <div class="yellow-header">ENCIENDE LA LETRA</div>
+    <div class="letra-instrucciones">
+        <div class="letra-div"></div>
+        <div class="instrucciones-div">
+          <div class="instrucciones">
+            YA ENCENDISTE LA LETRA. SIGUE PARTICIPANDO EN <b class="yellow">CENTENARIO.COM</b>
+          </div>
+        </div>
+    </div>
+    <%= image_tag "mobile/regresar_btn.png", :id => "btn-regresar"%>
+    <div class="bases">Revisa la bases en www.centenario.com</div>
+    <div class="footer">alcoholinformate.org.mx | TODOS LOS DERECHOS RESERVADOS. TEQUILA CENTENARIO MMXIII | CONOCER ES NO EXCEDERSE</div>
   </div>
 </div>
 

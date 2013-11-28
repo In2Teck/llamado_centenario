@@ -14,7 +14,6 @@ function initMap() {
   var mapDiv = $("#map-canvas")[0];
   var map = new google.maps.Map(mapDiv, {
               center: new google.maps.LatLng(dLatitude, dLongitude),
-              minZoom: 11,
               zoom: 15,
               maxZoom: 17,
               mapTypeId: google.maps.MapTypeId.ROADMAP              
@@ -128,7 +127,7 @@ function DistanceWidget(map) {
   });
 
   this.set('minDistance', 0.05);
-  this.set('maxDistance', 0.6);
+  this.set('maxDistance', 1000);
 
   marker.bindTo('map', this);
 

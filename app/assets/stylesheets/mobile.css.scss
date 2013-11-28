@@ -2,66 +2,97 @@
   font-family: centenario;
   font-style: normal;
   font-weight: normal;
-  src: url('Champagne_Limousines.ttf');
+  src: url('Champagne_Limousines.eot'), url('Champagne_Limousines.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-weight: bold;
-  src: url('Champagne_Limousines_Bold.ttf');
+  src: url('Champagne_Limousines_Bold.eot'), url('Champagne_Limousines_Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-style: italic;
   font-weight: bold;
-  src: url('Champagne_Limousines_Bold_Italic.ttf');
+  src: url('Champagne_Limousines_Bold_Italic.eot'), url('Champagne_Limousines_Bold_Italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: centenario;
   font-style: italic;
-  src: url('Champagne_Limousines_Italic.ttf');
+  src: url('Champagne_Limousines_Italic.eot'), url('Champagne_Limousines_Italic.ttf') format('truetype');
 }
 
-.background {
-  background-image: url('mobile/fondo_informacion.png');
-  font-size: 26px;
-  height: 827px;
-  position: relative;
+.bases {
+  font-size: 0.5em;
+  margin-top: 50px;
   text-align: center;
-  width: 567px;
 }
 
-.btn-close {
-  position: absolute;
-  right: 0px;
+.foo {
+  background-image: url('mobile/foo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 388px;
 }
 
-.concert-logo {
-  background-image: url('mobile/fun.png');
-  bottom: 10px;
-  height: 427px;
-  position: absolute;
-  width: 556px;
-}
-
-.close-btn {
-  position: absolute;
-  right: 0px;
+.footer {
+  font-family: Helvetica;
+  font-size: 11px;
+  margin-top: 50px;
+  text-align: center;
+  width: 630px;
 }
 
 .header-logo {
-  background-image: url('mobile/patrocinado.png');
-  height: 101px;
-  margin-left: -30px;
+  height: 370px;
   width: 640px;
-  /*border-color: red;
-  border-style: solid;*/
+}
+
+.home-div {
+  background-color: #808080;
+  font-size: 0.5em;
+  height: 65px;
+  margin: auto;
+  padding-left: 35px;
+  width: 640px;
+}
+
+.instrucciones {
+  font-size: 0.8em;
+  padding: 35px;
+}
+
+.instrucciones-div {
+  background-color: #808080;
+  height: 250px;
+  width: 388px;
+}
+
+.letra-div {
+  background-color: #1d1d1b;
+  background-image: url('mobile/letra.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 250px;
+}
+
+.letra-div, .instrucciones-div {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -10px;
+}
+
+.letra-instrucciones {
+  height: 250px;
+  width: 640px;
 }
 
 .separator {
-  background-image: url('mobile/linea_amarilla_concierto.png');
+  background-image: url('mobile/linea_amarilla_concierto.png') center;
   height: 15px; 
   width: 400px;
 }
@@ -70,27 +101,14 @@
   margin: 0 auto;
 } 
 
-.social {
-  font-size: 21px;
-  position: absolute;
-  bottom: 5px;
-}
-
-.social div {
-  display: inline-block;
-  margin: 10px 5px;
-  vertical-align: top;
-}
-
 .subheader {
-  font-size: 40px;
+  font-size: 34px;
   margin: 0 auto;
   text-align: center;
 }
 
-.title {
-  font-size: 50px;
-  padding-top: 40px;
+.ui-content {
+  padding-left: 0;
 }
 
 .ui-loader-verbose h1 {
@@ -105,26 +123,36 @@
   font-size: 3em;
   height: 1136px;
   max-width: 640px;
-  padding-left: 30px;
   width: 640px;
+  text-shadow: none;
 }
 
 .yellow {
-  color: #b09648;
+  color: #cc9700;
+  font-weight: bold;
+}
+
+.yellow-header {
+  background-color: #cc9700;
+  color: black;
+  font-weight: bold;
+  height: 50px;
+  margin: auto;
+  padding-left: 35px;
+  width: 640px;
 }
 
 #btn-facebook {
+  margin-top: 80px;
   padding-left: 110px;
 }
 
-#txt-mail {
-  padding-top: 80px;
-  font-size: 21px;
+#btn-regresar {
+  margin-top: 80px;
+  padding-left: 160px;
 }
 
-#txt-info {
-  font-size: 28px;
-  padding-top: 80px;
-  padding-left: 10px;
-  padding-right: 10px;
+#btn-search {
+  margin-top: 80px;
+  padding-left: 160px;
 }
