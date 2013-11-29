@@ -38,12 +38,22 @@ function onLike(response) {
 }
 
 function goHome() { 
-   if ($("#ruby-values").data("has-ticket")) {
+  /*if ($("#ruby-values").data("has-ticket")) {
     $.mobile.changePage($("#won"));
   }
   else {
     $.mobile.changePage($("#search"));
-  }
+  }*/
+  $.ajax({
+    type: "GET",
+    dataType: "text/html",
+    url: "http://www.centenario.com/api/user/" + $("#ruby-values").data("fbid"),
+    success: function(data, textStatus, jqXHR) {
+      console.log(data);
+    },
+    error: function() {
+    } 
+  });
 }
 
 function searchTicket()

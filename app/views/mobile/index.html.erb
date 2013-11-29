@@ -88,5 +88,5 @@
 </div>
 
 <%= content_tag "div", id: "ruby-values", data: {
-  has_ticket: @has_ticket, folio: @folio
+  has_ticket: @has_ticket, folio: @folio, fbid: current_user.try("uid"), first_name: current_user.try("first_name"), last_name: current_user.try("last_name"), email: current_user.try("email")
 } do %><% end %>
