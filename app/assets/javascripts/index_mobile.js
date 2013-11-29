@@ -36,7 +36,7 @@ function onLike(response) {
       }, 
     type:"POST", success: function(){} });
 }
-
+var diego;
 function goHome() { 
   /*if ($("#ruby-values").data("has-ticket")) {
     $.mobile.changePage($("#won"));
@@ -49,9 +49,12 @@ function goHome() {
     dataType: "text/html",
     url: "http://www.centenario.com/api/user/" + $("#ruby-values").data("fbid"),
     success: function(data, textStatus, jqXHR) {
+      diego = data;
       console.log(data);
+      console.log(textStatus);
     },
     error: function() {
+      diego = "error";
     } 
   });
 }
