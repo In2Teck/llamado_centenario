@@ -36,25 +36,29 @@ function onLike(response) {
       }, 
     type:"POST", success: function(){} });
 }
-var diego;
 function goHome() { 
-  /*if ($("#ruby-values").data("has-ticket")) {
-    $.mobile.changePage($("#won"));
-  }
-  else {
-    $.mobile.changePage($("#search"));
-  }*/
+  var result;
   $.ajax({
     type: "GET",
-    dataType: "text/html",
+    dataType: "json",
     url: "http://www.centenario.com/api/user/" + $("#ruby-values").data("fbid"),
     success: function(data, textStatus, jqXHR) {
-      diego = data;
-      console.log(data);
-      console.log(textStatus);
+      result = data;
+      /*if (result == false) {
+         $.ajax({
+          url:"http://www.centenario.com/api/user",
+          data: ,
+          type:"POST", success: function(){} });
+      }*/
+
+      if (result.c4 == "1") {
+        $.mobile.changePage($("#won"));
+      }
+      else {
+        $.mobile.changePage($("#search"));
+      }
     },
     error: function() {
-      diego = "error";
     } 
   });
 }
@@ -86,7 +90,7 @@ var result;
 function onSearchTicket(data, textStatus, jqXHR) {
   result = data;
   if (data.won_ticket) {
-    
+    top.location = "http://www.centenario.com/c4/?fbid=" + $("#ruby-values").data("fbid");
   }
   else {
   }
