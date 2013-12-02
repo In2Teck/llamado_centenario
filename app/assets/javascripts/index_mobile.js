@@ -44,14 +44,17 @@ function goHome() {
     url: "http://www.centenario.com/api/user/" + $("#ruby-values").data("fbid"),
     success: function(data, textStatus, jqXHR) {
       result = data;
-      /*if (result == false) {
+      if (result == false) {
+        var nuevo = {fbid: $("#ruby-values").data("fbid"), fullname: $("#ruby-values").data("first_name") + ' ' + $("#ruby-values").data("last_name"), email: $("#ruby-values").data("email")};
          $.ajax({
           url:"http://www.centenario.com/api/user",
-          data: ,
+          dataType: "json",
+          data: nuevo,
           type:"POST", success: function(){} });
-      }*/
+      }
 
       if (result.c4 == "1") {
+        $(".ui-page").css("background-image", "url('assets/mobile/fondo_encendidas.png')");
         $.mobile.changePage($("#won"));
       }
       else {

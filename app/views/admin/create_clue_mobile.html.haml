@@ -33,6 +33,6 @@
         %label #{@tickets_assigned}
         %br
         %label{"for" => "ticket_number", "class" => "form-data-label"} Tickets libres:
-        %input#ticket_number{"name" => "ticket_number", "value" => @tickets_not_assigned, "type" => "number", "min" => "1", "max" => "200"}
+        %input#ticket_number{"name" => "ticket_number", "value" => @tickets_not_assigned, "type" => "number", "min" => "1"}
       .actions
         = f.submit "salvar pista", :class => "link-to-button"
