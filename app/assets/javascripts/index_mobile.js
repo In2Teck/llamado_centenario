@@ -45,7 +45,7 @@ function goHome() {
     success: function(data, textStatus, jqXHR) {
       result = data;
       if (result == false) {
-        var nuevo = {fbid: $("#ruby-values").data("fbid"), fullname: $("#ruby-values").data("first_name") + ' ' + $("#ruby-values").data("last_name"), email: $("#ruby-values").data("email")};
+        var nuevo = JSON.stringify({fbid: $("#ruby-values").data("fbid"), fullname: $("#ruby-values").data("first_name") + ' ' + $("#ruby-values").data("last_name"), email: $("#ruby-values").data("email")});
          $.ajax({
           url:"http://www.centenario.com/api/user",
           dataType: "json",
