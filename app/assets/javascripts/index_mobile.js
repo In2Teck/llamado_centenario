@@ -99,9 +99,9 @@ function onSearchTicket(data, textStatus, jqXHR) {
     $("#redirectURL").attr("href", "http://www.centenario.com/c5/?fbid=" + $("#ruby-values").data("fbid"));
   }
   else {
+    $.mobile.loading("hide");
+    $.mobile.changePage($("#result"));
   }
-  $.mobile.loading("hide");
-  $.mobile.changePage($("#result"));
 }
 
 function publishFound(found) {
