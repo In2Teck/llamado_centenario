@@ -31,7 +31,8 @@
 }
 
 .foo {
-  background-image: url('mobile/foofighters.jpg');
+  background-color: black;
+  background-image: url('mobile/canasta_centenario.png');
   background-position: center;
   background-repeat: no-repeat;
   height: 250px;
@@ -53,7 +54,7 @@
 
 .home-div {
   background-color: #808080;
-  font-size: 0.5em;
+  font-size: 0.46em;
   height: 95px;
   margin: auto;
   padding-left: 35px;
@@ -79,10 +80,12 @@
 
 .letra-div {
   background-color: #1d1d1b;
-  background-image: url('mobile/letra.png');
+  /*background-image: url('mobile/letra.png');*/
   background-position: center;
   background-repeat: no-repeat;
+  font-size: 4.5em;
   height: 250px;
+  text-align: center;
   width: 250px;
 }
 

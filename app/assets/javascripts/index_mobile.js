@@ -53,9 +53,10 @@ function goHome() {
           type:"POST", success: function(){} });
       }
 
-      if (result.c4 == "1") {
+      if (result.c5 == "1") {
         $(".ui-page").css("background-image", "url('assets/mobile/fondo_encendidas.png')");
         $.mobile.changePage($("#won"));
+        $("#redirectURL").attr("href", "http://www.centenario.com/c5/?fbid=" + $("#ruby-values").data("fbid"));
       }
       else {
         $.mobile.changePage($("#search"));
@@ -93,7 +94,9 @@ var result;
 function onSearchTicket(data, textStatus, jqXHR) {
   result = data;
   if (data.won_ticket) {
-    top.location = "http://www.centenario.com/c4/?fbid=" + $("#ruby-values").data("fbid");
+    $.mobile.loading("hide");
+    $.mobile.changePage($("#won"));  
+    $("#redirectURL").attr("href", "http://www.centenario.com/c5/?fbid=" + $("#ruby-values").data("fbid"));
   }
   else {
   }
